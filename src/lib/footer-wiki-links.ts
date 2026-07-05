@@ -6,7 +6,22 @@ function wikiAnchorHref(anchor?: string | null) {
   return anchor ? `/wiki#${anchor}` : "/wiki";
 }
 
+function databaseContentEnabled() {
+  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+}
+
+function fallbackFooterWikiLinks() {
+  return defaultFooterWikiLinks.map((group) => ({
+    ...group,
+    items: group.items.map((item) => ({ ...item, href: wikiAnchorHref(item.anchor) }))
+  }));
+}
+
 export async function getFooterWikiLinks(): Promise<WikiGroup[]> {
+  if (!databaseContentEnabled()) {
+    return fallbackFooterWikiLinks();
+  }
+
   try {
     const storedLinks = await loadPublicWikiEntries({ groups: footerWikiGroups });
     const storedByKey = new Map(storedLinks.map((entry) => [entry.anchor ?? entry.title, entry]));
@@ -46,9 +61,6 @@ export async function getFooterWikiLinks(): Promise<WikiGroup[]> {
       return { title: group, icon: fallbackGroup.icon, items: mergedItems };
     });
   } catch {
-    return defaultFooterWikiLinks.map((group) => ({
-      ...group,
-      items: group.items.map((item) => ({ ...item, href: wikiAnchorHref(item.anchor) }))
-    }));
+    return fallbackFooterWikiLinks();
   }
 }

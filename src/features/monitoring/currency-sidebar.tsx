@@ -189,14 +189,6 @@ function networkScore(network: string | undefined) {
   return index === -1 ? 999 : index;
 }
 
-function isPopularAsset(asset: AssetOption) {
-  const meta = currencyDisplayMeta(asset.code, asset.name);
-  const exact = exactPriority(asset.code);
-  const base = baseScore(meta.displayCode);
-  const network = networkScore(meta.network ?? asset.networks[0]?.code);
-  return exact < 999 || (base < 14 && network < 4);
-}
-
 function classifyAsset(asset: AssetOption): AssetCategoryKey {
   const text = assetSearchText(asset);
   const normalized = normalizeSearchValue(text);

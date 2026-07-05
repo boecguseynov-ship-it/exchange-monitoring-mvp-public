@@ -11,6 +11,10 @@ export type PublicWikiEntry = {
   status: string;
 };
 
+function databaseContentEnabled() {
+  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+}
+
 async function hasWikiAnchorColumn() {
   const result = await prisma.$queryRaw<{ exists: boolean }[]>`
     SELECT EXISTS (
@@ -25,6 +29,8 @@ async function hasWikiAnchorColumn() {
 }
 
 export async function loadPublicWikiEntries(where: { groups?: readonly string[]; publishedOnly?: boolean } = {}) {
+  if (!databaseContentEnabled()) return [];
+
   const anchorAvailable = await hasWikiAnchorColumn();
   const groupWhere = where.groups?.length ? { group: { in: [...where.groups] } } : {};
   const statusWhere = where.publishedOnly ? { status: "PUBLISHED" as const } : {};

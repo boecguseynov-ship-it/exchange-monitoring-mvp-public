@@ -128,6 +128,10 @@ function reviewBucket(changer: BestChangeChanger, key: string) {
   return Number.isFinite(number) ? number : null;
 }
 
+function databaseContentEnabled() {
+  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+}
+
 function decodeHtml(value: string) {
   const entities: Record<string, string> = {
     amp: "&",
@@ -331,6 +335,8 @@ async function loadProviderProfileFacts(changer: BestChangeChanger) {
 }
 
 async function loadLocalReviewMatches(changers: BestChangeChanger[]) {
+  if (!databaseContentEnabled()) return new Map<number, LocalExchangeReviewMatch>();
+
   const changersWithHosts = changers.map((changer) => {
     const pageUrl = changer.pages.ru ?? Object.values(changer.pages)[0] ?? changer.urls.ru ?? Object.values(changer.urls)[0] ?? null;
     return {
@@ -391,6 +397,8 @@ async function loadLocalReviewMatches(changers: BestChangeChanger[]) {
 }
 
 async function loadLocalReviewStatsBySlug(slug: string) {
+  if (!databaseContentEnabled()) return { rating: null, reviews: 0 };
+
   const exchange = await prisma.exchange.findUnique({
     where: { slug },
     select: { id: true }
@@ -513,6 +521,8 @@ export async function ensureExchangeForFeedback(
   slug: string,
   client: BestChangeClient = getBestChangeClient()
 ) {
+  if (!databaseContentEnabled()) return null;
+
   const existingExchange = await prisma.exchange.findFirst({
     where: { slug, status: ExchangeStatus.ACTIVE }
   });

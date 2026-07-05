@@ -18,7 +18,15 @@ export const defaultContactSocialLinks: ContactSocialLink[] = [
 
 export const contactSocialLinkGroup = "contactSocial";
 
+function databaseContentEnabled() {
+  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+}
+
 export async function getContactSocialLinks(includeDisabled = false) {
+  if (!databaseContentEnabled()) {
+    return defaultContactSocialLinks.filter((link) => includeDisabled || link.enabled);
+  }
+
   try {
     const storedLinks = await prisma.wikiEntry.findMany({
       where: { group: contactSocialLinkGroup },

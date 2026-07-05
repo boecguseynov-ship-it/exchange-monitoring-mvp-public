@@ -17,6 +17,10 @@ export const realPublishedReviewWhere = {
   exchange: { isDemo: false }
 } satisfies Prisma.ReviewWhereInput;
 
+function databaseContentEnabled() {
+  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+}
+
 export function createHomepageReviewLoader<T>({
   findMany,
   aggregate
@@ -25,6 +29,17 @@ export function createHomepageReviewLoader<T>({
   aggregate: () => Promise<ReviewAggregate>;
 }) {
   return async (): Promise<ReviewLoaderResult<T>> => {
+    if (!databaseContentEnabled()) {
+      return {
+        latestReviews: [] as T[],
+        reviewAggregate: {
+          _avg: { rating: null },
+          _count: { rating: 0 }
+        },
+        degraded: false
+      };
+    }
+
     try {
       const [latestReviews, reviewAggregate] = await Promise.all([
         findMany(),

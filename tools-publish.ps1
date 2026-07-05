@@ -121,7 +121,11 @@ if ($LASTEXITCODE -ne 0) {
   if ($LASTEXITCODE -ne 0) { throw "GitHub repo creation failed" }
 }
 
-& $git remote remove origin 2>$null
+$remotes = & $git remote
+if ($remotes -contains "origin") {
+  & $git remote remove origin
+  if ($LASTEXITCODE -ne 0) { throw "git remote remove failed" }
+}
 & $git remote add origin "https://github.com/boecguseynov-ship-it/exchange-monitoring-mvp-public.git"
 & $git push -u origin main
 if ($LASTEXITCODE -ne 0) { throw "git push failed" }

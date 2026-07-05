@@ -1,0 +1,16 @@
+.next/
+_next/
+.vercel/
+.tools/
+.git-broken-*/
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.env
+.env.*
+!.env.example
+prisma/*.db
+prisma/*.db-journal
+*.tsbuildinfo

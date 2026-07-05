@@ -1,0 +1,328 @@
+:root {
+  --bg: #0f0e0d;
+  --surface: rgba(32, 30, 29, .74);
+  --surface-solid: #1d1c1b;
+  --surface-soft: rgba(47, 43, 39, .72);
+  --ink: #f6f1ea;
+  --muted: #b6aaa0;
+  --line: rgba(255, 255, 255, .12);
+  --line-soft: rgba(255, 255, 255, .08);
+  --green: #ff7a2f;
+  --green-dark: #ff9b58;
+  --green-soft: rgba(255, 122, 47, .16);
+  --black: #11100f;
+  --accent: #ff7838;
+  --shadow-soft: 0 26px 70px rgba(0, 0, 0, .42);
+}
+
+html {
+  background: #0f0e0d;
+}
+
+body {
+  color: var(--ink);
+  background:
+    linear-gradient(105deg, rgba(255, 115, 50, .26) 0%, rgba(255, 115, 50, .08) 28%, transparent 52%),
+    linear-gradient(155deg, transparent 0%, rgba(134, 62, 30, .20) 58%, rgba(255, 105, 36, .18) 100%),
+    #11100f !important;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, .05), transparent 25%, rgba(255, 121, 48, .08) 100%),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='.18'/%3E%3C/svg%3E");
+  opacity: .58;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  backdrop-filter: blur(18px);
+  background: rgba(8, 8, 8, .30);
+  pointer-events: none;
+}
+
+.topbar {
+  background: rgba(16, 15, 15, .70) !important;
+  border-bottom-color: rgba(255, 255, 255, .08) !important;
+  box-shadow: none !important;
+  backdrop-filter: blur(18px) saturate(130%) !important;
+}
+
+.logo,
+.footerBrand .logo {
+  color: #fff6ee !important;
+}
+
+.logo strong {
+  color: #fff !important;
+  background: rgba(255, 122, 47, .24) !important;
+}
+
+.logoMark,
+.showAllCurrencies,
+.loginButton {
+  background: linear-gradient(135deg, #ff983e 0%, #ff6a2d 48%, #a83e2a 100%) !important;
+  box-shadow: 0 14px 34px rgba(255, 106, 45, .28) !important;
+}
+
+.mainNav a {
+  color: rgba(255, 246, 238, .66) !important;
+}
+
+.mainNav a:hover,
+.mainNav a.active {
+  color: #fff7ef !important;
+  background: rgba(255, 122, 47, .12) !important;
+}
+
+.currencySidebar,
+.exchangeWidget,
+.ratesCard,
+.safeDealPanel,
+.insightPanel,
+.panel,
+.authCard,
+.directoryTable,
+.wikiGroup,
+.exchangeProfileHero,
+.exchangeCards > a,
+.metricGrid > div,
+.adminPanel,
+.adminQuickNav,
+.adminMetrics > div {
+  color: var(--ink) !important;
+  background: linear-gradient(180deg, rgba(43, 40, 38, .72), rgba(20, 19, 18, .72)) !important;
+  border-color: rgba(255, 255, 255, .12) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .08),
+    0 28px 70px rgba(0, 0, 0, .44) !important;
+  backdrop-filter: blur(18px) saturate(125%) !important;
+}
+
+.exchangeWidget {
+  position: relative;
+  overflow: hidden;
+}
+
+.exchangeWidget::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255, 147, 62, .18), transparent 34%, rgba(255, 106, 45, .10));
+  pointer-events: none;
+}
+
+.exchangeWidget > *,
+.ratesCard > *,
+.safeDealPanel > * {
+  position: relative;
+}
+
+.assetCategory {
+  color: #fff1e6 !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 122, 47, .08)) !important;
+  border-bottom-color: rgba(255, 255, 255, .10) !important;
+}
+
+.sideColumnTitle,
+.amountField,
+.routePanel,
+.widgetFilters,
+.realtimeRefresh,
+.realtimeToggle,
+.quickFilters button,
+.quickIconAction,
+.offerActions a,
+.offerActions button,
+.showMoreOffers,
+.csTrigger,
+.csDropdown,
+.safeDealVerdict,
+.safeDealDisclosure,
+.safeDealEmpty,
+.safeDealAiAnswer,
+.safeDealStats span,
+.safeDealReasons,
+.safeDealRisks,
+.safeDealChecklist,
+.safeDealSupport,
+.safeDealChecklist button,
+.safeDealModes button,
+.safeDealSupport pre {
+  color: #f3eee8 !important;
+  background: rgba(24, 23, 22, .72) !important;
+  border-color: rgba(255, 255, 255, .11) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05) !important;
+}
+
+.sideColumnTitle:focus-within,
+.amountField:focus-within {
+  border-color: rgba(255, 126, 54, .72) !important;
+  box-shadow: 0 0 0 3px rgba(255, 126, 54, .13) !important;
+}
+
+.sideColumnSearch input,
+.amountField input,
+.csTrigger,
+.safeDealStats strong,
+.safeDealHeader h2,
+.safeDealVerdict h3,
+.safeDealSupport h3,
+.workspaceHeader h1,
+.referenceDashboard .workspaceHeader h1 {
+  color: #fff7f0 !important;
+}
+
+.sideColumnSearch input::placeholder,
+.workspaceLive,
+.workspaceUpdated,
+.exchangeFields label,
+.offerRow small,
+.safeDealHeader p,
+.safeDealVerdict p,
+.safeDealSupport p,
+.safeDealAiAnswer p,
+.safeDealStats small,
+.safeDealReasons li,
+.safeDealRisks li,
+.assetItem small {
+  color: rgba(255, 239, 225, .62) !important;
+}
+
+.assetGroup h3 {
+  color: rgba(255, 223, 202, .54) !important;
+  background: rgba(255, 255, 255, .045) !important;
+  border-color: rgba(255, 255, 255, .07) !important;
+}
+
+.assetItem,
+.offerRow {
+  background: rgba(18, 17, 16, .32) !important;
+  border-color: rgba(255, 255, 255, .07) !important;
+}
+
+.assetItem:hover,
+.offerRow:hover,
+.csOption:hover,
+.csOption.active,
+.quickFilters button:hover,
+.offerActions a:hover,
+.offerActions button:hover,
+.showMoreOffers:hover,
+.safeDealModes button:hover,
+.safeDealModes button[aria-pressed="true"] {
+  color: #fff !important;
+  background: rgba(255, 122, 47, .14) !important;
+  border-color: rgba(255, 139, 64, .34) !important;
+}
+
+.assetItem.selected,
+.quickFilters button[aria-pressed="true"],
+.quickIconAction.active,
+.widgetTabs .active {
+  color: #fff !important;
+  background: linear-gradient(135deg, rgba(255, 146, 62, .34), rgba(173, 64, 39, .30)) !important;
+  border-color: rgba(255, 150, 78, .52) !important;
+  box-shadow: inset 3px 0 0 #ff8a3d !important;
+}
+
+.assetItem strong,
+.offerRow strong,
+.exchangeName a:hover strong,
+.bestRate,
+.receivedCell .bestRate,
+.safeDealVerdict small,
+.safeDealSupport small,
+.safeDealAiAnswer > span,
+.favoritePairs svg,
+.rating strong {
+  color: #ffb174 !important;
+}
+
+.offerHeader {
+  color: rgba(255, 228, 209, .74) !important;
+  background: rgba(255, 122, 47, .12) !important;
+  border-color: rgba(255, 255, 255, .10) !important;
+}
+
+.emptyOffers,
+.tableNotice {
+  color: rgba(255, 235, 220, .68) !important;
+  background:
+    linear-gradient(135deg, rgba(255, 132, 55, .10), rgba(255, 255, 255, .035)),
+    rgba(24, 23, 22, .68) !important;
+}
+
+.emptyOffers strong {
+  color: #fff2e6 !important;
+}
+
+.emptyOffers svg,
+.safeDealEmpty svg {
+  color: #ff9a52 !important;
+}
+
+.exchangeName i,
+.safeDealAvatar {
+  color: #fff !important;
+  background: linear-gradient(135deg, #ff9d43, #c94f31) !important;
+}
+
+.swapRound {
+  color: #fff !important;
+  background: rgba(255, 122, 47, .18) !important;
+}
+
+.safeDealScore.good,
+.safeDealScore.watch,
+.safeDealScore.risk,
+.safeDealScore.idle {
+  color: #fff8f0 !important;
+  background: linear-gradient(135deg, rgba(255, 150, 63, .34), rgba(181, 62, 39, .26)) !important;
+}
+
+.siteFooter {
+  color: #fff4eb !important;
+  background: rgba(13, 12, 12, .92) !important;
+  border-top-color: rgba(255, 255, 255, .10) !important;
+}
+
+.footerLinks h2,
+.footerTrust h2,
+.footerBottom,
+.footerBrand span,
+.footerBottom a,
+.footerTrust small {
+  color: rgba(255, 235, 220, .56) !important;
+}
+
+.footerLinks a,
+.footerTrust strong {
+  color: #fff4eb !important;
+}
+
+.footerSocials a {
+  color: #150f0b !important;
+  background: #ff9142 !important;
+}
+
+.custom-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 136, 61, .42) !important;
+}
+
+@media (max-width: 900px) {
+  body {
+    background:
+      linear-gradient(120deg, rgba(255, 115, 50, .18), transparent 48%),
+      #11100f !important;
+  }
+}

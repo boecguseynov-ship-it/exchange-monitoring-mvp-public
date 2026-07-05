@@ -1,0 +1,80 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./ratescope.db"
+}
+
+enum ExchangeStatus {
+  ACTIVE
+  PAUSED
+  HIDDEN
+}
+
+enum ModerationStatus {
+  PENDING
+  PUBLISHED
+  HIDDEN
+  REJECTED
+}
+
+model Exchange {
+  id           String         @id @default(cuid())
+  slug         String         @unique
+  name         String
+  domain       String         @unique
+  description  String
+  supportEmail String
+  termsUrl     String?
+  status       ExchangeStatus @default(ACTIVE)
+  isDemo       Boolean        @default(false)
+  verifiedAt   DateTime?
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  reviews      Review[]
+}
+
+model Review {
+  id             String           @id @default(cuid())
+  exchangeId     String
+  userId         String?
+  transactionRef String?
+  rating         Int
+  body           String
+  status         ModerationStatus @default(PENDING)
+  createdAt      DateTime         @default(now())
+  updatedAt      DateTime         @updatedAt
+  exchange       Exchange         @relation(fields: [exchangeId], references: [id], onDelete: Cascade)
+  user           User?            @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([exchangeId])
+  @@index([status])
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String?
+  email     String?  @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  reviews   Review[]
+}
+
+model WikiEntry {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  href        String
+  anchor      String?
+  group       String
+  icon        String
+  position    Int      @default(100)
+  status      String   @default("PUBLISHED")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([group])
+  @@index([status])
+}

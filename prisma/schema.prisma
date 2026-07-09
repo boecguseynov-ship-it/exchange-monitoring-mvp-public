@@ -67,6 +67,25 @@ model Exchange {
   feeds        ExchangeFeed[]
   apiKeys      ApiCredential[]
   users        User[]
+  rates        ExchangeRate[]
+}
+
+model ExchangeRate {
+  id         String   @id @default(cuid())
+  exchangeId String
+  fromCode   String
+  toCode     String
+  rate       Float
+  minAmount  Float    @default(1)
+  reserve    Float    @default(0)
+  enabled    Boolean  @default(true)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  exchange   Exchange @relation(fields: [exchangeId], references: [id], onDelete: Cascade)
+
+  @@unique([exchangeId, fromCode, toCode])
+  @@index([exchangeId])
+  @@index([enabled])
 }
 
 model Review {

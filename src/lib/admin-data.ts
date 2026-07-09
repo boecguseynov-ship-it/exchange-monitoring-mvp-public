@@ -50,6 +50,7 @@ type ExchangeAdminRecord = Prisma.ExchangeGetPayload<{
   include: {
     feeds: true;
     apiKeys: true;
+    rates: true;
     _count: { select: { reviews: true; complaints: true } };
   };
 }>;
@@ -427,7 +428,7 @@ export async function loadAdminConsole(section: AdminSection = "moderation", opt
     exchangePage = Math.min(exchangePage, exchangePageCount);
     exchanges = await prisma.exchange.findMany({
       where: exchangeWhere,
-      include: { feeds: true, apiKeys: { orderBy: { createdAt: "desc" } }, _count: { select: { reviews: true, complaints: true } } },
+      include: { feeds: true, apiKeys: { orderBy: { createdAt: "desc" } }, rates: { orderBy: { fromCode: "asc" } }, _count: { select: { reviews: true, complaints: true } } },
       orderBy: { name: "asc" },
       skip: (exchangePage - 1) * exchangePageSize,
       take: exchangePageSize

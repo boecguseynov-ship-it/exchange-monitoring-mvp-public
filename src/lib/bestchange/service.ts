@@ -8,6 +8,7 @@ import {
   normalizeBestChangeDirectory,
   normalizeBestChangeOffers,
   sanitizeDomain,
+  offerPaymentMethods,
   type LocalExchangeReviewMatch,
   type NormalizedAsset,
   type NormalizedOffer
@@ -155,6 +156,7 @@ export type LiveExchangeProfile = {
   facts: LiveExchangeProfileFact[];
   localReviews: LiveExchangeLocalReview[];
   externalReviews: LiveExchangeExternalReview[];
+  rates?: { fromCode: string; toCode: string; rate: number; minAmount: number; reserve: number }[];
 };
 
 function extractHost(value: string | null | undefined) {
@@ -986,11 +988,13 @@ export async function loadLiveExchangeProfile(
   if (!changer) {
     if (!localExchangeBySlug) return null;
 
-    const [localReviewStats, localReviews, importedProviderReviews] = await Promise.all([
+    const [localReviewStats, localReviews, importedProviderReviews, manualRates] = await Promise.all([
       loadLocalReviewStatsByExchangeId(localExchangeBySlug.id),
       loadLocalPublishedReviewsByExchangeId(localExchangeBySlug.id),
-      loadImportedProviderReviewsByExchangeId(localExchangeBySlug.id)
+      loadImportedProviderReviewsByExchangeId(localExchangeBySlug.id),
+      prisma.exchangeRate.findMany({ where: { exchangeId: localExchangeBySlug.id, enabled: true } })
     ]);
+    const uniqueCurrenciesCount = new Set(manualRates.flatMap((r) => [r.fromCode, r.toCode])).size;
     const verified = localExchangeBySlug.status === ExchangeStatus.ACTIVE;
     const localReserve = fallbackExchangeReserve(localExchangeBySlug, 0);
     const reserveLabel = fieldFromAdminDescription(localExchangeBySlug.description, [
@@ -1225,6 +1229,84 @@ export async function loadLiveOffers({
   return mergePublicOffers(pairOffers.flat(), []);
 }
 
+export async function loadManualExchangeRates({
+  fromCode,
+  toCode,
+  amount
+}: {
+  fromCode: string;
+  toCode: string;
+  amount: number;
+}): Promise<NormalizedOffer[]> {
+  if (!databaseContentEnabled()) return [];
+
+  const rates = await prisma.exchangeRate.findMany({
+    where: {
+      fromCode,
+      toCode,
+      enabled: true,
+      exchange: {
+        status: ExchangeStatus.ACTIVE
+      }
+    },
+    include: {
+      exchange: true
+    }
+  });
+
+  if (!rates.length) return [];
+
+  const exchangeIds = rates.map((r) => r.exchangeId);
+  const reviewAggregate = await prisma.review.groupBy({
+    by: ["exchangeId"],
+    where: {
+      status: ModerationStatus.PUBLISHED,
+      exchangeId: { in: exchangeIds }
+    },
+    _avg: { rating: true },
+    _count: { rating: true }
+  });
+  const reviewsByExchangeId = new Map(reviewAggregate.map((item) => [item.exchangeId, item]));
+
+  const from = findCurrency(localCurrencies, fromCode) || { id: 0, code: fromCode, name: fromCode, kind: "FIAT" as const };
+  const to = findCurrency(localCurrencies, toCode) || { id: 0, code: toCode, name: toCode, kind: "FIAT" as const };
+  const paymentMethods = offerPaymentMethods(from, to);
+
+  return rates.map((rate) => {
+    const exchange = rate.exchange;
+    const aggregate = reviewsByExchangeId.get(exchange.id);
+    const reviews = aggregate?._count.rating ?? 0;
+    const rating = aggregate?._avg.rating ?? null;
+
+    return {
+      id: "manual-" + rate.id,
+      exchange: {
+        name: exchange.name,
+        slug: exchange.slug,
+        isDemo: exchange.isDemo,
+        rating,
+        reviews,
+        verified: exchange.status === ExchangeStatus.ACTIVE,
+        url: exchange.partnerUrl ?? `https://${exchange.domain}`
+      },
+      from: fromCode,
+      to: toCode,
+      rate: rate.rate,
+      receivedAmount: amount * rate.rate,
+      reserve: rate.reserve,
+      minAmount: rate.minAmount,
+      maxAmount: rate.reserve,
+      kyc: exchange.noAml ? "NONE" : "OPTIONAL",
+      aml: exchange.noAml ? "NONE" : "STANDARD",
+      processing: "AUTOMATIC" as const,
+      marks: [] as string[],
+      cities: [] as string[],
+      paymentMethods,
+      updatedAt: rate.updatedAt.toISOString()
+    };
+  });
+}
+
 export async function loadPublicOffers({
   fromCode,
   toCode,
@@ -1238,10 +1320,11 @@ export async function loadPublicOffers({
 }) {
   const localOffersPromise = loadLocalOffers({ fromCode, toCode, amount }).catch(() => []);
   const databaseOffersPromise = loadDatabaseFallbackOffers({ fromCode, toCode, amount }).catch(() => []);
+  const manualOffersPromise = loadManualExchangeRates({ fromCode, toCode, amount }).catch(() => []);
 
   if (!hasBestChangeApiConfig()) {
-    const [databaseOffers, localOffers] = await Promise.all([databaseOffersPromise, localOffersPromise]);
-    const fallbackOffers = mergePublicOffers(databaseOffers, localOffers);
+    const [databaseOffers, localOffers, manualOffers] = await Promise.all([databaseOffersPromise, localOffersPromise, manualOffersPromise]);
+    const fallbackOffers = mergePublicOffers([...manualOffers, ...databaseOffers], localOffers);
     if (fallbackOffers.length) {
       return {
         data: fallbackOffers,
@@ -1258,19 +1341,19 @@ export async function loadPublicOffers({
       publicTimeoutMs("RATESCOPE_OFFERS_FAST_TIMEOUT_MS", 8_000),
       "Live rate provider did not respond in time"
     );
-    const [databaseOffers, localOffers] = await Promise.all([databaseOffersPromise, localOffersPromise]);
+    const [databaseOffers, localOffers, manualOffers] = await Promise.all([databaseOffersPromise, localOffersPromise, manualOffersPromise]);
     const fallbackOffers = liveOffers.length < 10
       ? mergePublicOffers(databaseOffers, localOffers)
       : databaseOffers;
 
     return {
-      data: mergePublicOffers(liveOffers, fallbackOffers),
+      data: mergePublicOffers([...liveOffers, ...manualOffers], fallbackOffers),
       live: true,
       provider: fallbackOffers.length ? "LiveRateProvider+Fallback" : "LiveRateProvider"
     };
   } catch (error) {
-    const [databaseOffers, localOffers] = await Promise.all([databaseOffersPromise, localOffersPromise]);
-    const fallbackOffers = mergePublicOffers(databaseOffers, localOffers);
+    const [databaseOffers, localOffers, manualOffers] = await Promise.all([databaseOffersPromise, localOffersPromise, manualOffersPromise]);
+    const fallbackOffers = mergePublicOffers([...manualOffers, ...databaseOffers], localOffers);
     if (fallbackOffers.length) {
       return {
         data: fallbackOffers,

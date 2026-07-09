@@ -92,16 +92,16 @@ function pageUrl(changer: BestChangeChanger) {
   return changer.pages.ru ?? Object.values(changer.pages)[0];
 }
 
-function isCashCurrency(currency: BestChangeCurrency) {
+export function isCashCurrency(currency: BestChangeCurrency) {
   return currency.kind === "CASH" || /^CASH/i.test(currency.code) || /cash|налич/i.test(currency.name);
 }
 
-function isCardCurrency(currency: BestChangeCurrency) {
+export function isCardCurrency(currency: BestChangeCurrency) {
   return /CARD|MIR|SBP|SBER|TCSB|ACRUB|TBRUB|VTB|RFBRUB|GPBRUB|PSBRUB|RSHBRUB|ACC/i.test(currency.code) ||
     /card|visa|mastercard|bank|сбер|банк|карта|мир/i.test(currency.name);
 }
 
-function offerPaymentMethods(from: BestChangeCurrency, to: BestChangeCurrency): PaymentMethod[] {
+export function offerPaymentMethods(from: BestChangeCurrency, to: BestChangeCurrency): PaymentMethod[] {
   if (isCashCurrency(from) || isCashCurrency(to)) return ["cash"];
   if (isCardCurrency(from) || isCardCurrency(to)) return ["card"];
   return ["card", "cash"];

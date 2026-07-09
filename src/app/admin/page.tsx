@@ -22,7 +22,9 @@ import {
   updateComplaintStatusAction,
   updateContactMessageStatusAction,
   saveUserAction,
-  deleteUserAction
+  deleteUserAction,
+  saveExchangeRateAction,
+  deleteExchangeRateAction
 } from "@/lib/admin-actions";
 import { DeleteButton } from "@/components/delete-button";
 import {
@@ -252,6 +254,42 @@ function ExchangesSection({ data }: { data: Awaited<ReturnType<typeof loadAdminC
                   ))}
                 </div>
               )}
+              {/* Manual Exchange Rates Section */}
+              <div className="adminRatesSection" style={{ marginTop: "1rem", borderTop: "1px solid var(--border)", paddingTop: "1rem" }}>
+                <h4 style={{ margin: "0 0 0.5rem 0", fontSize: "14px", fontWeight: "bold" }}>Ручные курсы обмена</h4>
+                
+                {exchange.rates && exchange.rates.length > 0 ? (
+                  <div style={{ marginBottom: "1rem", display: "grid", gap: "0.25rem" }}>
+                    {exchange.rates.map((rate: any) => (
+                      <div key={rate.id} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "12px", background: "rgba(0,0,0,0.2)", padding: "0.25rem 0.5rem", borderRadius: "4px" }}>
+                        <span>
+                          <strong>{rate.fromCode} → {rate.toCode}</strong>: {rate.rate} (Мин. {rate.minAmount}, Рез. {rate.reserve})
+                          {!rate.enabled && <span style={{ color: "#e03131", marginLeft: "0.5rem" }}>[Отключен]</span>}
+                        </span>
+                        <form action={deleteExchangeRateAction} style={{ margin: 0 }}>
+                          <input type="hidden" name="id" value={rate.id} />
+                          <button type="submit" style={{ padding: "2px 6px", fontSize: "10px", background: "#e03131", border: "none", color: "#fff", borderRadius: "3px", cursor: "pointer" }}>Удалить</button>
+                        </form>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <p style={{ fontSize: "12px", color: "#868e96", margin: "0 0 1rem 0" }}>Нет ручных курсов</p>
+                )}
+
+                <form action={saveExchangeRateAction} className="adminInlineForm" style={{ display: "flex", gap: "0.25rem", flexWrap: "wrap" }}>
+                  <input type="hidden" name="exchangeId" value={exchange.id} />
+                  <input name="fromCode" placeholder="ОТ (напр. BTC)" required style={{ width: "110px" }} />
+                  <input name="toCode" placeholder="ДО (напр. SBERRUB)" required style={{ width: "130px" }} />
+                  <input name="rate" placeholder="Курс" type="number" step="any" required style={{ width: "90px" }} />
+                  <input name="minAmount" placeholder="Мин. сумма" type="number" step="any" defaultValue="1" style={{ width: "90px" }} />
+                  <input name="reserve" placeholder="Резерв" type="number" step="any" defaultValue="100000" style={{ width: "90px" }} />
+                  <label style={{ display: "flex", alignItems: "center", fontSize: "12px", gap: "0.25rem" }}>
+                    <input name="enabled" type="checkbox" defaultChecked /> Вкл
+                  </label>
+                  <button type="submit">Добавить</button>
+                </form>
+              </div>
             </article>
           );
         })}

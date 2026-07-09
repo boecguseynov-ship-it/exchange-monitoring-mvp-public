@@ -612,3 +612,79 @@ export async function deleteUserAction(formData: FormData) {
     refreshAdmin();
   }
 }
+
+export async function saveExchangeRateAction(formData: FormData) {
+  await requireAdminAction();
+  const id = text(formData, "id");
+  const exchangeId = text(formData, "exchangeId");
+  const fromCode = text(formData, "fromCode").toUpperCase();
+  const toCode = text(formData, "toCode").toUpperCase();
+  const rate = Number(text(formData, "rate"));
+  const minAmount = Number(text(formData, "minAmount") || "1");
+  const reserve = Number(text(formData, "reserve") || "0");
+  const enabled = checked(formData, "enabled");
+
+  if (!exchangeId || !fromCode || !toCode || !Number.isFinite(rate)) {
+    redirect(`/admin?section=exchanges&error=${encodeURIComponent("Валюты и курс обязательны для заполнения.")}`);
+  }
+
+  const data = {
+    exchangeId,
+    fromCode,
+    toCode,
+    rate,
+    minAmount,
+    reserve,
+    enabled
+  };
+
+  let errorMsg = "";
+  try {
+    if (id) {
+      await prisma.exchangeRate.update({ where: { id }, data });
+      await audit("EXCHANGE_RATE_UPDATED", "EXCHANGE", exchangeId, `${fromCode} -> ${toCode}`);
+    } else {
+      await prisma.exchangeRate.upsert({
+        where: {
+          exchangeId_fromCode_toCode: {
+            exchangeId,
+            fromCode,
+            toCode
+          }
+        },
+        update: data,
+        create: data
+      });
+      await audit("EXCHANGE_RATE_CREATED", "EXCHANGE", exchangeId, `${fromCode} -> ${toCode}`);
+    }
+  } catch (e: any) {
+    errorMsg = e.message || "Ошибка при сохранении курса";
+  }
+
+  if (errorMsg) {
+    redirect(`/admin?section=exchanges&error=${encodeURIComponent(errorMsg)}`);
+  } else {
+    refreshAdmin();
+  }
+}
+
+export async function deleteExchangeRateAction(formData: FormData) {
+  await requireAdminAction();
+  const id = text(formData, "id");
+  if (!id) return;
+
+  let errorMsg = "";
+  try {
+    const rate = await prisma.exchangeRate.delete({ where: { id } });
+    await audit("EXCHANGE_RATE_DELETED", "EXCHANGE", rate.exchangeId, `${rate.fromCode} -> ${rate.toCode}`);
+  } catch (e: any) {
+    errorMsg = e.message || "Ошибка при удалении курса";
+  }
+
+  if (errorMsg) {
+    redirect(`/admin?section=exchanges&error=${encodeURIComponent(errorMsg)}`);
+  } else {
+    refreshAdmin();
+  }
+}
+

@@ -44,7 +44,8 @@ async function loadProfile(slug: string) {
       { label: "Статус", value: fallback.active ? "Активен" : "Отключен" }
     ],
     localReviews: [],
-    externalReviews: []
+    externalReviews: [],
+    rates: []
   };
 }
 
@@ -250,6 +251,24 @@ export default async function ExchangeProfilePage({ params }: ExchangePageProps)
         </section>
 
         <div className="exchangeProfileMain">
+        {profile.rates && profile.rates.length > 0 && (
+          <section className="exchangeRatesBoard" style={{ background: "var(--card-bg, #1e1e24)", border: "1px solid var(--border)", padding: "1.5rem", borderRadius: "8px", marginBottom: "2rem" }}>
+            <h2 style={{ fontSize: "20px", fontWeight: "bold", marginBottom: "1rem", color: "var(--accent)" }}>Курсы обмена ({profile.rates.length})</h2>
+            <div className="ratesGrid" style={{ display: "grid", gap: "0.5rem" }}>
+              {profile.rates.map((rate, index) => (
+                <div key={index} style={{ display: "flex", justifyContent: "space-between", alignItems: "center", padding: "0.75rem 1rem", background: "rgba(255,255,255,0.03)", borderRadius: "6px", borderLeft: "3px solid var(--accent, #31d3a5)" }}>
+                  <span style={{ fontSize: "14px", fontWeight: "500" }}>
+                    <strong>{rate.fromCode}</strong> → <strong>{rate.toCode}</strong>
+                  </span>
+                  <span style={{ fontSize: "14px", textAlign: "right" }}>
+                    <span style={{ color: "var(--accent, #31d3a5)", fontWeight: "bold" }}>{rate.rate}</span>
+                    <small style={{ display: "block", fontSize: "11px", color: "#868e96" }}>Резерв: {rate.reserve.toLocaleString("ru-RU")} · Мин. {rate.minAmount.toLocaleString("ru-RU")}</small>
+                  </span>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
         <section className="exchangeReviewBoard" id="exchange-feedback">
           <div className="exchangeReviewIntro">
             <span>{"\u041f\u0440\u043e\u0444\u0438\u043b\u044c \u043e\u0431\u043c\u0435\u043d\u043d\u0438\u043a\u0430"}</span>

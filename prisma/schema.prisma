@@ -297,3 +297,8 @@ model ApiCredential {
   @@index([exchangeId])
   @@index([status])
 }
+
+model SiteSetting {
+  key   String @id
+  value String
+}

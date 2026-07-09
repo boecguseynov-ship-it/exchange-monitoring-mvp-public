@@ -12,21 +12,17 @@ export type ContactSocialLink = {
 export const defaultContactSocialLinks: ContactSocialLink[] = [
   { key: "feedback", label: "Обратная связь", href: "/contacts", icon: "mail", enabled: true, position: 10 },
   { key: "telegram", label: "Telegram", href: "https://t.me/", icon: "telegram", enabled: true, position: 20 },
-  { key: "blog", label: "Блог RateScope", href: "/blog", icon: "blog", enabled: true, position: 30 },
+  { key: "blog", label: "Блог monik exchange", href: "/blog", icon: "blog", enabled: true, position: 30 },
   { key: "github", label: "GitHub", href: "https://github.com/", icon: "github", enabled: true, position: 40 }
 ];
 
 export const contactSocialLinkGroup = "contactSocial";
 
-function databaseContentEnabled() {
-  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+function publicLabel(value: string) {
+  return value.replace(/RateScope/g, "monik exchange");
 }
 
 export async function getContactSocialLinks(includeDisabled = false) {
-  if (!databaseContentEnabled()) {
-    return defaultContactSocialLinks.filter((link) => includeDisabled || link.enabled);
-  }
-
   try {
     const storedLinks = await prisma.wikiEntry.findMany({
       where: { group: contactSocialLinkGroup },
@@ -46,7 +42,7 @@ export async function getContactSocialLinks(includeDisabled = false) {
         const stored = storedByKey.get(fallback.key);
         return {
           key: fallback.key,
-          label: stored?.title ?? fallback.label,
+          label: publicLabel(stored?.title ?? fallback.label),
           href: stored?.href ?? fallback.href,
           icon: fallback.icon,
           enabled: stored ? stored.status === "PUBLISHED" : fallback.enabled,

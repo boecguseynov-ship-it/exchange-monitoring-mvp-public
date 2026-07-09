@@ -38,7 +38,7 @@ function getTrustLevelLabel(average: number | null) {
   return "Низкий уровень";
 }
 
-const preferredTickerNetworks = ["", "BTC", "ERC20", "TRC20", "BEP20", "SOL", "TON"];
+const preferredTickerNetworks = ["", "BTC", "ERC-20", "ERC20", "TRC-20", "TRC20", "BEP-20", "BEP20", "SOL", "TON"];
 
 function getTickerAsset(assets: AssetOption[], tickerCode: string) {
   const matches = assets.filter((asset) => {

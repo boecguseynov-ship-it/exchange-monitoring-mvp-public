@@ -71,6 +71,484 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .mainWithSidebar { position: relative; min-height: calc(100vh - 56px); }
 .mainStandalone { min-height: calc(100vh - 56px); }
 
+/* --- Advertising slots --- */
+.adBanner {
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  width: min(1180px, calc(100% - 24px));
+  min-height: 58px;
+  margin: 10px auto;
+  padding: 10px 12px;
+  border: 1px solid #cfe4ed;
+  border-radius: var(--radius);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, .98), rgba(235, 249, 255, .96));
+  color: #18384d;
+  box-shadow: 0 14px 34px rgba(36, 94, 122, .10);
+}
+.adBanner:hover {
+  border-color: rgba(40, 168, 210, .42);
+  background:
+    linear-gradient(135deg, #ffffff, #e6f8fe);
+}
+.adBannerMark,
+.adBannerMedia {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  overflow: hidden;
+  border-radius: 9px;
+  background: #e5f7fd;
+  color: #1282aa;
+  font-size: 12px;
+  font-weight: 900;
+}
+.adBannerMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.adBannerCopy {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.adBannerCopy small {
+  color: #1282aa;
+  font-size: 9px;
+  font-weight: 900;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.adBannerCopy strong {
+  min-width: 0;
+  overflow: hidden;
+  color: #18384d;
+  font-size: 13px;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.adBannerCopy span {
+  min-width: 0;
+  overflow: hidden;
+  color: #6f8796;
+  font-size: 11px;
+  line-height: 1.35;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.adBannerAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border-radius: 7px;
+  background: #123044;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 850;
+}
+.adBanner--site-top {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+.adBanner--monitor-top {
+  width: auto;
+  margin: 8px 16px 6px 382px;
+}
+.adBanner--catalog-top,
+.adBanner--dashboard-top {
+  width: 100%;
+  margin: 14px 0;
+}
+.bannerSlotList {
+  display: grid;
+  gap: 8px;
+}
+.bannerSlotList article {
+  display: grid;
+  gap: 4px;
+  padding: 10px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: var(--surface-soft);
+}
+.bannerSlotList strong {
+  color: var(--ink);
+}
+.bannerSlotList small {
+  color: var(--muted);
+  font-weight: 800;
+}
+.bannerSlotList code {
+  overflow-wrap: anywhere;
+  color: #405464;
+  font-size: 10px;
+  line-height: 1.45;
+}
+
+.adminSectionNav {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 8px;
+  margin: 14px 0;
+}
+.adminSectionNav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 44px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255,255,255,.94);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 850;
+}
+.adminSectionNav a.active {
+  border-color: rgba(38, 187, 125, .46);
+  background: rgba(38, 187, 125, .12);
+  color: #0f3d38;
+}
+.adminSectionNav strong {
+  min-width: 24px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: rgba(18, 48, 68, .08);
+  text-align: center;
+}
+.adminSearchForm {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) auto auto;
+  gap: 8px;
+  align-items: center;
+  margin: 12px 0 8px;
+}
+.adminSearchForm input {
+  min-width: 0;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 11px;
+}
+.adminSearchForm button,
+.adminSearchForm a,
+.adminPagination a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--black);
+  color: #fff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+}
+.adminSearchForm a {
+  background: var(--surface-soft);
+  color: var(--ink);
+}
+.adminListSummary {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+.adminPagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.adminPagination strong,
+.adminPagination span {
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 900;
+}
+.adminPagination span {
+  opacity: .55;
+}
+.adminPanel .panelHeader p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+.adminHeaderButton {
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--black);
+  color: #fff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+}
+.adminCardGrid {
+  display: grid;
+  gap: 10px;
+}
+.adminCardGrid.compact {
+  gap: 8px;
+}
+.adminEditCard,
+.adminDetails {
+  display: grid;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255,255,255,.96);
+}
+.adminEditCard header {
+  display: grid;
+  gap: 3px;
+}
+.adminEditCard strong,
+.adminDetails summary {
+  color: var(--ink);
+  font-weight: 900;
+}
+.adminEditCard small,
+.adminEditCard p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.45;
+}
+.adminDetails summary {
+  cursor: pointer;
+}
+.adminFormGrid,
+.adminInlineForm,
+.adminTable form {
+  display: grid;
+  gap: 8px;
+}
+.adminFormGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.adminInlineForm {
+  grid-template-columns: minmax(120px, 1fr) minmax(90px, max-content) auto;
+  align-items: center;
+}
+.adminFormGrid textarea,
+.adminTable textarea {
+  grid-column: 1 / -1;
+  min-height: 72px;
+  resize: vertical;
+}
+.adminFormGrid button {
+  justify-self: start;
+}
+.adminFormGrid input,
+.adminFormGrid textarea,
+.adminFormGrid select,
+.adminInlineForm input,
+.adminInlineForm select,
+.adminTable input,
+.adminTable textarea,
+.adminTable select {
+  min-width: 0;
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 9px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 11px;
+}
+.adminFormGrid label,
+.adminInlineForm label,
+.adminTable label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 800;
+}
+.adminFormGrid input[type="checkbox"],
+.adminInlineForm input[type="checkbox"],
+.adminTable input[type="checkbox"] {
+  width: 14px;
+  min-height: 14px;
+  accent-color: var(--green);
+}
+.adminFormGrid button,
+.adminInlineForm button,
+.adminTable button,
+.adminTokenList button {
+  min-height: 34px;
+  padding: 7px 12px;
+  border: 0;
+  border-radius: 7px;
+  background: var(--black);
+  color: #fff;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 900;
+}
+.adminTable {
+  display: grid;
+  gap: 8px;
+}
+.adminTable > div,
+.adminTable > form {
+  display: grid;
+  grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(100px, auto));
+  gap: 8px;
+  align-items: center;
+  padding: 10px;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: rgba(255,255,255,.94);
+}
+.adminAssetTable > form {
+  grid-template-columns: 90px minmax(160px, 1fr) 120px 120px 80px 130px auto;
+}
+.linkTable > form {
+  grid-template-columns: minmax(160px, 1fr) minmax(220px, 1.4fr) 80px 120px auto;
+}
+.adminTable span {
+  min-width: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+.adminTable span strong {
+  display: block;
+  overflow: hidden;
+  color: var(--ink);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.adminTable span small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.adminTokenList {
+  display: grid;
+  gap: 6px;
+}
+.adminTokenList form {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 8px;
+  border-radius: 7px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 11px;
+}
+.adminAuditList {
+  display: grid;
+  gap: 8px;
+}
+.adminAuditList article {
+  display: grid;
+  gap: 3px;
+  padding: 10px;
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  background: #fff;
+}
+.adminAuditList strong {
+  color: var(--ink);
+}
+.adminAuditList span,
+.adminAuditList small,
+.adminAuditList time {
+  color: var(--muted);
+  font-size: 11px;
+}
+.quickRoleLinks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+.quickRoleLinks span {
+  flex-basis: 100%;
+  color: var(--muted);
+  font-size: 11px;
+}
+.quickRoleLinks a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 6px 10px;
+  border-radius: 7px;
+  background: var(--surface-soft);
+  color: var(--ink);
+  font-size: 11px;
+  font-weight: 850;
+}
+
+@media (max-width: 900px) {
+  .adBanner--monitor-top {
+    width: min(1180px, calc(100% - 24px));
+    margin: 10px auto 6px;
+  }
+  .adminSectionNav {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .adminSearchForm {
+    grid-template-columns: 1fr;
+  }
+  .adminFormGrid,
+  .adminInlineForm,
+  .adminTable > div,
+  .adminTable > form,
+  .adminAssetTable > form,
+  .linkTable > form {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .adBanner {
+    grid-template-columns: 38px minmax(0, 1fr);
+    min-height: auto;
+    padding: 8px;
+  }
+  .adBannerMark,
+  .adBannerMedia {
+    width: 38px;
+    height: 38px;
+    border-radius: 8px;
+  }
+  .adBannerCopy strong,
+  .adBannerCopy span {
+    white-space: normal;
+  }
+  .adBannerAction {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+}
+
 /* --- 4. Topbar --- */
 .topbar {
   height: 56px;
@@ -96,7 +574,7 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   font-size: 14px;
   letter-spacing: 0;
   font-weight: 900;
-  min-width: 150px;
+  min-width: 190px;
 }
 .logo strong { background: #2a303a; color: white; padding: 1px 5px; border-radius: 4px; margin-left: 3px; }
 .logoMark {
@@ -251,15 +729,15 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 }
 .assetItem {
   width: 100%; min-height: 32px;
-  display: grid; grid-template-columns: minmax(0, 1fr) 36px;
-  align-items: center; gap: 8px; padding: 0 16px 0 12px;
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(34px, max-content);
+  align-items: center; gap: 6px; padding: 0 12px;
   border: 0; border-bottom: 1px solid rgba(255,255,255,.025); border-radius: 0;
   background: transparent; color: var(--ink); text-align: left; cursor: pointer;
 }
 .assetItem:hover { background: #242a34; }
 .assetItem.selected { background: rgba(63, 130, 246, .12); box-shadow: inset 2px 0 0 var(--accent); }
 .assetItem strong { min-width: 0; overflow: hidden; color: #e2e6ef; font-size: 12px; line-height: 15px; font-weight: 800; text-overflow: ellipsis; white-space: nowrap; }
-.assetItem small { color: #656c78; overflow: hidden; text-align: right; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; line-height: 15px; font-weight: 700; text-transform: uppercase; }
+.assetItem small { min-width: 34px; max-width: 56px; color: #656c78; overflow: hidden; text-align: right; text-overflow: ellipsis; white-space: nowrap; font-size: 11px; line-height: 15px; font-weight: 700; text-transform: uppercase; }
 .assetItem em {
   max-width: 42px; margin-left: 4px; padding: 1px 3px; border-radius: 2px;
   background: #edf5df; color: #5c7a1d; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
@@ -410,6 +888,42 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .realtimeToggle.active i { background: #18a76e; }
 
 /* --- 11. Exchange Widget --- */
+.exchangeControlWindow {
+  position: relative;
+  display: grid;
+  gap: 6px;
+  margin-top: 8px;
+  padding: 8px;
+  overflow: visible;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .08),
+    0 18px 42px rgba(36, 94, 122, .13);
+}
+.exchangeControlWindow::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  border-radius: 8px 8px 0 0;
+  background: linear-gradient(90deg, #28a8d2, #26bb7d);
+}
+.exchangeControlWindow .exchangeWidget,
+.exchangeControlWindow .safeDealPanel {
+  margin-top: 0;
+}
+.exchangeControlWindow .exchangeWidget {
+  border-color: var(--line-soft);
+  background: var(--surface);
+  box-shadow: none;
+}
+.exchangeControlWindow .safeDealPanel {
+  border-color: var(--line-soft);
+  background: var(--surface);
+  box-shadow: none;
+}
 .referenceDashboard .exchangeWidget, .exchangeWidget {
   margin-top: 6px; padding: 8px;
   border: 1px solid var(--line); border-radius: 2px;
@@ -450,6 +964,86 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .widgetFilters input { width: 14px; height: 14px; accent-color: var(--green); }
 .widgetNotice { margin: 4px 0 0; color: var(--muted); font-size: 10px; line-height: 1.35; }
 
+.locationFilters {
+  display: grid;
+  grid-template-columns: minmax(260px, max-content) minmax(180px, 240px) minmax(180px, 1fr);
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+}
+.paymentSwitch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+}
+.paymentSwitch button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: var(--surface);
+  color: #405464;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 800;
+}
+.paymentSwitch button[aria-pressed="true"] {
+  border-color: rgba(38, 187, 125, .38);
+  background: rgba(38, 187, 125, .13);
+  color: #0f3d38;
+}
+.paymentSwitch small {
+  min-width: 18px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: rgba(18, 38, 58, .07);
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 1.4;
+  text-align: center;
+}
+.citySelect {
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
+  color: var(--green);
+}
+.locationSummary {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 1px solid var(--line-soft);
+  border-radius: 2px;
+  background: var(--surface-soft);
+}
+.locationSummary strong { color: var(--green); font-size: 13px; line-height: 1; }
+.locationSummary span {
+  min-width: 0;
+  overflow: hidden;
+  color: #405464;
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.25;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.offerLocationLine {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: #607280;
+}
+
 /* Widget tabs/footer (legacy, hidden in minimalist but keep styling) */
 .widgetTabs { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; }
 .widgetTabs button { min-height: 26px; display: flex; align-items: center; gap: 5px; color: var(--ink); border: 1px solid var(--line); border-radius: 2px; padding: 4px 8px; background: var(--surface); cursor: pointer; font-weight: 700; font-size: 10px; }
@@ -465,16 +1059,21 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .referenceDashboard .quickFilters, .quickFilters {
   display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; padding: 0;
 }
-.referenceDashboard .quickFilters button, .quickFilters button {
+.referenceDashboard .quickFilters button,
+.quickFilters button,
+.quickFilters a,
+.quickFilters .quickExternalLink {
   display: flex; align-items: center; gap: 4px;
   min-height: 25px; padding: 4px 7px;
   border: 1px solid var(--line); border-radius: 2px;
   background: var(--surface); color: #405464;
   cursor: pointer; font-size: 10px; font-weight: 700;
 }
-.quickFilters button svg { width: 12px; height: 12px; }
-.quickFilters button:hover { background: rgba(44, 174, 197, .08); }
+.quickFilters button svg, .quickFilters a svg, .quickFilters .quickExternalLink svg { width: 12px; height: 12px; }
+.quickFilters button:hover, .quickFilters a:hover { background: rgba(44, 174, 197, .08); }
 .quickFilters button[aria-pressed="true"] { background: rgba(38, 187, 125, .13); border-color: rgba(38, 187, 125, .34); color: #0f3d38; }
+.quickExternalLink { color: #177fa0 !important; cursor: default; text-decoration: none; }
+.quickInfoChip { cursor: default !important; }
 .quickIconAction { flex-basis: 25px; width: 25px; justify-content: center !important; padding: 0 !important; }
 .quickIconAction.active { background: var(--green-soft) !important; border-color: #b8dacb !important; color: var(--green) !important; }
 
@@ -669,12 +1268,11 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .csChevron { flex: 0 0 auto; color: #697789; transition: transform .15s; }
 .csWrap--open .csChevron { transform: rotate(180deg); }
 .csDropdown {
-  position: absolute; top: 100%; left: 0; z-index: 50;
-  width: max-content; min-width: 100%; max-width: 240px; max-height: 240px;
-  margin: 2px 0 0; padding: 2px; overflow: auto;
+  position: fixed; z-index: 9999;
+  margin: 0; padding: 2px; overflow: auto;
   list-style: none;
   border: 1px solid var(--line); border-radius: 2px;
-  background: var(--surface); box-shadow: 0 6px 18px rgba(0,0,0,.12);
+  background: var(--surface); box-shadow: 0 6px 18px rgba(0,0,0,.18);
 }
 .csOption {
   padding: 5px 7px; cursor: pointer; font-size: 10px; border-radius: 1px;
@@ -742,6 +1340,7 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .authIntro p, .docsLead { color: var(--muted); font-size: 14px; line-height: 1.5; }
 .authCard { padding: 24px; background: white; border: 1px solid var(--line); border-radius: 2px; }
 .authCard h2 { margin-top: 0; font-size: 20px; }
+.authAlert { margin: 0 0 12px; padding: 10px; border: 1px solid #f0c5ca; border-radius: 6px; background: #fff2f3; color: #9f2632; font-size: 12px; font-weight: 800; line-height: 1.4; }
 .loginForm { display: grid; gap: 12px; }
 .loginForm label { display: grid; gap: 5px; font-weight: 650; }
 .loginForm input { height: 36px; border: 1px solid var(--line); border-radius: 2px; padding: 0 10px; outline-color: var(--green); }
@@ -993,6 +1592,63 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 
 /* Exchangers directory */
 .directoryPage { max-width: 1140px; }
+.directorySummary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 16px 0 14px;
+}
+.directorySummary > div {
+  display: grid;
+  gap: 3px;
+  min-height: 64px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255,255,255,.94);
+  box-shadow: var(--shadow-soft);
+}
+.directorySummary strong { color: var(--black); font-size: 18px; line-height: 1; }
+.directorySummary span { color: var(--muted); font-size: 11px; line-height: 1.35; }
+.directoryToolbar {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) auto;
+  gap: 8px;
+  align-items: center;
+}
+.directoryFilterTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+.directoryFilterTabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 2px;
+  background: white;
+  color: #405464;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+}
+.directoryFilterTabs button[aria-pressed="true"] {
+  border-color: rgba(38, 187, 125, .38);
+  background: rgba(38, 187, 125, .13);
+  color: #0f3d38;
+}
+.directoryFilterTabs small {
+  min-width: 18px;
+  padding: 1px 5px;
+  border-radius: 999px;
+  background: rgba(18, 38, 58, .07);
+  color: var(--muted);
+  font-size: 9px;
+  text-align: center;
+}
 .directoryTable { margin-top: 14px; overflow: hidden; border: 1px solid var(--line); border-radius: 2px; background: white; }
 .directoryHead, .directoryRow { display: grid; grid-template-columns: minmax(240px, 1.8fr) .7fr .8fr .9fr .6fr; gap: 12px; align-items: center; }
 .directoryHead { padding: 8px 14px; background: rgba(0, 156, 213, .14); color: #0f3d38; font-size: 10px; }
@@ -1004,8 +1660,14 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .directoryName > span { display: flex; min-width: 0; flex-direction: column; gap: 2px; }
 .directoryName > span small { overflow: hidden; color: var(--muted); font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
 .directoryRating { display: flex; align-items: center; gap: 4px; color: #b57c00; font-weight: 700; font-size: 11px; }
+.directoryRating.empty { color: var(--muted); }
 .directoryStatus { display: flex; align-items: center; gap: 4px; color: var(--green); font-size: 11px; font-weight: 700; }
 .directoryStatus.disabled { color: #a35b2a; }
+.directoryReviews { display: grid; gap: 2px; }
+.directoryReviews strong { color: var(--ink); font-size: 13px; line-height: 1; }
+.directoryReviews small { color: var(--muted); font-size: 10px; line-height: 1.2; }
+.directoryReviews.empty strong { color: var(--muted); }
+.directoryEmpty { padding: 18px; border-top: 1px solid var(--line-soft); color: var(--muted); text-align: center; font-size: 12px; }
 
 /* Blog */
 .blogPage { max-width: 960px; }
@@ -1013,14 +1675,14 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .categoryFilters { display: flex; flex-wrap: wrap; gap: 4px; }
 .categoryFilters button { border: 0; border-radius: 2px; padding: 5px 8px; background: #e1e8ed; color: #26302d; cursor: pointer; font-size: 11px; }
 .categoryFilters button:hover, .categoryFilters button.active { background: var(--black); color: white; }
-.articleList { border-top: 1px solid var(--line); }
-.articleRow { display: grid; grid-template-columns: minmax(0, 1fr) 220px; gap: 24px; align-items: center; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.articleList { display: grid; gap: 10px; border-top: 0; }
+.articleRow { display: grid; grid-template-columns: minmax(0, 1fr) 180px; gap: 18px; align-items: center; padding: 14px 16px; border: 1px solid rgba(68,115,130,.16); border-radius: 8px; background: rgba(255,255,255,.88); }
 .articleRow:hover h2 { color: var(--green); }
 .articleCopy > span { color: var(--green); font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: .6px; }
 .articleCopy h2 { max-width: 560px; margin: 5px 0 6px; font-size: 16px; line-height: 1.25; letter-spacing: -.2px; }
 .articleCopy p { max-width: 600px; margin: 0 0 8px; color: #62707d; font-size: 12px; line-height: 1.5; }
 .articleCopy small { color: #8d98a3; font-size: 10px; }
-.articleArt { position: relative; height: 120px; overflow: hidden; display: grid; place-items: center; border-radius: 2px; }
+.articleArt { position: relative; height: 96px; overflow: hidden; display: grid; place-items: center; border-radius: 8px; }
 .articleArt::before, .articleArt::after { content: ""; position: absolute; width: 100px; height: 100px; border: 16px solid rgba(255,255,255,.24); border-radius: 38%; transform: rotate(24deg); }
 .articleArt::after { width: 60px; height: 60px; border-width: 10px; transform: translate(50px, -30px) rotate(-16deg); }
 .articleArt span { position: relative; z-index: 2; color: rgba(15,20,18,.72); font-size: 48px; font-weight: 900; text-shadow: 0 4px 0 rgba(255,255,255,.25); }
@@ -1092,6 +1754,11 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   display: flex;
   flex-direction: column;
   gap: 14px;
+  padding: 18px;
+  border: 1px solid rgba(68,115,130,.16);
+  border-radius: 8px;
+  background: rgba(255,255,255,.90);
+  box-shadow: var(--shadow-soft);
 }
 .contactsSidebarSection .sectionTitle h2 {
   font-size: 16px;
@@ -1408,7 +2075,6 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   color: #155724;
 }
 
-/* Submit Button */
 .submitButton {
   display: flex;
   align-items: center;
@@ -1437,6 +2103,31 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   opacity: 0.65;
   cursor: not-allowed;
 }
+
+/* Contacts social links row */
+.contactsSocialLinks {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+.contactsSocialLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.contactsSocialLink:hover {
+  color: var(--green);
+}
+
 
 /* Spinner anim */
 .spinner {
@@ -1468,7 +2159,7 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .wikiHero p { max-width: 720px; margin: auto; font-size: 13px; line-height: 1.45; }
 .wikiSearch { min-height: 38px; }
 .wikiSearch input { font-size: 12px; }
-.wikiGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; align-items: start; }
+.wikiGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 18px; align-items: stretch; }
 .wikiGroup { padding: 16px; border: 1px solid var(--line); border-radius: 2px; background: white; }
 .wikiGroupTitle { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
 .wikiGroupTitle h2 { margin: 2px 0 10px; font-size: 16px; }
@@ -1523,7 +2214,7 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .liveProfileGrid > div { display: grid; gap: 4px; min-height: 52px; padding: 10px; border: 1px solid var(--line); border-radius: 2px; background: var(--surface-soft); }
 .liveProfileGrid span { color: var(--muted); font-size: 10px; font-weight: 750; }
 .liveProfileGrid strong { color: var(--black); line-height: 1.35; overflow-wrap: anywhere; }
-.securityOverviewGrid { display: grid; grid-template-columns: .8fr 1fr 1.3fr; gap: 6px; }
+.securityOverviewGrid { display: grid; grid-template-columns: .8fr 1fr 1fr 1.1fr; gap: 6px; }
 .securityOverviewGrid > div { display: grid; gap: 4px; min-height: 56px; padding: 10px; border: 1px solid var(--line); border-radius: 2px; background: var(--surface-soft); }
 .securityOverviewGrid strong { color: var(--black); line-height: 1.25; overflow-wrap: anywhere; }
 .securityOverviewGrid span { color: var(--muted); font-size: 10px; line-height: 1.35; }
@@ -1533,12 +2224,24 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .securityScoreCard.watch strong { color: #8d7000; }
 .securityScoreCard.risk { background: #fff2f3 !important; border-color: #f0c5ca !important; }
 .securityScoreCard.risk strong { color: #b13a47; }
+.securityDepositCard {
+  background: #f7f9fb !important;
+}
+.securityDepositCard.active {
+  border-color: rgba(38, 187, 125, .34) !important;
+  background: linear-gradient(135deg, #effbf4, #ffffff) !important;
+}
+.securityDepositCard.active strong {
+  color: #16824c;
+}
 .exchangePassport {
   padding: 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255,255,255,.94);
-  box-shadow: var(--shadow-soft);
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 139, 64, .10), transparent 34%),
+    linear-gradient(135deg, rgba(236, 247, 225, .96), rgba(218, 239, 213, .92));
+  box-shadow: 0 24px 58px rgba(17,39,35,.16);
 }
 .exchangePassportHead {
   display: grid;
@@ -1565,6 +2268,22 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 }
 .previewTop span { width: 44px; height: 7px; border-radius: 999px; background: var(--green); }
 .previewTop strong { color: #16312d; font-size: 10px; }
+.previewBrand {
+  position: absolute;
+  right: 9px;
+  top: 8px;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255,255,255,.9);
+  color: #17312e;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: .02em;
+  box-shadow: 0 8px 18px rgba(17,39,35,.14);
+}
 .previewGrid { display: grid; gap: 4px; width: 48px; padding: 9px 0 0 9px; }
 .previewGrid span { height: 5px; border-radius: 999px; background: rgba(17,39,35,.18); }
 .previewCard {
@@ -1585,22 +2304,103 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .exchangePassportTopline { display: flex; align-items: start; justify-content: space-between; gap: 16px; }
 .exchangePassportTopline h1 { margin: 2px 0 6px; font-size: 22px; line-height: 1.15; letter-spacing: 0; }
 .exchangePassportTopline a { flex: 0 0 auto; color: #1989a4; font-weight: 750; font-size: 12px; }
-.exchangePassportLinks { display: flex; flex-wrap: wrap; gap: 5px 12px; margin-bottom: 6px; }
-.exchangePassportLinks a { color: #177fa0; text-decoration: underline; text-underline-offset: 2px; font-weight: 700; font-size: 12px; }
+.exchangePassportLinks { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 6px; }
+.exchangePassportLinks a { display: inline-flex; align-items: center; min-height: 26px; padding: 4px 8px; border: 1px solid rgba(23,127,160,.18); border-radius: 999px; background: rgba(229,247,253,.82); color: #177fa0; text-decoration: none; font-weight: 800; font-size: 12px; }
 .exchangePassportLinks span { color: var(--muted); font-size: 12px; }
+.exchangeDepositBadge {
+  width: fit-content;
+  display: grid;
+  gap: 2px;
+  margin: 10px 0 6px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface-soft);
+  box-shadow: var(--shadow-soft);
+}
+.exchangeDepositBadge.active {
+  border-color: rgba(38, 187, 125, .40);
+  background:
+    linear-gradient(135deg, rgba(239, 251, 244, .98), rgba(255, 255, 255, .98));
+}
+.exchangeDepositBadge span {
+  color: #16824c;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.exchangeDepositBadge strong {
+  color: var(--black);
+  font-size: 18px;
+  line-height: 1.1;
+}
+.exchangePassportTitle > p { display: none; }
+.exchangePassportTitle > .exchangePassportDescription {
+  display: block;
+  max-width: 720px;
+  margin: 8px 0 0;
+  color: #496260;
+  font-size: 12px;
+  line-height: 1.55;
+}
 .exchangePassportTitle p { max-width: 660px; margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.exchangeProfileSummary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 16px;
+}
+.exchangeProfileSummary > div {
+  min-width: 0;
+  display: grid;
+  gap: 4px;
+  padding: 12px;
+  border: 1px solid rgba(15, 127, 89, .14);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .58);
+  box-shadow: 0 12px 24px rgba(17,39,35,.06);
+}
+.exchangeProfileSummary span {
+  color: #17714d;
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+.exchangeProfileSummary strong {
+  min-width: 0;
+  color: #143530;
+  font-size: 17px;
+  line-height: 1.15;
+  overflow-wrap: anywhere;
+}
+.exchangeProfileSummary small {
+  color: #60756f;
+  font-size: 10px;
+  line-height: 1.35;
+}
 .exchangePassportStats {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px 36px;
+  gap: 10px;
   margin-top: 16px;
-  padding-top: 12px;
-  border-top: 1px solid var(--line-soft);
+  padding: 10px;
+  border: 1px solid rgba(15, 127, 89, .16);
+  border-radius: 8px;
+  background: rgba(232, 244, 224, .54);
 }
-.exchangePassportStats dl { display: grid; gap: 6px; margin: 0; }
-.exchangePassportStats div { display: grid; grid-template-columns: 132px minmax(0, 1fr); gap: 8px; align-items: center; }
+.exchangePassportStats dl { display: grid; gap: 4px; margin: 0; }
+.exchangePassportStats div {
+  display: grid;
+  grid-template-columns: minmax(116px, .72fr) minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-height: 30px;
+  padding: 5px 7px;
+  border-radius: 6px;
+}
+.exchangePassportStats div:nth-child(odd) { background: rgba(255, 255, 255, .38); }
 .exchangePassportStats dt { color: #263b42; font-weight: 800; font-size: 12px; }
-.exchangePassportStats dd { min-width: 0; margin: 0; color: #263b42; font-size: 12px; overflow-wrap: anywhere; }
+.exchangePassportStats dd { min-width: 0; margin: 0; color: #31494a; font-size: 12px; overflow-wrap: anywhere; }
 .exchangeStatusPill {
   width: fit-content;
   min-height: 18px;
@@ -1618,7 +2418,9 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   padding: 10px;
   border: 1px solid rgba(68,115,130,.16);
   border-radius: 8px;
-  background: rgba(17,39,35,.08);
+  background:
+    linear-gradient(135deg, rgba(212, 237, 205, .34), rgba(255, 139, 64, .08)),
+    rgba(16, 74, 55, .12);
 }
 .exchangeReviewTabs {
   display: flex;
@@ -1646,7 +2448,9 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   padding: 12px;
   border: 1px solid rgba(68,115,130,.16);
   border-radius: 8px;
-  background: rgba(255,255,255,.88);
+  background:
+    radial-gradient(circle at 100% 0%, rgba(255, 139, 64, .08), transparent 30%),
+    rgba(232, 244, 224, .94);
 }
 .exchangeAddReview {
   width: fit-content;
@@ -1672,29 +2476,96 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   font-size: 12px;
   line-height: 1;
 }
-.exchangeReviewCards { display: grid; gap: 8px; }
-.exchangeReviewCards article,
-.exchangeReviewBoard .externalReviewList article {
+.exchangeReviewCards,
+.externalReviewList { display: grid; gap: 12px; }
+.exchangeReviewCards article {
   padding: 10px;
   border: 1px solid rgba(15,127,89,.22);
   border-radius: 8px;
   background: linear-gradient(180deg, rgba(225,249,239,.98), rgba(196,230,140,.72));
 }
-.exchangeReviewCards article > div,
-.exchangeReviewBoard .externalReviewList article > div {
+.exchangeReviewCards article > div {
   display: flex;
   align-items: center;
   gap: 10px;
   padding-bottom: 8px;
   border-bottom: 1px solid rgba(15,127,89,.18);
 }
-.exchangeReviewCards p,
-.exchangeReviewBoard .externalReviewList p { margin: 8px 0 0; color: #263b42; line-height: 1.5; }
+.exchangeReviewCards p { margin: 8px 0 0; color: #263b42; line-height: 1.5; }
+.exchangeReviewBoard .externalReviewList {
+  gap: 12px;
+}
+.exchangeReviewBoard .externalReviewList article {
+  min-width: 0;
+  position: relative;
+  padding: 14px 16px;
+  border: 1px solid rgba(15,127,89,.18);
+  border-radius: 8px;
+  background:
+    linear-gradient(90deg, rgba(255, 139, 64, .10), transparent 36%),
+    rgba(244, 249, 237, .96);
+  box-shadow: 0 12px 30px rgba(17,39,35,.08);
+}
+.exchangeReviewBoard .externalReviewList article > div {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.exchangeReviewBoard .externalReviewList p {
+  max-width: 100%;
+  margin: 10px 0 0;
+  color: #263b42;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.exchangeReviewBoard .externalReviewList strong {
+  color: #15633f;
+  font-weight: 900;
+}
+.exchangeReviewBoard .externalReviewList time {
+  margin-left: auto;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: rgba(23,127,160,.08);
+  color: #405464;
+  font-size: 10px;
+  font-weight: 800;
+}
 .exchangeReviewBoard .panel {
   margin-top: 12px;
   border-color: rgba(68,115,130,.14);
-  background: rgba(255,255,255,.72);
+  background: #eef7e7;
+  color: #143530;
   box-shadow: none;
+}
+.exchangeReviewBoard .feedbackPanel {
+  border: 1px solid rgba(15, 127, 89, .16);
+  background: #e9f5df;
+}
+.exchangeReviewBoard .feedbackPanel label {
+  color: #254a36;
+  font-weight: 800;
+}
+.exchangeReviewBoard .feedbackPanel input,
+.exchangeReviewBoard .feedbackPanel textarea,
+.exchangeReviewBoard .feedbackPanel .csTrigger {
+  border-color: rgba(72, 119, 75, .24);
+  background: #fbfdf8;
+  color: #132d2d;
+}
+.exchangeReviewBoard .feedbackPanel input:focus,
+.exchangeReviewBoard .feedbackPanel textarea:focus,
+.exchangeReviewBoard .feedbackPanel .csTrigger:focus {
+  border-color: rgba(255, 116, 43, .55);
+  box-shadow: 0 0 0 3px rgba(255, 116, 43, .12);
+}
+.exchangeReviewBoard .feedbackPanel form {
+  padding: 14px;
+  border: 1px solid rgba(72, 119, 75, .16);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, .42);
 }
 .exchangeReviewBoard .externalReviewsPanel { margin-top: 10px; }
 
@@ -1719,13 +2590,17 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .externalReviewsPanel { margin-top: 8px; }
 .reviewList .reviewTypeBadge { width: fit-content; padding: 3px 6px; border: 1px solid #cfe2d8; border-radius: 2px; background: var(--green-soft); color: var(--green-dark); font-size: 10px; font-weight: 800; }
 .externalReviewList p { overflow-wrap: anywhere; }
+.offerUrlLine {
+  color: #177fa0 !important;
+  font-weight: 800;
+}
 .feedbackPanel { margin-top: 8px; }
 .feedbackTabs { display: flex; gap: 4px; margin-bottom: 14px; }
 .feedbackTabs button { display: flex; align-items: center; gap: 5px; border: 1px solid var(--line); background: white; border-radius: 2px; padding: 6px 10px; cursor: pointer; font-weight: 700; font-size: 12px; }
 .feedbackTabs button.active { color: white; background: var(--black); border-color: var(--black); }
 .feedbackPanel form { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .feedbackPanel label { display: grid; gap: 5px; font-weight: 650; }
-.feedbackPanel input, .feedbackPanel select, .feedbackPanel textarea { width: 100%; border: 1px solid var(--line); border-radius: 2px; padding: 8px 10px; background: white; color: var(--ink); font-size: 12px; line-height: 1.45; outline-color: var(--green); }
+.feedbackPanel input, .feedbackPanel select, .feedbackPanel textarea { width: 100%; border: 1px solid rgba(88, 131, 91, .22); border-radius: 6px; padding: 8px 10px; background: rgba(250, 253, 246, .88); color: var(--ink); font-size: 12px; line-height: 1.45; outline-color: var(--green); }
 .feedbackPanel textarea { min-height: 100px; resize: vertical; }
 .feedbackPanelNotice { grid-column: 1 / -1; margin: 0; padding: 8px 10px; border: 1px solid #b8dacb; border-radius: 2px; background: var(--green-soft); color: var(--green-dark); font-weight: 650; font-size: 12px; }
 .feedbackPanel select {
@@ -1736,6 +2611,29 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .feedbackText { grid-column: 1 / 3; }
 .feedbackPanel form > button { width: fit-content; border: 0; background: var(--green); color: white; border-radius: 2px; padding: 8px 14px; font-weight: 750; cursor: pointer; font-size: 12px; }
 .feedbackPanel form > p { color: var(--green); font-size: 12px; }
+.securityOverview {
+  color: #143530;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 139, 64, .08), transparent 34%),
+    linear-gradient(135deg, #f7fbf1, #edf7e6);
+}
+.securityOverview .panelHeader h2,
+.securityOverview .panelHeader .eyebrow {
+  color: #143530;
+}
+.securityOverview .panelHeader .eyebrow {
+  color: #ff742b;
+}
+.securityOverviewGrid > div {
+  border-color: rgba(72, 119, 75, .18);
+  background: #ffffff;
+}
+.securityOverviewGrid strong {
+  color: #143530;
+}
+.securityOverviewGrid span {
+  color: #5c726b;
+}
 
 /* Complaints */
 .complaintPage { }
@@ -1850,8 +2748,32 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   .mainWithSidebar { min-height: 100vh; }
   .currencySidebar {
     position: relative; inset: auto;
-    width: min(350px, calc(100% - 32px)); height: 850px; max-height: calc(100vh - 6px);
+    width: min(350px, calc(100% - 32px)); height: auto; max-height: none;
     margin: 3px auto 10px; padding: 0;
+    overflow: visible;
+  }
+  .currencySidebar .custom-scrollbar-container,
+  .currencySidebar .custom-scrollbar-viewport,
+  .currencySidebar .sideColumnsWrapper,
+  .currencySidebar .favoritePairsWrapper {
+    height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+  }
+  .currencySidebar .custom-scrollbar-viewport {
+    padding-right: 0 !important;
+  }
+  .currencySidebar .custom-scrollbar-track {
+    display: none !important;
+  }
+  .sideColumnsContent,
+  .sideColumns {
+    height: auto !important;
+    min-height: 0;
+    overflow: visible !important;
+  }
+  .showAllCurrencies {
+    position: static;
   }
   .monitorContent { margin-left: 0; padding: 0 8px 28px; }
   .siteFooter, .appWithSidebar > .siteFooter, .app:not(.appWithSidebar) > .siteFooter { width: 100%; margin-left: 0; }
@@ -1881,6 +2803,7 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   .exchangeProfileHero { grid-template-columns: 44px 1fr; }
   .exchangeProfileHero .profileRating { grid-column: 1 / 3; align-items: start; }
   .exchangePassportHead, .exchangePassportStats { grid-template-columns: 1fr; }
+  .exchangeProfileSummary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .exchangePassportStats { gap: 8px; }
   .exchangePassportTopline { flex-direction: column; gap: 4px; }
   .exchangeProfilePreview { width: 132px; max-width: 100%; }
@@ -1908,6 +2831,7 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   .securityOverviewGrid { grid-template-columns: 1fr; }
   .exchangeCards { grid-template-columns: 1fr; }
   .exchangePassport { padding: 12px; }
+  .exchangeProfileSummary { grid-template-columns: 1fr; }
   .exchangePassportStats div { grid-template-columns: 110px minmax(0, 1fr); }
   .exchangeReviewBoard { padding: 8px; }
   .exchangeReviewSurface { padding: 8px; }
@@ -2122,6 +3046,21 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 .referenceDashboard .ratesCard,
 .ratesCard {
   background: rgba(255, 255, 255, .96);
+}
+.referenceDashboard .exchangeControlWindow {
+  border-color: var(--line);
+  background: var(--surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .08),
+    0 18px 42px rgba(36, 94, 122, .13);
+}
+.referenceDashboard .exchangeControlWindow .exchangeWidget,
+.referenceDashboard .exchangeControlWindow .safeDealPanel {
+  background: var(--surface);
+  box-shadow: none;
+}
+.referenceDashboard .exchangeControlWindow .quickFilters {
+  margin-top: 0;
 }
 .referenceDashboard .amountField input,
 .amountField input,
@@ -2739,7 +3678,316 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
   background: #d8f2fb;
 }
 
+@media (min-width: 1181px) {
+  .monitorContent {
+    padding: 2px 10px 18px;
+  }
+
+  .exchangeControlWindow {
+    gap: 5px;
+    margin-top: 5px;
+    padding: 7px;
+  }
+
+  .referenceDashboard .exchangeWidget,
+  .exchangeWidget {
+    margin-top: 4px;
+    padding: 5px 6px;
+  }
+
+  .referenceDashboard .exchangeFields,
+  .exchangeFields {
+    gap: 4px;
+    grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1fr);
+  }
+
+  .referenceDashboard .exchangeFields label,
+  .exchangeFields label {
+    margin-bottom: 2px;
+    font-size: 9px;
+    line-height: 1;
+  }
+
+  .referenceDashboard .amountField,
+  .amountField {
+    height: 31px;
+    grid-template-columns: 86px minmax(0, 1fr);
+  }
+
+  .referenceDashboard .amountField input,
+  .amountField input {
+    padding: 0 6px;
+    font-size: 12px;
+  }
+
+  .amountField .csTrigger {
+    min-height: 29px;
+    padding: 0 6px;
+    font-size: 9.5px;
+  }
+
+  .referenceDashboard .swapRound,
+  .swapRound {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 4px;
+  }
+
+  .referenceDashboard .quickFilters,
+  .quickFilters {
+    gap: 3px;
+    margin-top: 4px;
+  }
+
+  .referenceDashboard .quickFilters button,
+  .quickFilters button {
+    min-height: 22px;
+    padding: 2px 6px;
+    font-size: 9.5px;
+  }
+
+  .quickIconAction {
+    flex-basis: 22px;
+    width: 22px;
+  }
+
+  .safeDealPanel {
+    gap: 4px;
+    margin-top: 4px;
+    padding: 5px;
+  }
+
+  .safeDealHeader {
+    grid-template-columns: 22px minmax(0, 1fr) auto;
+    gap: 5px;
+  }
+
+  .safeDealAvatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+  }
+
+  .safeDealAvatar svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .safeDealHeader h2 {
+    font-size: 12px;
+  }
+
+  .safeDealScore {
+    min-width: 50px;
+    padding: 3px 6px;
+    border-radius: 6px;
+    font-size: 10px;
+  }
+
+  .safeDealModes {
+    gap: 3px;
+  }
+
+  .safeDealModes button {
+    min-height: 21px;
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-size: 9.5px;
+  }
+
+  .safeDealBody {
+    grid-template-columns: minmax(280px, .85fr) minmax(0, 1.15fr);
+    gap: 4px;
+    align-items: stretch;
+  }
+
+  .safeDealVerdict {
+    gap: 1px;
+    padding: 5px 6px;
+    border-radius: 5px;
+  }
+
+  .safeDealVerdict small,
+  .safeDealSupport small {
+    font-size: 9px;
+  }
+
+  .safeDealVerdict h3,
+  .safeDealSupport h3 {
+    font-size: 12px;
+    line-height: 1.15;
+  }
+
+  .safeDealHeader p,
+  .safeDealVerdict p,
+  .safeDealSupport p,
+  .safeDealAiAnswer p {
+    font-size: 9.5px;
+    line-height: 1.25;
+  }
+
+  .safeDealStats {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 3px;
+  }
+
+  .safeDealStats span {
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .safeDealStats small {
+    font-size: 8.5px;
+  }
+
+  .safeDealStats strong {
+    font-size: 10.5px;
+  }
+
+  .safeDealDisclosure {
+    grid-column: 1 / -1;
+    border-radius: 5px;
+  }
+
+  .safeDealDisclosure summary {
+    min-height: 26px;
+    padding: 4px 7px;
+  }
+
+  .safeDealDisclosure summary span {
+    font-size: 10px;
+  }
+
+  .safeDealDisclosure summary small {
+    font-size: 8.5px;
+  }
+
+  .safeDealDisclosureBody,
+  .safeDealAiAnswer,
+  .safeDealReasons,
+  .safeDealRisks,
+  .safeDealChecklist,
+  .safeDealSupport {
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .safeDealGrid {
+    gap: 4px;
+  }
+
+  .safeDealReasons h4,
+  .safeDealRisks h4,
+  .safeDealChecklist h4 {
+    margin-bottom: 4px;
+    font-size: 10px;
+  }
+
+  .safeDealReasons ul,
+  .safeDealRisks ul {
+    gap: 3px;
+  }
+
+  .safeDealReasons li,
+  .safeDealRisks li {
+    font-size: 9.5px;
+    line-height: 1.22;
+  }
+
+  .safeDealChecklist button {
+    min-height: 34px;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 9px;
+  }
+
+  .referenceDashboard .ratesCard,
+  .ratesCard {
+    margin-top: 4px;
+  }
+
+  .referenceDashboard .offerHeader,
+  .offerHeader,
+  .referenceDashboard .offerRow,
+  .offerRow {
+    gap: 5px;
+    padding: 4px 6px;
+  }
+
+  .referenceDashboard .offerHeader,
+  .offerHeader {
+    min-height: 28px;
+    font-size: 10px;
+  }
+
+  .referenceDashboard .offerRow,
+  .offerRow {
+    min-height: 43px;
+  }
+
+  .offerRow > span {
+    gap: 2px;
+  }
+
+  .offerRow strong {
+    font-size: 11px;
+  }
+
+  .offerRow small {
+    font-size: 9px;
+  }
+
+  .exchangeName {
+    grid-template-columns: 20px minmax(0, 1fr) !important;
+    gap: 5px;
+  }
+
+  .exchangeName i {
+    width: 18px;
+    height: 18px;
+    border-radius: 4px;
+    font-size: 10px;
+  }
+
+  .offerActions a,
+  .offerActions button {
+    min-height: 24px;
+    padding: 2px 6px;
+    font-size: 10px;
+  }
+
+  .offerActions button {
+    width: 24px;
+    padding: 0;
+  }
+
+  .showMoreOffers {
+    min-height: 22px;
+  }
+}
+
 @media (max-width: 1180px) {
+  .exchangeControlWindow {
+    margin-top: 8px;
+    padding: 8px;
+  }
+
+  .locationFilters {
+    grid-template-columns: 1fr;
+  }
+
+  .paymentSwitch {
+    flex-wrap: wrap;
+  }
+
+  .directorySummary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .directoryToolbar {
+    grid-template-columns: 1fr;
+  }
+
   .safeDealStats {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2751,6 +3999,36 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 }
 
 @media (max-width: 600px) {
+  .exchangeControlWindow {
+    padding: 6px;
+    border-radius: 7px;
+  }
+
+  .paymentSwitch button {
+    flex: 1 1 92px;
+  }
+
+  .locationSummary {
+    align-items: flex-start;
+  }
+
+  .locationSummary span {
+    white-space: normal;
+  }
+
+  .directorySummary {
+    grid-template-columns: 1fr;
+  }
+
+  .directoryFilterTabs button {
+    flex: 1 1 110px;
+    justify-content: center;
+  }
+
+  .exchangeControlWindow::before {
+    border-radius: 7px 7px 0 0;
+  }
+
   .safeDealHeader {
     grid-template-columns: 28px minmax(0, 1fr) auto;
   }
@@ -2765,5 +4043,2508 @@ summary { display: flex; gap: 6px; cursor: pointer; font-weight: 700; }
 
   .safeDealDisclosure summary small {
     display: none;
+  }
+}
+
+/* --- 31. Green monitoring theme for RUB -> USDT TRC20 direction --- */
+.appMonitoringGreen {
+  --bg: #0d3439;
+  --surface: rgba(255, 255, 255, .94);
+  --surface-solid: #ffffff;
+  --surface-soft: #edf5eb;
+  --ink: #112b2b;
+  --muted: #64746c;
+  --line: rgba(198, 220, 186, .34);
+  --line-soft: rgba(198, 220, 186, .18);
+  --green: #58c35d;
+  --green-dark: #286b38;
+  --green-soft: #e5f5df;
+  --black: #092c31;
+  --accent: #f27a2f;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 78% 12%, rgba(143, 166, 56, .46), transparent 34%),
+    radial-gradient(circle at 4% 10%, rgba(16, 95, 101, .72), transparent 42%),
+    linear-gradient(128deg, #092d34 0%, #133f3e 42%, #607130 100%);
+  color: #f7fbf3;
+}
+
+.appMonitoringGreen .mainWithSidebar {
+  background: transparent;
+}
+
+.appMonitoringGreen .topbar {
+  border-bottom-color: rgba(220, 235, 206, .12);
+  background: rgba(5, 28, 31, .88);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, .24);
+}
+
+.appMonitoringGreen .logo,
+.appMonitoringGreen .mainNav a.active {
+  color: #f7fbf3;
+}
+
+.appMonitoringGreen .logo strong {
+  background: rgba(242, 122, 47, .15);
+  color: #ff8b40;
+}
+
+.appMonitoringGreen .logoMark {
+  background: linear-gradient(135deg, #58c35d, #a7c84b);
+  color: #092c31;
+}
+
+.appMonitoringGreen .mainNav a {
+  color: rgba(247, 251, 243, .68);
+}
+
+.appMonitoringGreen .mainNav a:hover,
+.appMonitoringGreen .mainNav a.active {
+  background: rgba(255, 255, 255, .08);
+}
+
+.appMonitoringGreen .loginButton,
+.appMonitoringGreen .adBannerAction,
+.appMonitoringGreen .offerActions a {
+  background: linear-gradient(180deg, #ff8b40, #ec6223) !important;
+  color: #fff !important;
+  box-shadow: 0 14px 30px rgba(236, 98, 35, .28);
+}
+
+.appMonitoringGreen .logoutButton,
+.appMonitoringGreen .menuButton,
+.appMonitoringGreen .mobileNav {
+  border-color: rgba(220, 235, 206, .14);
+  background: rgba(8, 41, 43, .92);
+  color: #eef6e9;
+}
+
+.appMonitoringGreen .adBanner {
+  border-color: rgba(220, 235, 206, .25);
+  background:
+    linear-gradient(135deg, rgba(248, 252, 244, .96), rgba(225, 241, 215, .91));
+  color: #123230;
+  box-shadow: 0 20px 46px rgba(0, 0, 0, .18);
+}
+
+.appMonitoringGreen .adBannerMark,
+.appMonitoringGreen .adBannerMedia {
+  background: rgba(88, 195, 93, .14);
+  color: #286b38;
+}
+
+.appMonitoringGreen .adBannerCopy small {
+  color: #ec6223;
+}
+
+.appMonitoringGreen .adBannerCopy strong {
+  color: #123230;
+}
+
+.appMonitoringGreen .adBannerCopy span {
+  color: #607367;
+}
+
+.appMonitoringGreen .currencySidebar {
+  border-color: rgba(220, 235, 206, .18);
+  background: rgba(7, 38, 41, .9);
+  box-shadow: 0 24px 54px rgba(0, 0, 0, .26);
+  backdrop-filter: blur(18px);
+}
+
+.appMonitoringGreen .assetCategory {
+  color: #f7fbf3;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 244, 196, .10), transparent 34%),
+    linear-gradient(135deg, rgba(45, 42, 31, .96), rgba(17, 16, 12, .98));
+  border-bottom-color: rgba(221, 184, 91, .24);
+}
+
+.appMonitoringGreen .sideColumnTitle {
+  border-color: rgba(220, 235, 206, .14);
+  background: rgba(2, 25, 28, .58);
+}
+
+.appMonitoringGreen .sideColumnTitle:focus-within {
+  border-color: rgba(242, 122, 47, .5);
+  box-shadow: 0 0 0 3px rgba(242, 122, 47, .12);
+}
+
+.appMonitoringGreen .sideColumnSearch input,
+.appMonitoringGreen .assetItem strong {
+  color: #eef6e9;
+}
+
+.appMonitoringGreen .sideColumnSearch input::placeholder,
+.appMonitoringGreen .assetItem small,
+.appMonitoringGreen .favoritePairs small,
+.appMonitoringGreen .currencySidebar .assetEmpty {
+  color: rgba(238, 246, 233, .58);
+}
+
+.appMonitoringGreen .assetGroup h3 {
+  border-color: rgba(220, 235, 206, .09);
+  background: rgba(255, 255, 255, .05);
+  color: rgba(238, 246, 233, .42);
+}
+
+.appMonitoringGreen .assetItem {
+  border-bottom-color: rgba(220, 235, 206, .07);
+}
+
+.appMonitoringGreen .assetItem:hover,
+.appMonitoringGreen .favoritePairs button:hover {
+  background: rgba(255, 255, 255, .07);
+}
+
+.appMonitoringGreen .assetItem.selected,
+.appMonitoringGreen .favoritePairs button.selected {
+  background: rgba(88, 195, 93, .13);
+  box-shadow: inset 2px 0 0 #ff8b40;
+}
+
+.appMonitoringGreen .showAllCurrencies {
+  background: linear-gradient(180deg, #ff8b40, #ec6223);
+  color: #fff;
+}
+
+.appMonitoringGreen .monitorContent {
+  color: #f7fbf3;
+}
+
+.appMonitoringGreen .workspaceHeader {
+  border-bottom-color: rgba(220, 235, 206, .16);
+}
+
+.appMonitoringGreen .workspaceHeader h1 {
+  color: #ffffff;
+  text-shadow: 0 8px 30px rgba(0, 0, 0, .2);
+}
+
+.appMonitoringGreen .workspaceLive,
+.appMonitoringGreen .workspaceUpdated {
+  color: rgba(247, 251, 243, .72);
+}
+
+.appMonitoringGreen .workspaceLive i,
+.appMonitoringGreen .realtimeToggle.active i,
+.appMonitoringGreen .processingCell i {
+  background: #58c35d;
+}
+
+.appMonitoringGreen .realtimeRefresh,
+.appMonitoringGreen .realtimeToggle {
+  border-color: rgba(220, 235, 206, .18);
+  background: rgba(7, 38, 41, .64);
+  color: #eef6e9;
+}
+
+.appMonitoringGreen .exchangeControlWindow {
+  border-color: rgba(220, 235, 206, .22);
+  background:
+    linear-gradient(135deg, rgba(17, 62, 58, .84), rgba(67, 89, 43, .72));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .12),
+    0 26px 64px rgba(0, 0, 0, .28);
+}
+
+.appMonitoringGreen .exchangeControlWindow::before {
+  background: linear-gradient(90deg, #ff8b40, #a7c84b, #58c35d);
+}
+
+.appMonitoringGreen .exchangeWidget,
+.appMonitoringGreen .safeDealPanel {
+  border-color: rgba(220, 235, 206, .18);
+  background: rgba(248, 252, 244, .94);
+  color: #123230;
+  box-shadow: none;
+}
+
+.appMonitoringGreen .exchangeFields label,
+.appMonitoringGreen .safeDealHeader p,
+.appMonitoringGreen .safeDealVerdict p,
+.appMonitoringGreen .safeDealSupport p {
+  color: #64746c;
+}
+
+.appMonitoringGreen .amountField,
+.appMonitoringGreen .csTrigger,
+.appMonitoringGreen .quickFilters button,
+.appMonitoringGreen .quickIconAction,
+.appMonitoringGreen .paymentSwitch button,
+.appMonitoringGreen .locationSummary,
+.appMonitoringGreen .routePanel,
+.appMonitoringGreen .widgetFilters {
+  border-color: rgba(75, 105, 63, .2);
+  background: rgba(255, 255, 255, .86);
+  color: #123230;
+  box-shadow: none;
+}
+
+.appMonitoringGreen .amountField input {
+  border-left-color: rgba(75, 105, 63, .18);
+  color: #123230;
+}
+
+.appMonitoringGreen .swapRound {
+  border-color: rgba(242, 122, 47, .28);
+  background: rgba(242, 122, 47, .12);
+  color: #ec6223;
+}
+
+.appMonitoringGreen .quickFilters button:hover,
+.appMonitoringGreen .quickIconAction:hover,
+.appMonitoringGreen .paymentSwitch button:hover,
+.appMonitoringGreen .swapRound:hover {
+  background: rgba(242, 122, 47, .12);
+  color: #d85719;
+}
+
+.appMonitoringGreen .quickFilters button[aria-pressed="true"],
+.appMonitoringGreen .quickIconAction.active,
+.appMonitoringGreen .paymentSwitch button[aria-pressed="true"] {
+  border-color: rgba(88, 195, 93, .44) !important;
+  background: rgba(88, 195, 93, .16) !important;
+  color: #286b38 !important;
+}
+
+.appMonitoringGreen .locationSummary strong,
+.appMonitoringGreen .citySelect,
+.appMonitoringGreen .bestRate,
+.appMonitoringGreen .securityCell.safe strong,
+.appMonitoringGreen .securityCell.low strong {
+  color: #286b38;
+}
+
+.appMonitoringGreen .ratesCard,
+.appMonitoringGreen .offerTable {
+  border-color: rgba(220, 235, 206, .28);
+  background: rgba(248, 252, 244, .96);
+  box-shadow: 0 26px 64px rgba(0, 0, 0, .24);
+}
+
+.appMonitoringGreen .offerHeader {
+  border-bottom-color: rgba(75, 105, 63, .16);
+  background: linear-gradient(180deg, #edf5eb, #dfead7);
+  color: #405442;
+}
+
+.appMonitoringGreen .offerRow {
+  border-bottom-color: rgba(75, 105, 63, .12);
+  background: rgba(255, 255, 255, .92);
+}
+
+.appMonitoringGreen .offerRow:hover {
+  background: #f4faef;
+  box-shadow: inset 3px 0 0 #ff8b40;
+}
+
+.appMonitoringGreen .offerRow strong,
+.appMonitoringGreen .safeDealHeader h2,
+.appMonitoringGreen .safeDealVerdict h3,
+.appMonitoringGreen .safeDealSupport h3,
+.appMonitoringGreen .safeDealStats strong,
+.appMonitoringGreen .safeDealReasons h4,
+.appMonitoringGreen .safeDealRisks h4,
+.appMonitoringGreen .safeDealChecklist h4 {
+  color: #123230;
+}
+
+.appMonitoringGreen .offerRow small,
+.appMonitoringGreen .rating .ratingMissing,
+.appMonitoringGreen .showMoreOffers,
+.appMonitoringGreen .locationSummary span,
+.appMonitoringGreen .safeDealDisclosure summary small,
+.appMonitoringGreen .safeDealAiAnswer small,
+.appMonitoringGreen .safeDealStats small {
+  color: #64746c;
+}
+
+.appMonitoringGreen .exchangeName i {
+  background: linear-gradient(135deg, #1f6d69, #6f8935);
+  color: #fff;
+}
+
+.appMonitoringGreen .exchangeName a:hover strong {
+  color: #ec6223;
+}
+
+.appMonitoringGreen .offerActions button,
+.appMonitoringGreen .showMoreOffers {
+  border-color: rgba(75, 105, 63, .18);
+  background: #f5faef;
+  color: #286b38;
+}
+
+.appMonitoringGreen .offerActions button:hover,
+.appMonitoringGreen .showMoreOffers:hover {
+  background: #e7f4dc;
+}
+
+.appMonitoringGreen .csDropdown {
+  border-color: rgba(75, 105, 63, .22);
+  background: #fbfdf8;
+  color: #123230;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, .22);
+}
+
+.appMonitoringGreen .csOption {
+  background: transparent;
+  color: #123230;
+}
+
+.appMonitoringGreen .csOption:hover,
+.appMonitoringGreen .csOption--selected {
+  background: rgba(88, 195, 93, .14);
+  color: #286b38;
+}
+
+.appMonitoringGreen .safeDealAvatar,
+.appMonitoringGreen .safeDealAiAnswer > span,
+.appMonitoringGreen .safeDealVerdict small,
+.appMonitoringGreen .safeDealSupport small,
+.appMonitoringGreen .safeDealEmpty svg {
+  color: #286b38;
+}
+
+.appMonitoringGreen .safeDealAvatar,
+.appMonitoringGreen .safeDealScore.good {
+  background: rgba(88, 195, 93, .14);
+}
+
+.appMonitoringGreen .safeDealEmpty,
+.appMonitoringGreen .safeDealVerdict,
+.appMonitoringGreen .safeDealDisclosure,
+.appMonitoringGreen .safeDealAiAnswer,
+.appMonitoringGreen .safeDealStats span,
+.appMonitoringGreen .safeDealReasons,
+.appMonitoringGreen .safeDealRisks,
+.appMonitoringGreen .safeDealChecklist,
+.appMonitoringGreen .safeDealSupport,
+.appMonitoringGreen .safeDealSupport pre {
+  border-color: rgba(75, 105, 63, .16);
+  background: rgba(255, 255, 255, .72);
+}
+
+.appMonitoringGreen .siteFooter {
+  border-top-color: rgba(220, 235, 206, .14);
+  background: #06272b;
+}
+
+@media (max-width: 1180px) {
+  .appMonitoringGreen .adBanner--monitor-top {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+}
+
+/* Final graphite/light theme override. */
+:root {
+  --bg: #edf7e7;
+  --surface: #151915;
+  --surface-solid: #151915;
+  --surface-soft: #1b201b;
+  --ink: #f8fbf3;
+  --muted: rgba(236, 244, 232, .72);
+  --line: rgba(255, 255, 255, .14);
+  --line-soft: rgba(255, 255, 255, .10);
+  --green: #ffffff;
+  --green-dark: #ffffff;
+  --green-soft: rgba(255, 255, 255, .12);
+  --black: #101410;
+  --accent: #ffffff;
+  --shadow-soft: 0 26px 70px rgba(16, 20, 16, .18);
+}
+
+html,
+body {
+  background:
+    radial-gradient(circle at 16% 8%, rgba(85, 166, 112, .20), transparent 30%),
+    radial-gradient(circle at 86% 12%, rgba(255, 255, 255, .82), transparent 28%),
+    linear-gradient(135deg, #f4faef 0%, #e5f2dc 48%, #d5e8cc 100%) !important;
+  color: #102018 !important;
+}
+
+body::after {
+  display: none !important;
+}
+
+.appMonitoringGreen {
+  background:
+    radial-gradient(circle at 18% 10%, rgba(67, 128, 91, .18), transparent 32%),
+    linear-gradient(135deg, #f4faef 0%, #e5f2dc 48%, #d5e8cc 100%) !important;
+}
+
+.header,
+.siteHeader {
+  background: rgba(16, 28, 26, .94) !important;
+  border-bottom-color: rgba(255, 255, 255, .10) !important;
+}
+
+.currencySidebar,
+.exchangeControlWindow,
+.exchangeWidget,
+.ratesCard,
+.safeDealPanel,
+.panel,
+.directoryTable,
+.wikiGroup,
+.articleDetail,
+.contactCard,
+.authCard,
+.dashboardCard,
+.ownerPanel,
+.adminPanel,
+.exchangePassport,
+.exchangeReviewBoard,
+.exchangeReviewSurface,
+.securityOverview,
+.exchangeProfilePage .exchangePassport,
+.exchangeProfilePage .exchangeReviewBoard,
+.exchangeProfilePage .securityOverview {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 255, 255, .055), transparent 30%),
+    linear-gradient(145deg, #181b18 0%, #101410 100%) !important;
+  color: #f8fbf3 !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+  box-shadow: 0 24px 70px rgba(16, 20, 16, .18) !important;
+}
+
+.currencySidebar *,
+.exchangeControlWindow *,
+.exchangeWidget *,
+.ratesCard *,
+.safeDealPanel *,
+.panel *,
+.directoryTable *,
+.wikiGroup *,
+.articleDetail *,
+.contactCard *,
+.authCard *,
+.dashboardCard *,
+.ownerPanel *,
+.adminPanel *,
+.exchangePassport *,
+.exchangeReviewBoard *,
+.exchangeReviewSurface *,
+.securityOverview * {
+  border-color: rgba(255, 255, 255, .13);
+}
+
+.currencySidebar h1,
+.currencySidebar h2,
+.exchangeControlWindow h1,
+.exchangeControlWindow h2,
+.exchangeWidget h1,
+.exchangeWidget h2,
+.ratesCard h1,
+.ratesCard h2,
+.safeDealPanel h2,
+.panel h1,
+.panel h2,
+.panel h3,
+.directoryTable strong,
+.wikiGroup h2,
+.articleDetail h1,
+.contactCard h1,
+.authCard h1,
+.dashboardCard h1,
+.ownerPanel h1,
+.adminPanel h1,
+.exchangePassport h1,
+.exchangePassport strong,
+.exchangeReviewBoard h2,
+.exchangeReviewBoard h3,
+.exchangeReviewBoard strong,
+.exchangeReviewBoard p,
+.securityOverview h2,
+.securityOverview strong {
+  color: #f8fbf3 !important;
+  -webkit-text-fill-color: #f8fbf3 !important;
+}
+
+.currencySidebar small,
+.currencySidebar span,
+.exchangeControlWindow small,
+.exchangeWidget small,
+.ratesCard small,
+.safeDealPanel small,
+.panel small,
+.directoryTable small,
+.wikiGroup small,
+.articleDetail p,
+.contactCard p,
+.dashboardCard small,
+.ownerPanel small,
+.adminPanel small,
+.exchangePassport small,
+.exchangePassport dd,
+.exchangeReviewBoard time,
+.exchangeReviewBoard span,
+.exchangeReviewIntro p,
+.exchangeEmptyReviews span,
+.securityOverview span {
+  color: rgba(236, 244, 232, .72) !important;
+  -webkit-text-fill-color: rgba(236, 244, 232, .72) !important;
+}
+
+.loginButton,
+.logoutButton,
+.adBannerAction,
+.submitButton,
+.offerActions a,
+.offerActions button,
+.quickFilters button,
+.quickExternalLink,
+.quickIconAction,
+.paymentSwitch button,
+.directoryFilterTabs button,
+.feedbackTabs button,
+.feedbackPanel form > button,
+.contactForm button,
+.adminConsole button,
+.adminInlineForm button,
+.adminForm button,
+.adminActionRow button,
+.exchangeAddReview,
+.exchangeFeedbackDetails summary,
+.exchangeWebsiteLink,
+.exchangePassportLinks a,
+.safeDealSupport button,
+.safeDealModes button,
+.showMoreOffers,
+.mobileNav button,
+.mobileMenuButton {
+  background: #ffffff !important;
+  color: #101410 !important;
+  -webkit-text-fill-color: #101410 !important;
+  border-color: rgba(16, 20, 16, .24) !important;
+  box-shadow: none !important;
+}
+
+.loginButton:hover,
+.logoutButton:hover,
+.adBannerAction:hover,
+.submitButton:hover,
+.offerActions a:hover,
+.offerActions button:hover,
+.quickFilters button:hover,
+.quickFilters button[aria-pressed="true"],
+.quickIconAction:hover,
+.quickIconAction.active,
+.paymentSwitch button:hover,
+.paymentSwitch button[aria-pressed="true"],
+.directoryFilterTabs button:hover,
+.directoryFilterTabs button[aria-pressed="true"],
+.feedbackTabs button.active,
+.feedbackPanel form > button:hover,
+.exchangeAddReview:hover,
+.exchangeFeedbackDetails summary:hover,
+.safeDealModes button:hover,
+.safeDealModes button[aria-pressed="true"],
+.showMoreOffers:hover {
+  background: #f2f6ee !important;
+  color: #101410 !important;
+  -webkit-text-fill-color: #101410 !important;
+  border-color: rgba(16, 20, 16, .34) !important;
+  box-shadow: inset 0 0 0 1px rgba(16, 20, 16, .05) !important;
+}
+
+.adBanner,
+.adminConsole .adBanner {
+  background: rgba(255, 255, 255, .80) !important;
+  color: #13231d !important;
+  border-color: rgba(16, 20, 16, .10) !important;
+  box-shadow: 0 18px 44px rgba(16, 20, 16, .10) !important;
+}
+
+.adBannerCopy small,
+.adBannerCopy strong,
+.adBannerCopy span {
+  color: #13231d !important;
+  -webkit-text-fill-color: #13231d !important;
+}
+
+.adBannerMark,
+.adBannerMedia {
+  background: #ffffff !important;
+  color: #101410 !important;
+}
+
+.assetItem,
+.favoritePairs button,
+.offerRow,
+.directoryRow,
+.externalReviewList article,
+.exchangeEmptyReviews,
+.securityOverviewGrid > div,
+.securityScoreCard,
+.securityScoreCard.watch,
+.securityDepositCard,
+.safeDealVerdict,
+.safeDealDisclosure,
+.safeDealAiAnswer,
+.safeDealStats span,
+.safeDealReasons,
+.safeDealRisks,
+.safeDealChecklist,
+.safeDealSupport,
+.safeDealSupport pre,
+.exchangeProfileSummary > div,
+.exchangeDepositBadge,
+.exchangePassportStats div {
+  background: rgba(255, 255, 255, .06) !important;
+  border-color: rgba(255, 255, 255, .13) !important;
+  color: #f8fbf3 !important;
+}
+
+.exchangeStatusPill.active,
+.exchangeAddReview::before,
+.workspaceLive i,
+.realtimeToggle.active i,
+.processingCell i,
+.safeDealReasons li::before {
+  background: #ffffff !important;
+  color: #101410 !important;
+}
+
+.exchangeReviewFilters span,
+.exchangeReviewIntro span,
+.securityOverview .eyebrow,
+.exchangePassportEyebrow,
+.exchangePassportStatLabel,
+.railReview > div a,
+.recentReviews header a,
+.trustMore,
+.favoritePairs svg {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+.offerRow:hover,
+.assetItem:hover,
+.favoritePairs button:hover,
+.directoryRow:hover,
+.articleRow:hover,
+.exchangeCards > a:hover {
+  background: rgba(255, 255, 255, .11) !important;
+  box-shadow: inset 3px 0 0 #ffffff !important;
+}
+
+.amountField,
+.amountField input,
+.csTrigger,
+.contentSearch,
+.feedbackPanel input,
+.feedbackPanel select,
+.feedbackPanel textarea,
+.contactForm input,
+.contactForm textarea,
+.loginForm input,
+.adminConsole input,
+.adminConsole textarea,
+.adminConsole select {
+  background: rgba(255, 255, 255, .95) !important;
+  color: #101410 !important;
+  -webkit-text-fill-color: #101410 !important;
+  border-color: rgba(16, 20, 16, .20) !important;
+}
+
+.csDropdown,
+.mobileNav {
+  background: #151915 !important;
+  color: #f8fbf3 !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+}
+
+.csOption {
+  color: #f8fbf3 !important;
+}
+
+.csOption:hover,
+.csOption--selected {
+  background: rgba(255, 255, 255, .12) !important;
+  color: #ffffff !important;
+}
+
+.brandText span:last-child,
+.logo span:last-child {
+  background: #ffffff !important;
+  color: #101410 !important;
+}
+
+.siteFooter,
+.appMonitoringGreen .siteFooter {
+  background: #101410 !important;
+  color: #f8fbf3 !important;
+  border-top-color: rgba(255, 255, 255, .12) !important;
+}
+
+/* Strongest pass: replace the old orange accents that use scoped selectors. */
+body .appMonitoringGreen .loginButton,
+body .appMonitoringGreen .adBannerAction,
+body .appMonitoringGreen .exchangeAddReview,
+body .appMonitoringGreen .exchangeFeedbackDetails summary,
+body .appMonitoringGreen .offerActions a,
+body .appMonitoringGreen .offerActions button,
+body .appMonitoringGreen .quickFilters button,
+body .appMonitoringGreen .quickIconAction,
+body .appMonitoringGreen .paymentSwitch button,
+body .appMonitoringGreen .directoryFilterTabs button,
+body .appMonitoringGreen .feedbackTabs button,
+body .appMonitoringGreen .feedbackPanel form > button,
+body .appMonitoringGreen .contactForm button,
+body .appMonitoringGreen .adminInlineForm button,
+body .appMonitoringGreen .adminForm button,
+body .appMonitoringGreen .adminActionRow button,
+body .appMonitoringGreen .dashboardTitle .loginButton,
+body .appMonitoringGreen .safeDealModes button,
+body .appMonitoringGreen .showMoreOffers {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #101410 !important;
+  -webkit-text-fill-color: #101410 !important;
+  border-color: rgba(16, 20, 16, .26) !important;
+  box-shadow: none !important;
+}
+
+body .appMonitoringGreen .loginButton:hover,
+body .appMonitoringGreen .adBannerAction:hover,
+body .appMonitoringGreen .exchangeAddReview:hover,
+body .appMonitoringGreen .exchangeFeedbackDetails summary:hover,
+body .appMonitoringGreen .offerActions a:hover,
+body .appMonitoringGreen .offerActions button:hover,
+body .appMonitoringGreen .quickFilters button:hover,
+body .appMonitoringGreen .quickFilters button[aria-pressed="true"],
+body .appMonitoringGreen .quickIconAction:hover,
+body .appMonitoringGreen .quickIconAction.active,
+body .appMonitoringGreen .paymentSwitch button:hover,
+body .appMonitoringGreen .paymentSwitch button[aria-pressed="true"],
+body .appMonitoringGreen .directoryFilterTabs button:hover,
+body .appMonitoringGreen .directoryFilterTabs button[aria-pressed="true"],
+body .appMonitoringGreen .feedbackTabs button.active,
+body .appMonitoringGreen .feedbackPanel form > button:hover,
+body .appMonitoringGreen .safeDealModes button:hover,
+body .appMonitoringGreen .safeDealModes button[aria-pressed="true"],
+body .appMonitoringGreen .showMoreOffers:hover {
+  background: #eef4e8 !important;
+  background-image: none !important;
+  color: #101410 !important;
+  -webkit-text-fill-color: #101410 !important;
+  border-color: rgba(16, 20, 16, .38) !important;
+  box-shadow: inset 0 0 0 1px rgba(16, 20, 16, .06) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewIntro span,
+body .appMonitoringGreen .exchangeProfilePage .securityOverview .eyebrow,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportEyebrow,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStatLabel,
+body .appMonitoringGreen .exchangeProfilePage .exchangeDepositBadge span,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats dt,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats strong,
+body .appMonitoringGreen .exchangeName a:hover strong {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeDepositBadge,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats div,
+body .appMonitoringGreen .exchangeProfilePage .exchangeProfileSummary > div,
+body .appMonitoringGreen .exchangeProfilePage .exchangeEmptyReviews,
+body .appMonitoringGreen .exchangeProfilePage .externalReviewList article,
+body .appMonitoringGreen .exchangeProfilePage .securityOverviewGrid > div,
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard,
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard.watch,
+body .appMonitoringGreen .exchangeProfilePage .securityDepositCard,
+body .appMonitoringGreen .safeDealEmpty,
+body .appMonitoringGreen .safeDealVerdict,
+body .appMonitoringGreen .safeDealDisclosure,
+body .appMonitoringGreen .safeDealAiAnswer,
+body .appMonitoringGreen .safeDealStats span,
+body .appMonitoringGreen .safeDealReasons,
+body .appMonitoringGreen .safeDealRisks,
+body .appMonitoringGreen .safeDealChecklist,
+body .appMonitoringGreen .safeDealSupport,
+body .appMonitoringGreen .safeDealSupport pre {
+  background: rgba(255, 255, 255, .065) !important;
+  background-image: none !important;
+  color: #f8fbf3 !important;
+  -webkit-text-fill-color: #f8fbf3 !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+  box-shadow: none !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeDepositBadge strong,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats dd,
+body .appMonitoringGreen .exchangeProfilePage .exchangeEmptyReviews strong,
+body .appMonitoringGreen .exchangeProfilePage .securityOverviewGrid strong,
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard strong {
+  color: #f8fbf3 !important;
+  -webkit-text-fill-color: #f8fbf3 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats small,
+body .appMonitoringGreen .exchangeProfilePage .exchangeEmptyReviews span,
+body .appMonitoringGreen .exchangeProfilePage .securityOverviewGrid span,
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard span {
+  color: rgba(236, 244, 232, .72) !important;
+  -webkit-text-fill-color: rgba(236, 244, 232, .72) !important;
+}
+
+body .appMonitoringGreen .offerRow:hover {
+  box-shadow: inset 3px 0 0 #ffffff !important;
+}
+
+body .appMonitoringGreen .swapRound {
+  background: #ffffff !important;
+  color: #101410 !important;
+  border-color: rgba(16, 20, 16, .26) !important;
+}
+
+body .appMonitoringGreen .logo strong,
+body .appMonitoringGreen .footerBrand .logo strong,
+body .appMonitoringGreen .adBannerCopy small,
+body .appMonitoringGreen .exchangeProfilePage .exchangeProfileSummary > div > span:first-child,
+body .appMonitoringGreen .exchangeProfilePage .exchangeDepositBadge > span:first-child {
+  background: rgba(255, 255, 255, .14) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(255, 255, 255, .36) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewFilters span,
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewFilters span.active {
+  background: rgba(255, 255, 255, .10) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(255, 255, 255, .28) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewFilters span.active,
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewFilters span:hover {
+  background: #ffffff !important;
+  color: #101410 !important;
+  -webkit-text-fill-color: #101410 !important;
+}
+
+/* The page backdrop should be pure white behind the dark panels. */
+html,
+body,
+.app,
+.mainWithSidebar,
+.mainStandalone,
+.appMonitoringGreen,
+body .appMonitoringGreen {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+/* Site-wide rule: white backdrop, dark content blocks everywhere. */
+body,
+body .appMonitoringGreen,
+body .appMonitoringGreen main,
+body .appMonitoringGreen .mainWithSidebar,
+body .appMonitoringGreen .mainStandalone,
+body .appMonitoringGreen .monitorDashboard,
+body .appMonitoringGreen .dashboardPage,
+body .appMonitoringGreen .docsPage,
+body .appMonitoringGreen .exchangeDirectoryPage,
+body .appMonitoringGreen .exchangeProfilePage,
+body .appMonitoringGreen .contentPage {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+body .appMonitoringGreen :is(
+  .adBanner,
+  .bannerSlotList article,
+  .currencySidebar,
+  .sideColumn,
+  .assetGroup,
+  .exchangeWidget,
+  .exchangeControlWindow,
+  .routePanel,
+  .ratesCard,
+  .offerTable,
+  .insightPanel,
+  .authCard,
+  .metricGrid > div,
+  .dashboardCard,
+  .dashboardPanel,
+  .ownerPanel,
+  .ownerInfoGrid > div,
+  .feedStatusGrid > div,
+  .ownerKeyList > div,
+  .userReviewList article,
+  .adminGroupHeader,
+  .adminPanel,
+  .adminEditCard,
+  .adminTable,
+  .adminAuditList article,
+  .endpointList,
+  .directoryTable,
+  .directoryRow,
+  .wikiGroup,
+  .wikiEntry,
+  .articleRow,
+  .articleDetail,
+  .blogCard,
+  .exchangeCards > a,
+  .exchangeCard,
+  .liveProfileGrid > div,
+  .securityOverviewGrid > div,
+  .panel,
+  .exchangePassport,
+  .exchangeReviewBoard,
+  .exchangeReviewSurface,
+  .feedbackPanel,
+  .exchangeReviewBoard .feedbackPanel,
+  .securityOverview,
+  .exchangeProfileSummary > div,
+  .exchangeDepositBadge,
+  .exchangePassportStats div,
+  .externalReviewList article,
+  .exchangeEmptyReviews,
+  .safeDealPanel,
+  .safeDealEmpty,
+  .safeDealVerdict,
+  .safeDealDisclosure,
+  .safeDealAiAnswer,
+  .safeDealStats span,
+  .safeDealReasons,
+  .safeDealRisks,
+  .safeDealChecklist,
+  .safeDealSupport,
+  .contactCard,
+  .contactForm,
+  .legalCard
+) {
+  background:
+    radial-gradient(circle at 12% 0%, rgba(255, 255, 255, .055), transparent 30%),
+    linear-gradient(145deg, #181b18 0%, #101410 100%) !important;
+  color: #f8fbf3 !important;
+  -webkit-text-fill-color: #f8fbf3 !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+  box-shadow: 0 18px 46px rgba(16, 20, 16, .12) !important;
+}
+
+body .appMonitoringGreen :is(
+  .adBanner,
+  .bannerSlotList article,
+  .currencySidebar,
+  .exchangeWidget,
+  .exchangeControlWindow,
+  .routePanel,
+  .ratesCard,
+  .offerTable,
+  .insightPanel,
+  .authCard,
+  .dashboardCard,
+  .ownerPanel,
+  .adminPanel,
+  .directoryTable,
+  .wikiGroup,
+  .articleDetail,
+  .exchangeCards > a,
+  .panel,
+  .exchangePassport,
+  .exchangeReviewBoard,
+  .feedbackPanel,
+  .securityOverview,
+  .safeDealPanel,
+  .contactCard
+) :is(h1, h2, h3, h4, strong, dt, label) {
+  color: #f8fbf3 !important;
+  -webkit-text-fill-color: #f8fbf3 !important;
+}
+
+body .appMonitoringGreen :is(
+  .adBanner,
+  .bannerSlotList article,
+  .currencySidebar,
+  .exchangeWidget,
+  .routePanel,
+  .ratesCard,
+  .offerTable,
+  .insightPanel,
+  .authCard,
+  .dashboardCard,
+  .ownerPanel,
+  .adminPanel,
+  .directoryTable,
+  .wikiGroup,
+  .articleDetail,
+  .exchangeCards > a,
+  .panel,
+  .exchangePassport,
+  .exchangeReviewBoard,
+  .feedbackPanel,
+  .securityOverview,
+  .safeDealPanel,
+  .contactCard
+) :is(p, span, small, dd, time, li) {
+  color: rgba(236, 244, 232, .72) !important;
+  -webkit-text-fill-color: rgba(236, 244, 232, .72) !important;
+}
+
+body .appMonitoringGreen :is(
+  .offerHeader,
+  .offerRow,
+  .assetItem,
+  .favoritePairs button,
+  .simpleTable > div,
+  .runList > div,
+  .auditList > div,
+  .adminTable > div,
+  .adminTable > form,
+  .feedKeyRow,
+  .networkAdminList form,
+  .exchangePassportStats div,
+  .exchangeProfileSummary > div,
+  .exchangeDepositBadge,
+  .exchangeEmptyReviews,
+  .securityOverviewGrid > div
+) {
+  background: rgba(255, 255, 255, .065) !important;
+  background-image: none !important;
+  color: #f8fbf3 !important;
+  -webkit-text-fill-color: #f8fbf3 !important;
+  border-color: rgba(255, 255, 255, .14) !important;
+  box-shadow: none !important;
+}
+
+body .appMonitoringGreen :is(.adBannerMark, .adBannerMedia, .logoMark, .exchangeLogoBox, .currencyIcon) {
+  background: #ffffff !important;
+  color: #101410 !important;
+  -webkit-text-fill-color: #101410 !important;
+}
+
+body .appMonitoringGreen :is(
+  .loginButton,
+  .logoutButton,
+  .adBannerAction,
+  .submitButton,
+  .offerActions a,
+  .offerActions button,
+  .quickFilters button,
+  .quickExternalLink,
+  .quickIconAction,
+  .paymentSwitch button,
+  .directoryFilterTabs button,
+  .feedbackTabs button,
+  .feedbackPanel form > button,
+  .contactForm button,
+  .adminConsole button,
+  .adminInlineForm button,
+  .adminForm button,
+  .adminActionRow button,
+  .exchangeAddReview,
+  .exchangeFeedbackDetails summary,
+  .exchangeWebsiteLink,
+  .exchangePassportLinks a,
+  .safeDealSupport button,
+  .safeDealModes button,
+  .showMoreOffers,
+  .mobileMenuButton
+) {
+  background: #ffffff !important;
+  background-image: none !important;
+  color: #101410 !important;
+  -webkit-text-fill-color: #101410 !important;
+  border-color: rgba(16, 20, 16, .26) !important;
+  box-shadow: none !important;
+}
+
+/* --- 32. Crypto gold glass theme from the reference design --- */
+:root,
+.appMonitoringGreen {
+  --bg: #0b0c09;
+  --surface: rgba(28, 28, 21, .82);
+  --surface-solid: #15150f;
+  --surface-soft: rgba(255, 255, 255, .07);
+  --ink: #fff8e8;
+  --muted: rgba(232, 224, 201, .68);
+  --line: rgba(221, 184, 91, .20);
+  --line-soft: rgba(255, 255, 255, .12);
+  --green: #d4ad52;
+  --green-dark: #f0d27a;
+  --green-soft: rgba(212, 173, 82, .16);
+  --black: #090a08;
+  --accent: #d4ad52;
+  --shadow-soft: 0 26px 70px rgba(0, 0, 0, .42);
+}
+
+html {
+  background: #0b0c09 !important;
+  color-scheme: dark;
+}
+
+body,
+body .appMonitoringGreen,
+body .appMonitoringGreen main,
+body .appMonitoringGreen .mainWithSidebar,
+body .appMonitoringGreen .mainStandalone,
+body .appMonitoringGreen .monitorDashboard,
+body .appMonitoringGreen .dashboardPage,
+body .appMonitoringGreen .docsPage,
+body .appMonitoringGreen .exchangeDirectoryPage,
+body .appMonitoringGreen .exchangeProfilePage,
+body .appMonitoringGreen .contentPage,
+body .appMonitoringGreen .adminConsole {
+  background:
+    radial-gradient(circle at 18% -4%, rgba(205, 164, 65, .25), transparent 31%),
+    radial-gradient(circle at 88% 8%, rgba(245, 214, 132, .16), transparent 26%),
+    radial-gradient(circle at 72% 78%, rgba(126, 111, 60, .18), transparent 34%),
+    linear-gradient(135deg, #080908 0%, #11110c 42%, #1d1c13 100%) !important;
+  color: #fff8e8 !important;
+}
+
+body::after {
+  display: none !important;
+}
+
+body .appMonitoringGreen .topbar,
+body .appMonitoringGreen .header,
+body .appMonitoringGreen .siteHeader {
+  background: rgba(10, 10, 8, .86) !important;
+  border-bottom-color: rgba(221, 184, 91, .20) !important;
+  box-shadow: 0 18px 54px rgba(0, 0, 0, .30) !important;
+  backdrop-filter: blur(18px);
+}
+
+body .appMonitoringGreen :is(
+  .adBanner,
+  .bannerSlotList article,
+  .currencySidebar,
+  .exchangeWidget,
+  .exchangeControlWindow,
+  .routePanel,
+  .ratesCard,
+  .offerTable,
+  .insightPanel,
+  .authCard,
+  .metricGrid > div,
+  .dashboardCard,
+  .dashboardPanel,
+  .ownerPanel,
+  .ownerInfoGrid > div,
+  .feedStatusGrid > div,
+  .ownerKeyList > div,
+  .userReviewList article,
+  .adminGroupHeader,
+  .adminPanel,
+  .adminEditCard,
+  .adminTable,
+  .adminAuditList article,
+  .endpointList,
+  .directoryTable,
+  .directoryRow,
+  .wikiGroup,
+  .wikiEntry,
+  .articleRow,
+  .articleDetail,
+  .blogCard,
+  .exchangeCards > a,
+  .exchangeCard,
+  .liveProfileGrid > div,
+  .securityOverviewGrid > div,
+  .panel,
+  .exchangePassport,
+  .exchangeReviewBoard,
+  .exchangeReviewSurface,
+  .feedbackPanel,
+  .exchangeReviewBoard .feedbackPanel,
+  .securityOverview,
+  .exchangeProfileSummary > div,
+  .exchangeDepositBadge,
+  .exchangePassportStats div,
+  .externalReviewList article,
+  .exchangeEmptyReviews,
+  .safeDealPanel,
+  .safeDealEmpty,
+  .safeDealVerdict,
+  .safeDealDisclosure,
+  .safeDealAiAnswer,
+  .safeDealStats span,
+  .safeDealReasons,
+  .safeDealRisks,
+  .safeDealChecklist,
+  .safeDealSupport,
+  .contactCard,
+  .contactForm,
+  .legalCard
+) {
+  background:
+    radial-gradient(circle at 14% 0%, rgba(255, 244, 196, .075), transparent 30%),
+    radial-gradient(circle at 92% 8%, rgba(212, 173, 82, .13), transparent 24%),
+    linear-gradient(145deg, rgba(54, 53, 41, .78) 0%, rgba(22, 23, 17, .92) 100%) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .22) !important;
+  box-shadow: 0 24px 72px rgba(0, 0, 0, .34) !important;
+  backdrop-filter: blur(16px);
+}
+
+body .appMonitoringGreen :is(
+  .offerHeader,
+  .offerRow,
+  .assetItem,
+  .favoritePairs button,
+  .simpleTable > div,
+  .runList > div,
+  .auditList > div,
+  .adminTable > div,
+  .adminTable > form,
+  .feedKeyRow,
+  .networkAdminList form,
+  .exchangePassportStats div,
+  .exchangeProfileSummary > div,
+  .exchangeDepositBadge,
+  .exchangeEmptyReviews,
+  .securityOverviewGrid > div,
+  .safeDealStats span
+) {
+  background: rgba(255, 255, 255, .065) !important;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .06), rgba(255, 255, 255, .025)) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .16) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07) !important;
+}
+
+body .appMonitoringGreen :is(h1, h2, h3, h4, strong, dt, label, .assetCategory, .workspaceHeader h1, .dashboardTitle h1) {
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+}
+
+body .appMonitoringGreen .assetCategory {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 244, 196, .10), transparent 34%),
+    linear-gradient(135deg, rgba(45, 42, 31, .96), rgba(17, 16, 12, .98)) !important;
+  border-bottom-color: rgba(221, 184, 91, .24) !important;
+  box-shadow: inset 0 -1px 0 rgba(255, 244, 196, .07) !important;
+}
+
+body .appMonitoringGreen :is(p, span, small, dd, time, li, .mainNav a, .assetItem small) {
+  color: rgba(232, 224, 201, .70) !important;
+  -webkit-text-fill-color: rgba(232, 224, 201, .70) !important;
+}
+
+body .appMonitoringGreen :is(
+  .workspaceLive,
+  .workspaceUpdated,
+  .eyebrow,
+  .railLive,
+  .positive,
+  .liveStatus,
+  .degradedStatus,
+  .directoryStatus,
+  .verifiedLine,
+  .cardRating,
+  .locationSummary strong,
+  .bestRate,
+  .exchangeName a:hover strong,
+  .securityCell .aml-green,
+  .receivedCell .bestRate,
+  .articleCopy > span,
+  .blogArticleHero > div:first-child > span,
+  .backLink,
+  .legalSection a,
+  .exchangeReviewFilters span,
+  .exchangeReviewIntro span,
+  .securityOverview .eyebrow,
+  .exchangePassportEyebrow,
+  .exchangePassportStatLabel,
+  .trustMore
+) {
+  color: #d9b65e !important;
+  -webkit-text-fill-color: #d9b65e !important;
+}
+
+body .appMonitoringGreen :is(
+  .loginButton,
+  .logoutButton,
+  .adBannerAction,
+  .submitButton,
+  .offerActions a,
+  .offerActions button,
+  .quickFilters button,
+  .quickExternalLink,
+  .quickIconAction,
+  .paymentSwitch button,
+  .directoryFilterTabs button,
+  .feedbackTabs button,
+  .feedbackPanel form > button,
+  .contactForm button,
+  .adminConsole button,
+  .adminInlineForm button,
+  .adminForm button,
+  .adminActionRow button,
+  .exchangeAddReview,
+  .exchangeFeedbackDetails summary,
+  .exchangeWebsiteLink,
+  .exchangePassportLinks a,
+  .safeDealSupport button,
+  .safeDealModes button,
+  .showMoreOffers,
+  .showAllCurrencies,
+  .mobileMenuButton,
+  .swapRound
+) {
+  background: linear-gradient(180deg, #f2d37a 0%, #c89939 100%) !important;
+  background-image: linear-gradient(180deg, #f2d37a 0%, #c89939 100%) !important;
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+  border-color: rgba(255, 236, 164, .42) !important;
+  box-shadow: 0 12px 30px rgba(171, 130, 43, .20) !important;
+}
+
+body .appMonitoringGreen :is(
+  .loginButton,
+  .logoutButton,
+  .adBannerAction,
+  .submitButton,
+  .offerActions a,
+  .offerActions button,
+  .quickFilters button,
+  .quickExternalLink,
+  .quickIconAction,
+  .paymentSwitch button,
+  .directoryFilterTabs button,
+  .feedbackTabs button,
+  .feedbackPanel form > button,
+  .contactForm button,
+  .adminConsole button,
+  .adminInlineForm button,
+  .adminForm button,
+  .adminActionRow button,
+  .exchangeAddReview,
+  .exchangeFeedbackDetails summary,
+  .exchangeWebsiteLink,
+  .exchangePassportLinks a,
+  .safeDealSupport button,
+  .safeDealModes button,
+  .showMoreOffers,
+  .showAllCurrencies,
+  .mobileMenuButton,
+  .swapRound
+):hover,
+body .appMonitoringGreen :is(
+  .quickFilters button[aria-pressed="true"],
+  .quickIconAction.active,
+  .paymentSwitch button[aria-pressed="true"],
+  .directoryFilterTabs button[aria-pressed="true"],
+  .feedbackTabs button.active,
+  .safeDealModes button[aria-pressed="true"]
+) {
+  background: linear-gradient(180deg, #ffe39a 0%, #d5a947 100%) !important;
+  background-image: linear-gradient(180deg, #ffe39a 0%, #d5a947 100%) !important;
+  color: #090908 !important;
+  -webkit-text-fill-color: #090908 !important;
+  border-color: rgba(255, 241, 185, .58) !important;
+  box-shadow: 0 14px 34px rgba(191, 151, 58, .26) !important;
+}
+
+body .appMonitoringGreen :is(
+  .amountField,
+  .amountField input,
+  .csTrigger,
+  .contentSearch,
+  .feedbackPanel input,
+  .feedbackPanel select,
+  .feedbackPanel textarea,
+  .contactForm input,
+  .contactForm textarea,
+  .loginForm input,
+  .adminConsole input,
+  .adminConsole textarea,
+  .adminConsole select,
+  .adminSearchForm input,
+  .adminFormGrid input,
+  .adminFormGrid textarea,
+  .adminFormGrid select,
+  .adminInlineForm input,
+  .adminInlineForm select,
+  .adminTable input,
+  .adminTable textarea,
+  .adminTable select
+) {
+  background: rgba(13, 13, 10, .74) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .24) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06) !important;
+}
+
+body .appMonitoringGreen :is(input, textarea)::placeholder {
+  color: rgba(232, 224, 201, .46) !important;
+  -webkit-text-fill-color: rgba(232, 224, 201, .46) !important;
+}
+
+body .appMonitoringGreen :is(.csDropdown, .mobileNav, .sideColumnTitle, .assetGroup h3) {
+  background: rgba(13, 13, 10, .96) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .20) !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, .36) !important;
+}
+
+body .appMonitoringGreen :is(.csOption, .assetItem strong, .mobileNav a, .mobileNav button) {
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+}
+
+body .appMonitoringGreen :is(.csOption:hover, .csOption--selected, .assetItem:hover, .favoritePairs button:hover, .directoryRow:hover, .articleRow:hover, .exchangeCards > a:hover, .offerRow:hover) {
+  background: rgba(212, 173, 82, .14) !important;
+  box-shadow: inset 3px 0 0 #d4ad52 !important;
+}
+
+.csDropdown--monitoringGreen {
+  background: rgba(13, 13, 10, .96) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .20) !important;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, .36) !important;
+}
+
+.csDropdown--monitoringGreen .csOption {
+  background: transparent !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+}
+
+.csDropdown--monitoringGreen .csOption:hover,
+.csDropdown--monitoringGreen .csOption--selected {
+  background: rgba(212, 173, 82, .14) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  box-shadow: inset 3px 0 0 #d4ad52 !important;
+}
+
+body .appMonitoringGreen :is(.assetItem.selected, .favoritePairs button.selected, .exchangeStatusPill.active, .workspaceLive i, .realtimeToggle.active i, .processingCell i, .safeDealReasons li::before) {
+  background: #d4ad52 !important;
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+  box-shadow: inset 0 0 0 1px rgba(255, 244, 196, .28) !important;
+}
+
+body .appMonitoringGreen :is(.adBannerMark, .adBannerMedia, .logoMark, .exchangeLogoBox, .directoryName > i, .wikiGroupTitle > span, .avatarLetter) {
+  background: linear-gradient(180deg, #f2d37a, #b98b2f) !important;
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+  border-color: rgba(255, 239, 178, .34) !important;
+}
+
+body .appMonitoringGreen :is(.logo, .brandText, .footerBrand) {
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+}
+
+body .appMonitoringGreen :is(.logo strong, .footerBrand .logo strong, .brandText span:last-child, .logo span:last-child) {
+  background: rgba(212, 173, 82, .18) !important;
+  color: #f6d782 !important;
+  -webkit-text-fill-color: #f6d782 !important;
+  border-color: rgba(212, 173, 82, .34) !important;
+}
+
+body .appMonitoringGreen .currencyIcon {
+  background: transparent !important;
+  color: inherit !important;
+  -webkit-text-fill-color: currentColor !important;
+}
+
+body .appMonitoringGreen .siteFooter,
+body .appMonitoringGreen.siteFooter {
+  background: rgba(8, 9, 8, .96) !important;
+  color: #fff8e8 !important;
+  border-top-color: rgba(221, 184, 91, .20) !important;
+}
+
+body .appMonitoringGreen .footerSocials a {
+  background: rgba(212, 173, 82, .18) !important;
+  color: #f6d782 !important;
+  -webkit-text-fill-color: #f6d782 !important;
+  border: 1px solid rgba(221, 184, 91, .28) !important;
+}
+
+body .appMonitoringGreen .footerSocials a:hover {
+  background: linear-gradient(180deg, #f2d37a, #b98b2f) !important;
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+}
+
+body .appMonitoringGreen .safeDealChecklist button {
+  background: rgba(255, 255, 255, .055) !important;
+  color: rgba(232, 224, 201, .78) !important;
+  -webkit-text-fill-color: rgba(232, 224, 201, .78) !important;
+  border-color: rgba(221, 184, 91, .18) !important;
+}
+
+body .appMonitoringGreen .safeDealChecklist button:hover,
+body .appMonitoringGreen .safeDealChecklist button.checked {
+  background: rgba(212, 173, 82, .14) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .32) !important;
+}
+
+body .appMonitoringGreen .safeDealChecklist button > span {
+  background: rgba(212, 173, 82, .14) !important;
+  color: #d9b65e !important;
+  -webkit-text-fill-color: #d9b65e !important;
+  border-color: rgba(221, 184, 91, .30) !important;
+}
+
+body .appMonitoringGreen .safeDealChecklist button.checked > span {
+  background: #d4ad52 !important;
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+  border-color: rgba(255, 244, 196, .42) !important;
+}
+
+/* --- 33. High contrast polish for gold controls --- */
+body .appMonitoringGreen :is(.routePanel, .widgetFilters, .locationSummary) {
+  background: rgba(13, 13, 10, .74) !important;
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, .055), rgba(255, 255, 255, .02)) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .24) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06) !important;
+}
+
+body .appMonitoringGreen .locationSummary strong {
+  color: #f6d782 !important;
+  -webkit-text-fill-color: #f6d782 !important;
+}
+
+body .appMonitoringGreen .locationSummary span,
+body .appMonitoringGreen .routePanel span,
+body .appMonitoringGreen .widgetNotice {
+  color: rgba(255, 248, 232, .82) !important;
+  -webkit-text-fill-color: rgba(255, 248, 232, .82) !important;
+}
+
+body .appMonitoringGreen :is(
+  .loginButton,
+  .logoutButton,
+  .adBannerAction,
+  .submitButton,
+  .offerActions a,
+  .offerActions button,
+  .quickFilters button,
+  .quickFilters a,
+  .quickExternalLink,
+  .quickIconAction,
+  .paymentSwitch button,
+  .directoryFilterTabs button,
+  .feedbackTabs button,
+  .feedbackPanel form > button,
+  .contactForm button,
+  .exchangeAddReview,
+  .exchangeFeedbackDetails summary,
+  .exchangeWebsiteLink,
+  .exchangePassportLinks a,
+  .safeDealSupport button,
+  .safeDealModes button,
+  .showMoreOffers,
+  .showAllCurrencies,
+  .mobileMenuButton,
+  .swapRound
+) :is(span, small, strong, b, i, svg) {
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+}
+
+body .appMonitoringGreen :is(.paymentSwitch button small, .quickFilters button small, .directoryFilterTabs button small) {
+  background: rgba(17, 16, 11, .13) !important;
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+  border-color: rgba(17, 16, 11, .16) !important;
+}
+
+body .appMonitoringGreen :is(.paymentSwitch button[aria-pressed="true"] small, .quickFilters button[aria-pressed="true"] small, .directoryFilterTabs button[aria-pressed="true"] small) {
+  background: rgba(17, 16, 11, .18) !important;
+  color: #090908 !important;
+  -webkit-text-fill-color: #090908 !important;
+}
+
+body .appMonitoringGreen :is(.contentSearch, .adminSearchForm input) {
+  background: rgba(13, 13, 10, .74) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .24) !important;
+}
+
+body .appMonitoringGreen .contentSearch :is(input, span, svg) {
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+}
+
+body .appMonitoringGreen :is(.directorySummary > div, .metricGrid > div, .liveProfileGrid > div) {
+  background:
+    radial-gradient(circle at 14% 0%, rgba(255, 244, 196, .075), transparent 30%),
+    linear-gradient(145deg, rgba(54, 53, 41, .78) 0%, rgba(22, 23, 17, .92) 100%) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .20) !important;
+  box-shadow: 0 18px 46px rgba(0, 0, 0, .22) !important;
+}
+
+body .appMonitoringGreen :is(.directorySummary, .metricGrid, .liveProfileGrid) strong {
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+}
+
+body .appMonitoringGreen :is(.directorySummary, .metricGrid, .liveProfileGrid) span {
+  color: rgba(255, 248, 232, .72) !important;
+  -webkit-text-fill-color: rgba(255, 248, 232, .72) !important;
+}
+
+body .appMonitoringGreen :is(.assetItem.selected, .favoritePairs button.selected) :is(strong, small, span, em, svg) {
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+}
+
+/* --- 34. Profile typography and layout polish --- */
+:root {
+  --font-sans: "Manrope", "Segoe UI", Arial, sans-serif;
+}
+
+html,
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-sans), "Segoe UI", Arial, sans-serif !important;
+  letter-spacing: 0 !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+body {
+  font-weight: 500;
+}
+
+body .appMonitoringGreen .adBanner.adBanner--image.adBanner--site-top {
+  display: block !important;
+  width: fit-content !important;
+  max-width: min(1180px, calc(100% - 24px)) !important;
+  margin: 8px auto 10px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(221, 184, 91, .20) !important;
+  border-radius: 10px !important;
+  background: rgba(12, 12, 9, .78) !important;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, .30) !important;
+}
+
+body .appMonitoringGreen .adBanner.adBanner--image.adBanner--site-top .adBannerImageFrame {
+  display: block !important;
+  width: fit-content !important;
+  height: 110px !important;
+  max-width: none !important;
+  overflow: hidden !important;
+  border-radius: inherit !important;
+  background: #000000 !important;
+}
+
+body .appMonitoringGreen .adBanner.adBanner--image.adBanner--site-top img {
+  display: block !important;
+  width: auto !important;
+  height: 100% !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center !important;
+}
+
+body .appMonitoringGreen .docsPage.exchangeProfilePage,
+body .appMonitoringGreen .exchangeProfilePage {
+  width: min(1180px, calc(100% - 24px)) !important;
+  max-width: 1180px !important;
+  margin: 0 auto !important;
+  padding: 18px 0 56px !important;
+  display: grid !important;
+  grid-template-columns: minmax(280px, 320px) minmax(0, 1fr) !important;
+  gap: 18px !important;
+  align-items: start !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeProfileMain {
+  grid-column: 2 !important;
+  display: grid !important;
+  gap: 16px !important;
+  align-content: start !important;
+  min-width: 0 !important;
+  width: 100% !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassport,
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewBoard,
+body .appMonitoringGreen .exchangeProfilePage .securityOverview {
+  min-width: 0 !important;
+  margin: 0 !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassport {
+  grid-column: 1 !important;
+  grid-row: 1 !important;
+  position: sticky !important;
+  top: 76px !important;
+  padding: 16px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewBoard,
+body .appMonitoringGreen .exchangeProfilePage .securityOverview {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  padding: 16px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportHead {
+  grid-template-columns: 54px minmax(0, 1fr) !important;
+  gap: 12px !important;
+  align-items: start !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeProfilePreview {
+  width: 54px !important;
+  min-height: 54px !important;
+  height: 54px !important;
+  border-radius: 12px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .previewTop,
+body .appMonitoringGreen .exchangeProfilePage .previewGrid,
+body .appMonitoringGreen .exchangeProfilePage .previewCard {
+  display: none !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .previewBrand {
+  position: static !important;
+  width: 100% !important;
+  height: 100% !important;
+  border-radius: 12px !important;
+  box-shadow: none !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportTopline {
+  display: grid !important;
+  gap: 6px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportTopline h1,
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewIntro h2,
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewToolbar h3,
+body .appMonitoringGreen .exchangeProfilePage .securityOverview h2 {
+  margin: 0 !important;
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  letter-spacing: 0 !important;
+  line-height: 1.22 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportTopline h1 {
+  font-size: 18px !important;
+  font-weight: 800 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewIntro h2 {
+  font-size: 22px !important;
+  font-weight: 800 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportTopline a {
+  width: fit-content !important;
+  max-width: 100% !important;
+  overflow-wrap: anywhere !important;
+  white-space: normal !important;
+  font-size: 11px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportLinks {
+  display: grid !important;
+  gap: 8px !important;
+  margin: 10px 0 8px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportLinks a,
+body .appMonitoringGreen .exchangeProfilePage .exchangeFeedbackDetails summary {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 36px !important;
+  justify-content: center !important;
+  padding: 8px 10px !important;
+  border-radius: 9px !important;
+  white-space: normal !important;
+  text-align: center !important;
+  line-height: 1.2 !important;
+  text-decoration: none !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeDepositBadge,
+body .appMonitoringGreen .exchangeProfilePage .exchangeProfileSummary > div,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats div {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeProfileSummary {
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+  margin-top: 12px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats {
+  grid-template-columns: 1fr !important;
+  gap: 8px !important;
+  margin-top: 12px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  background-image: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats dl {
+  gap: 6px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats div {
+  grid-template-columns: minmax(88px, .75fr) minmax(0, 1fr) !important;
+  gap: 8px !important;
+  min-height: 30px !important;
+  padding: 7px 8px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats dt,
+body .appMonitoringGreen .exchangeProfilePage .exchangePassportStats dd,
+body .appMonitoringGreen .exchangeProfilePage .exchangeProfileSummary strong,
+body .appMonitoringGreen .exchangeProfilePage .exchangeProfileSummary small,
+body .appMonitoringGreen .exchangeProfilePage .exchangeDepositBadge strong,
+body .appMonitoringGreen .exchangeProfilePage .exchangeDepositBadge span {
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+  line-height: 1.25 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewIntro {
+  display: grid !important;
+  gap: 8px !important;
+  margin: 0 0 14px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewIntro p {
+  max-width: 100% !important;
+  margin: 0 !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewToolbar {
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto !important;
+  gap: 12px !important;
+  align-items: end !important;
+  margin-bottom: 12px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewToolbar > div:first-child {
+  min-width: 0 !important;
+  display: grid !important;
+  gap: 8px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeAddReview {
+  width: auto !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  min-height: 36px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  margin: 0 !important;
+  padding: 8px 14px !important;
+  border-radius: 9px !important;
+  white-space: nowrap !important;
+  text-align: center !important;
+  text-decoration: none !important;
+  line-height: 1.2 !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeAddReview::before {
+  flex: 0 0 auto !important;
+  margin-right: 0 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewFilters {
+  display: flex !important;
+  justify-content: flex-end !important;
+  max-width: 100% !important;
+  overflow-x: auto !important;
+  padding-bottom: 2px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeReviewSurface {
+  min-width: 0 !important;
+  padding: 14px !important;
+  overflow: hidden !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .externalReviewList article {
+  min-width: 0 !important;
+  padding: 14px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .externalReviewList article > div {
+  min-width: 0 !important;
+  display: grid !important;
+  grid-template-columns: minmax(0, 1fr) auto auto !important;
+  gap: 8px !important;
+  align-items: center !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .externalReviewList strong,
+body .appMonitoringGreen .exchangeProfilePage .externalReviewList p {
+  min-width: 0 !important;
+  overflow-wrap: anywhere !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .externalReviewList time {
+  margin-left: 0 !important;
+  white-space: nowrap !important;
+  font-size: 11px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityOverviewGrid {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  gap: 10px !important;
+}
+
+@media (max-width: 900px) {
+  body .appMonitoringGreen .adBanner.adBanner--image.adBanner--site-top .adBannerImageFrame {
+    height: 85px !important;
+  }
+
+  body .appMonitoringGreen .docsPage.exchangeProfilePage,
+  body .appMonitoringGreen .exchangeProfilePage {
+    width: min(720px, calc(100% - 20px)) !important;
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+    padding-top: 12px !important;
+  }
+
+  body .appMonitoringGreen .exchangeProfilePage .exchangeProfileMain,
+  body .appMonitoringGreen .exchangeProfilePage .exchangePassport {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  body .appMonitoringGreen .exchangeProfilePage .exchangePassport {
+    position: static !important;
+  }
+}
+
+@media (max-width: 640px) {
+  body .appMonitoringGreen .adBanner.adBanner--image.adBanner--site-top .adBannerImageFrame {
+    height: 70px !important;
+  }
+
+  body .appMonitoringGreen .exchangeProfilePage .exchangeReviewToolbar,
+  body .appMonitoringGreen .exchangeProfilePage .externalReviewList article > div {
+    grid-template-columns: 1fr !important;
+  }
+
+  body .appMonitoringGreen .exchangeProfilePage .exchangeAddReview {
+    width: 100% !important;
+    white-space: normal !important;
+  }
+
+  body .appMonitoringGreen .exchangeProfilePage .exchangeReviewFilters {
+    justify-content: flex-start !important;
+  }
+
+  body .appMonitoringGreen .exchangeProfilePage .externalReviewList time {
+    white-space: normal !important;
+  }
+
+  body .appMonitoringGreen .exchangeProfilePage .securityOverviewGrid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- 35. Profile review list spacing --- */
+body .appMonitoringGreen .exchangeProfilePage .externalReviewList {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 10px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .externalReviewList article > div {
+  grid-template-columns: minmax(120px, 1fr) auto auto !important;
+}
+
+@media (max-width: 640px) {
+  body .appMonitoringGreen .exchangeProfilePage .externalReviewList article > div {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* --- 36. White text on gold actions --- */
+body .appMonitoringGreen :is(
+  .loginButton,
+  .logoutButton,
+  .adBannerAction,
+  .submitButton,
+  .offerActions a,
+  .offerActions button,
+  .quickFilters button,
+  .quickFilters a,
+  .quickExternalLink,
+  .quickIconAction,
+  .paymentSwitch button,
+  .directoryFilterTabs button,
+  .feedbackTabs button,
+  .feedbackTabs button.active,
+  .feedbackPanel form > button,
+  .contactForm button,
+  .exchangeAddReview,
+  .exchangeFeedbackDetails summary,
+  .exchangeWebsiteLink,
+  .exchangePassportLinks a,
+  .safeDealSupport button,
+  .safeDealModes button,
+  .showMoreOffers,
+  .showAllCurrencies,
+  .mobileMenuButton,
+  .swapRound
+) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .42) !important;
+}
+
+body .appMonitoringGreen :is(
+  .loginButton,
+  .logoutButton,
+  .adBannerAction,
+  .submitButton,
+  .offerActions a,
+  .offerActions button,
+  .quickFilters button,
+  .quickFilters a,
+  .quickExternalLink,
+  .quickIconAction,
+  .paymentSwitch button,
+  .directoryFilterTabs button,
+  .feedbackTabs button,
+  .feedbackTabs button.active,
+  .feedbackPanel form > button,
+  .contactForm button,
+  .exchangeAddReview,
+  .exchangeFeedbackDetails summary,
+  .exchangeWebsiteLink,
+  .exchangePassportLinks a,
+  .safeDealSupport button,
+  .safeDealModes button,
+  .showMoreOffers,
+  .showAllCurrencies,
+  .mobileMenuButton,
+  .swapRound
+) :is(span, small, strong, b, i, svg) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .42) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeAddReview::before {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: none !important;
+}
+
+body .appMonitoringGreen :is(.paymentSwitch button small, .quickFilters button small, .directoryFilterTabs button small) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+/* --- 37. Keep hovered gold actions white --- */
+body .appMonitoringGreen :is(
+  .loginButton,
+  .logoutButton,
+  .adBannerAction,
+  .submitButton,
+  .offerActions a,
+  .offerActions button,
+  .quickFilters button,
+  .quickFilters a,
+  .quickExternalLink,
+  .quickIconAction,
+  .paymentSwitch button,
+  .directoryFilterTabs button,
+  .feedbackTabs button,
+  .feedbackTabs button.active,
+  .feedbackPanel form > button,
+  .contactForm button,
+  .exchangeAddReview,
+  .exchangeFeedbackDetails summary,
+  .exchangeWebsiteLink,
+  .exchangePassportLinks a,
+  .safeDealSupport button,
+  .safeDealModes button,
+  .showMoreOffers,
+  .showAllCurrencies,
+  .mobileMenuButton,
+  .swapRound
+):is(:hover, :focus-visible, :active) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .42) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .exchangeFeedbackDetails[open] summary,
+body .appMonitoringGreen .exchangeProfilePage .exchangeFeedbackDetails[open] summary:hover,
+body .appMonitoringGreen .exchangeProfilePage .exchangeFeedbackDetails[open] summary:focus-visible {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, .42) !important;
+}
+
+/* --- 38. Contacts anti-glare dark form --- */
+body .appMonitoringGreen .contactsPage,
+body .appMonitoringGreen .contactsHeader,
+body .appMonitoringGreen .contactsLayout {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body .appMonitoringGreen .contactsHeader h1,
+body .appMonitoringGreen .contactsHeader .lead,
+body .appMonitoringGreen .contactsHeader .headerBadge {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body .appMonitoringGreen .contactsSidebarSection {
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255, 244, 196, .08), transparent 34%),
+    radial-gradient(circle at 88% 12%, rgba(212, 173, 82, .11), transparent 30%),
+    linear-gradient(145deg, rgba(48, 47, 36, .90) 0%, rgba(16, 17, 13, .96) 100%) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .24) !important;
+  box-shadow: 0 22px 58px rgba(0, 0, 0, .32) !important;
+}
+
+body .appMonitoringGreen .contactsSidebarSection .sectionTitle h2 {
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+}
+
+body .appMonitoringGreen .contactsSidebarSection .sectionTitle p {
+  color: rgba(255, 248, 232, .78) !important;
+  -webkit-text-fill-color: rgba(255, 248, 232, .78) !important;
+}
+
+body .appMonitoringGreen .contactsSidebarSection > a {
+  background: rgba(13, 13, 10, .56) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .30) !important;
+}
+
+body .appMonitoringGreen .contactsSidebarSection > a:hover {
+  background: rgba(212, 173, 82, .16) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(246, 215, 130, .44) !important;
+}
+
+body .appMonitoringGreen .contactsFormSection {
+  background:
+    radial-gradient(circle at 14% 0%, rgba(255, 244, 196, .08), transparent 32%),
+    radial-gradient(circle at 92% 8%, rgba(212, 173, 82, .12), transparent 26%),
+    linear-gradient(145deg, rgba(48, 47, 36, .92) 0%, rgba(16, 17, 13, .96) 100%) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(221, 184, 91, .28) !important;
+  box-shadow: 0 26px 72px rgba(0, 0, 0, .36) !important;
+}
+
+body .appMonitoringGreen .contactsFormSection :is(.eyebrow, h2, p, .publicLead, .fieldLabel, label) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body .appMonitoringGreen .contactsFormSection .eyebrow {
+  color: #f6d782 !important;
+  -webkit-text-fill-color: #f6d782 !important;
+}
+
+body .appMonitoringGreen .contactsFormSection .publicLead,
+body .appMonitoringGreen .contactsFormSection p {
+  color: rgba(255, 255, 255, .84) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .84) !important;
+}
+
+body .appMonitoringGreen .contactsFormSection :is(.textInput, .textareaInput, .customSelectComponent .csTrigger) {
+  background: rgba(9, 10, 8, .78) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(221, 184, 91, .32) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08) !important;
+}
+
+body .appMonitoringGreen .contactsFormSection :is(.textInput, .textareaInput)::placeholder {
+  color: rgba(255, 255, 255, .70) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .70) !important;
+  opacity: 1 !important;
+}
+
+body .appMonitoringGreen .contactsFormSection .inputIcon,
+body .appMonitoringGreen .contactsFormSection .csChevron {
+  color: rgba(255, 255, 255, .86) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, .86) !important;
+}
+
+body .appMonitoringGreen .contactsFormSection :is(.textInput, .textareaInput):focus,
+body .appMonitoringGreen .contactsFormSection .customSelectComponent:focus-within .csTrigger {
+  border-color: rgba(246, 215, 130, .72) !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .10),
+    0 0 0 3px rgba(212, 173, 82, .18) !important;
+}
+
+body .appMonitoringGreen .contactsFormSection .contactsSocialLinks {
+  border-top-color: rgba(221, 184, 91, .22) !important;
+}
+
+body .appMonitoringGreen .contactsFormSection .contactsSocialLink {
+  background: rgba(9, 10, 8, .72) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border: 1px solid rgba(221, 184, 91, .28) !important;
+  border-radius: 999px !important;
+  padding: 8px 12px !important;
+}
+
+body .appMonitoringGreen .contactsFormSection .contactsSocialLink :is(svg, span, strong) {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body .appMonitoringGreen .contactsFormSection .errorAlert,
+body .appMonitoringGreen .contactsFormSection .successAlert {
+  background: rgba(9, 10, 8, .78) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+  border-color: rgba(221, 184, 91, .32) !important;
+}
+
+/* --- 40. Admin dark gold surface cleanup --- */
+body .appMonitoringGreen .adminConsole .adminMetrics {
+  background: rgba(9, 10, 7, .78) !important;
+  border: 1px solid rgba(221, 184, 91, .14) !important;
+  border-radius: 10px !important;
+  padding: 8px !important;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, .28) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+body .appMonitoringGreen .adminConsole .adminMetrics > div,
+body .appMonitoringGreen .adminConsole .adminSectionNav,
+body .appMonitoringGreen .adminConsole .adminSectionNav a,
+body .appMonitoringGreen .adminConsole .adminPanel,
+body .appMonitoringGreen .adminConsole .adminDetails,
+body .appMonitoringGreen .adminConsole .adminEditCard,
+body .appMonitoringGreen .adminConsole .adminTable,
+body .appMonitoringGreen .adminConsole .adminTable > div,
+body .appMonitoringGreen .adminConsole .adminTable > form,
+body .appMonitoringGreen .adminConsole .adminAuditList article,
+body .appMonitoringGreen .adminConsole .bannerSlotList article,
+body .appMonitoringGreen .adminConsole .adminTokenList form {
+  background:
+    radial-gradient(circle at 86% 0%, rgba(222, 184, 75, .14), transparent 28%),
+    linear-gradient(145deg, rgba(54, 53, 41, .78), rgba(16, 17, 12, .94)) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .22) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 16px 42px rgba(0, 0, 0, .22) !important;
+}
+
+body .appMonitoringGreen .adminConsole .adminSectionNav {
+  border-radius: 10px !important;
+  padding: 8px !important;
+}
+
+body .appMonitoringGreen .adminConsole .adminSectionNav a {
+  min-height: 34px !important;
+  border-radius: 8px !important;
+  background: rgba(11, 12, 9, .74) !important;
+  box-shadow: none !important;
+}
+
+body .appMonitoringGreen .adminConsole .adminSectionNav a.active,
+body .appMonitoringGreen .adminConsole .adminSectionNav a:hover {
+  background: linear-gradient(180deg, #e9c96f 0%, #b98b2f 100%) !important;
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+  border-color: rgba(255, 236, 164, .55) !important;
+}
+
+body .appMonitoringGreen .adminConsole .adminSectionNav a.active :is(span, strong),
+body .appMonitoringGreen .adminConsole .adminSectionNav a:hover :is(span, strong) {
+  color: #11100b !important;
+  -webkit-text-fill-color: #11100b !important;
+}
+
+body .appMonitoringGreen .adminConsole .adminSectionNav strong,
+body .appMonitoringGreen .adminConsole .adminMetrics strong {
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+
+body .appMonitoringGreen .adminConsole .adminSectionNav strong {
+  background: rgba(221, 184, 91, .18) !important;
+  border: 1px solid rgba(221, 184, 91, .24) !important;
+}
+
+body .appMonitoringGreen .adminConsole :is(.dashboardTitle p, .panelHeader p, .publicLead, .adminMetrics span, .adminEditCard small, .adminEditCard p, .adminTable span, .adminTable small, .adminAuditList span, .adminAuditList small, .adminAuditList time, .bannerSlotList small, .bannerSlotList code) {
+  color: rgba(255, 248, 232, .74) !important;
+  -webkit-text-fill-color: rgba(255, 248, 232, .74) !important;
+}
+
+body .appMonitoringGreen .adminConsole .eyebrow {
+  color: #d9b65e !important;
+  -webkit-text-fill-color: #d9b65e !important;
+}
+
+body .appMonitoringGreen .adminConsole :is(input, textarea, select, .adminSearchForm input) {
+  background: rgba(8, 9, 7, .82) !important;
+  color: #fff8e8 !important;
+  -webkit-text-fill-color: #fff8e8 !important;
+  border-color: rgba(221, 184, 91, .28) !important;
+}
+
+body .appMonitoringGreen .adminConsole :is(input, textarea)::placeholder {
+  color: rgba(255, 248, 232, .46) !important;
+  -webkit-text-fill-color: rgba(255, 248, 232, .46) !important;
+}
+
+body .appMonitoringGreen .adminConsole .adBanner {
+  background: rgba(10, 12, 8, .82) !important;
+  border-color: rgba(221, 184, 91, .22) !important;
+}
+
+@media (max-width: 760px) {
+  body .appMonitoringGreen .adminConsole .adminMetrics {
+    position: static !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+/* --- 39. Clear security score meaning --- */
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard {
+  align-content: start !important;
+  gap: 9px !important;
+  padding: 14px !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreTop {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr) !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreTop strong {
+  display: inline-flex !important;
+  align-items: baseline !important;
+  gap: 4px !important;
+  color: #fff !important;
+  font-size: 30px !important;
+  line-height: 1 !important;
+  letter-spacing: 0 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreTop strong span {
+  color: rgba(255, 255, 255, .72) !important;
+  font-size: 11px !important;
+  font-weight: 800 !important;
+  white-space: nowrap !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreTop b {
+  min-width: 0 !important;
+  color: #fff !important;
+  font-size: 14px !important;
+  line-height: 1.15 !important;
+  overflow-wrap: anywhere !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreMeter {
+  height: 7px !important;
+  overflow: hidden !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, .16) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreMeter i {
+  display: block !important;
+  height: 100% !important;
+  border-radius: inherit !important;
+  background: linear-gradient(90deg, #d7aa38, #fff1a8) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard span,
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard small {
+  color: rgba(255, 255, 255, .84) !important;
+  font-size: 12px !important;
+  line-height: 1.35 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard > span {
+  font-weight: 800 !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard small {
+  display: block !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard.excellent,
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard.good {
+  background: linear-gradient(135deg, rgba(30, 118, 78, .92), rgba(40, 50, 27, .96)) !important;
+  border-color: rgba(76, 202, 126, .38) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard.watch {
+  background: linear-gradient(135deg, rgba(132, 96, 22, .96), rgba(49, 43, 21, .96)) !important;
+  border-color: rgba(222, 184, 75, .42) !important;
+}
+
+body .appMonitoringGreen .exchangeProfilePage .securityScoreCard.risk {
+  background: linear-gradient(135deg, rgba(122, 38, 42, .96), rgba(47, 31, 24, .96)) !important;
+  border-color: rgba(235, 109, 109, .42) !important;
+}
+
+@media (max-width: 640px) {
+  body .appMonitoringGreen .exchangeProfilePage .securityScoreTop {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
   }
 }

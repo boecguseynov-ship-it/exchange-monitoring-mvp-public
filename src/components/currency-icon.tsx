@@ -11,9 +11,9 @@ const networkSuffixes = {
   AVALANCHE: "Avalanche",
   POLYGON: "Polygon",
   AVAXC: "Avalanche",
-  TRC20: "TRC20",
-  ERC20: "ERC20",
-  BEP20: "BEP20",
+  TRC20: "TRC-20",
+  ERC20: "ERC-20",
+  BEP20: "BEP-20",
   BEP2: "BEP2",
   NEAR: "NEAR Protocol",
   OMNI: "Omni",
@@ -26,14 +26,29 @@ const networkSuffixes = {
 const aliases: Record<string, string> = {
   XBT: "BTC",
   WBTC: "BTC",
+  USDTBEP: "USDT",
   USDTBEP20: "USDT",
+  USDTTRC: "USDT",
   USDTTRC20: "USDT",
+  USDTERC: "USDT",
   USDTERC20: "USDT",
   USDTAVAXC: "USDT",
+  USDCBEP: "USDC",
   USDCBEP20: "USDC",
+  USDCTRC: "USDC",
   USDCTRC20: "USDC",
+  USDCERC: "USDC",
   USDCERC20: "USDC",
   USDCAVAXC: "USDC"
+};
+
+const networkOverrides: Record<string, string> = {
+  USDTBEP: "BEP-20",
+  USDTTRC: "TRC-20",
+  USDTERC: "ERC-20",
+  USDCBEP: "BEP-20",
+  USDCTRC: "TRC-20",
+  USDCERC: "ERC-20"
 };
 
 const icons: Record<string, { symbol: string; bg: string; fg?: string; ring?: string; variant?: "usdt" | "usdc" | "eth" }> = {
@@ -82,11 +97,12 @@ export function currencyDisplayMeta(code: string, name?: string) {
   const fromParentheses = name?.match(/\(([A-Z0-9]{2,12})\)/)?.[1];
   const base = aliases[direct] ?? aliases[stripped] ?? (icons[stripped] ? stripped : fromParentheses ?? stripped);
   const displayCode = base.length > 6 ? base.slice(0, 6) : base;
+  const network = networkOverrides[normalized] ?? (suffix ? networkSuffixes[suffix] : undefined);
 
   return {
     baseCode: icons[base] ? base : displayCode,
     displayCode,
-    network: suffix ? networkSuffixes[suffix] : undefined
+    network
   };
 }
 

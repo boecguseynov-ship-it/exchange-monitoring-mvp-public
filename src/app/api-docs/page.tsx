@@ -1,12 +1,12 @@
 import { AppShell } from "@/components/app-shell";
 
 export const metadata = {
-  title: "API — RateScope"
+  title: "API — monik exchange"
 };
 
 const endpoints = [
   { method: "GET", path: "/api/v1/assets", text: "Список валют и сетей" },
-  { method: "GET", path: "/live-offers?from=RUB&to=USDTTRC20&amount=111", text: "Публичные предложения обмена" },
+  { method: "GET", path: "/live-offers?from=RUB&to=USDTTRC20&amount=100000", text: "Публичные предложения обмена" },
   { method: "GET", path: "/api/v1/insights", text: "Рынок, отзывы и статус мониторинга" },
   { method: "POST", path: "/api/v1/safe-deal-ai", text: "Локальное объяснение SafeDeal" }
 ];
@@ -16,7 +16,7 @@ export default function ApiDocsPage() {
     <AppShell footer>
       <section className="docsPage">
         <span className="eyebrow">API</span>
-        <h1>Документация RateScope API</h1>
+        <h1>Документация monik exchange API</h1>
         <p className="docsLead">
           Публичные endpoints для витрины мониторинга. Ответы возвращаются в JSON и не требуют авторизации.
         </p>
@@ -35,7 +35,7 @@ export default function ApiDocsPage() {
             <h2>Запрос предложений</h2>
             <p>Используйте коды валют из `/api/v1/assets`.</p>
           </div>
-          <pre>{`fetch("/live-offers?from=RUB&to=USDTTRC20&amount=111")
+          <pre>{`fetch("/live-offers?from=RUB&to=USDTTRC20&amount=100000")
   .then((response) => response.json())
   .then((payload) => console.log(payload.data));`}</pre>
         </div>

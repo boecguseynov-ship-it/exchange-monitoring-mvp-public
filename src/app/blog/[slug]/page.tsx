@@ -2,33 +2,55 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
-import { blogArticles } from "@/features/public-content/content";
+import { loadBlogArticle, loadBlogArticles } from "@/lib/blog-content";
+import { formatArticleBody } from "@/lib/formatter";
 
 type BlogArticlePageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return blogArticles.map((article) => ({ slug: article.id }));
+export const dynamic = "force-dynamic";
+
+export async function generateStaticParams() {
+  const articles = await loadBlogArticles();
+  return articles.map((article) => ({ slug: article.id }));
 }
 
 export async function generateMetadata({ params }: BlogArticlePageProps) {
   const { slug } = await params;
-  const article = blogArticles.find((item) => item.id === slug);
-  return { title: article ? `${article.title} — RateScope` : "Блог — RateScope" };
+  const article = await loadBlogArticle(slug);
+  if (!article) return { title: "Блог — monik exchange" };
+
+  const title = article.seoTitle?.trim() || `${article.title} — monik exchange`;
+  const description = article.seoDescription?.trim() || article.excerpt;
+  const ogTitle = article.ogTitle?.trim() || title;
+  const ogDescription = article.ogDescription?.trim() || description;
+  const images = article.ogImage?.trim() ? [article.ogImage.trim()] : undefined;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: ogTitle,
+      description: ogDescription,
+      type: "article",
+      images
+    },
+    twitter: {
+      card: images ? "summary_large_image" : "summary",
+      title: ogTitle,
+      description: ogDescription,
+      images
+    }
+  };
 }
 
 export default async function BlogArticlePage({ params }: BlogArticlePageProps) {
   const { slug } = await params;
-  const article = blogArticles.find((item) => item.id === slug);
+  const article = await loadBlogArticle(slug);
   if (!article) notFound();
 
-  const paragraphs = [
-    article.excerpt,
-    "Перед обменом сравните не только верхний курс, но и лимиты, резерв, сеть перевода, свежесть обновления и публичную историю обменного пункта.",
-    "Если курс отличается от рынка слишком резко, проверьте домен, условия заявки и возможные комиссии. Для крупной суммы разумно начать с меньшего тестового перевода.",
-    "RateScope помогает быстро отсеять рискованные варианты, но финальные условия всегда подтверждайте на сайте выбранного обменника до оплаты."
-  ];
+  const formattedHtml = formatArticleBody(article.body ?? article.excerpt);
 
   return (
     <AppShell footer>
@@ -45,9 +67,7 @@ export default async function BlogArticlePage({ params }: BlogArticlePageProps) 
             <span>{article.symbol}</span>
           </div>
         </header>
-        <div className="blogArticleBody">
-          {paragraphs.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
-        </div>
+        <div className="blogArticleBody" dangerouslySetInnerHTML={{ __html: formattedHtml }} />
       </article>
     </AppShell>
   );

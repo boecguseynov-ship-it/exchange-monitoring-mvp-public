@@ -1,13 +1,16 @@
-import { ExchangeStatus, ModerationStatus, Prisma } from "@prisma/client";
+import { ExchangeStatus, ModerationStatus, Prisma, PublishStatus } from "@prisma/client";
 import { prisma } from "@/lib/db/prisma";
-import { getBestChangeClient } from "./client";
-import { loadLocalAssets, loadLocalOffers } from "./local";
+import { getBestChangeClient, hasBestChangeApiConfig } from "./client";
+import { loadLocalAssets, loadLocalOffers, localCurrencies, localPairRate } from "./local";
 import {
   findCurrency,
   normalizeBestChangeAssets,
   normalizeBestChangeDirectory,
   normalizeBestChangeOffers,
-  type LocalExchangeReviewMatch
+  sanitizeDomain,
+  type LocalExchangeReviewMatch,
+  type NormalizedAsset,
+  type NormalizedOffer
 } from "./normalize";
 import type {
   BestChangeChanger,
@@ -21,6 +24,8 @@ type BestChangeClient = {
   getRates(fromId: number, toId: number): Promise<BestChangeRate[]>;
 };
 
+const REVIEW_SOURCE_LABEL = "monik.exchange";
+
 const defaultPublicAssets = [
   { code: "RUB", name: "Russian Ruble", kind: "FIAT", networks: [] },
   { code: "USDTTRC20", name: "Tether USD TRC20", kind: "CRYPTO", networks: [{ code: "TRC20" }] },
@@ -30,9 +35,11 @@ const defaultPublicAssets = [
   { code: "ETHERC20", name: "Ethereum ERC20", kind: "CRYPTO", networks: [{ code: "ERC20" }] }
 ] satisfies Awaited<ReturnType<typeof normalizeBestChangeAssets>>;
 
+type PublicAsset = NormalizedAsset;
+
 function publicTimeoutMs(envName: string, fallback: number) {
   const value = Number(process.env[envName] ?? fallback);
-  return Number.isFinite(value) ? Math.min(5_000, Math.max(500, value)) : fallback;
+  return Number.isFinite(value) ? Math.min(12_000, Math.max(500, value)) : fallback;
 }
 
 async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, message: string) {
@@ -50,12 +57,43 @@ async function withTimeout<T>(promise: Promise<T>, timeoutMs: number, message: s
 }
 
 export function mergePublicOffers(
-  liveOffers: Awaited<ReturnType<typeof normalizeBestChangeOffers>>,
-  localOffers: Awaited<ReturnType<typeof normalizeBestChangeOffers>>
+  liveOffers: NormalizedOffer[],
+  localOffers: NormalizedOffer[]
 ) {
-  return [...liveOffers, ...localOffers]
+  const byExchange = new Map<string, NormalizedOffer>();
+
+  const normalizeIdentity = (value: string | null | undefined) =>
+    (value ?? "").trim().toLowerCase().replace(/^https?:\/\//, "").replace(/^www\./, "").replace(/[^a-z0-9а-яё]+/gi, "");
+
+  const exchangeKey = (offer: NormalizedOffer) => {
+    const nameKey = normalizeIdentity(offer.exchange.name);
+    const domainKey = normalizeIdentity(sanitizeDomain(offer.exchange.url));
+    const slugKey = normalizeIdentity(offer.exchange.slug);
+    return nameKey || domainKey || slugKey;
+  };
+
+  const offerPriority = (offer: NormalizedOffer) => {
+    const profileScore = offer.exchange.isDemo ? 0 : 1;
+    const reviewScore = offer.exchange.reviews > 0 ? 1 : 0;
+    const ratingScore = offer.exchange.rating === null ? 0 : 1;
+    return profileScore * 100 + reviewScore * 10 + ratingScore;
+  };
+
+  for (const offer of [...liveOffers, ...localOffers]) {
+    const key = exchangeKey(offer);
+    const existing = byExchange.get(key);
+    if (
+      !existing ||
+      offerPriority(offer) > offerPriority(existing) ||
+      (offerPriority(offer) === offerPriority(existing) && offer.receivedAmount > existing.receivedAmount)
+    ) {
+      byExchange.set(key, offer);
+    }
+  }
+
+  return [...byExchange.values()]
     .sort((left, right) => right.receivedAmount - left.receivedAmount)
-    .slice(0, 200);
+    .slice(0, 700);
 }
 
 export type LiveExchangeProfileFact = {
@@ -65,10 +103,35 @@ export type LiveExchangeProfileFact = {
 
 export type LiveExchangeExternalReview = {
   id: string;
+  sourceId: string;
   author: string;
   body: string;
   kindLabel: string;
+  rating: number | null;
   createdAtLabel: string | null;
+  createdAt: string | null;
+};
+
+export type LiveExchangeLocalReview = {
+  id: string;
+  author: string;
+  body: string;
+  rating: number;
+  createdAt: Date;
+  source: string;
+};
+
+type LocalExchangeRecord = {
+  id: string;
+  slug: string;
+  name: string;
+  domain: string;
+  description: string;
+  insuranceDeposit: string | null;
+  noAml: boolean;
+  status: ExchangeStatus;
+  verifiedAt: Date | null;
+  createdAt: Date;
 };
 
 export type LiveExchangeProfile = {
@@ -76,16 +139,20 @@ export type LiveExchangeProfile = {
   name: string;
   description: string;
   domain: string | null;
+  url?: string | null;
   rating: number | null;
   reviews: number;
   activeClaims: number | null;
   closedClaims: number | null;
   reserve: number;
   reserveLabel: string;
+  insuranceDeposit: string | null;
+  noAml: boolean;
   verified: boolean;
   status: string;
   languages: string[];
   facts: LiveExchangeProfileFact[];
+  localReviews: LiveExchangeLocalReview[];
   externalReviews: LiveExchangeExternalReview[];
 };
 
@@ -100,7 +167,23 @@ function extractHost(value: string | null | undefined) {
 }
 
 function normalizeName(value: string) {
-  return value.toLowerCase().replace(/[^a-z0-9]+/g, "").trim();
+  return value.toLowerCase().replace(/[^a-z0-9а-яё]+/gi, "").trim();
+}
+
+function changerUrls(changer: BestChangeChanger) {
+  return [
+    ...Object.values(changer.pages),
+    ...Object.values(changer.urls)
+  ].filter((value): value is string => Boolean(value));
+}
+
+function changerHosts(changer: BestChangeChanger) {
+  return Array.from(new Set(changerUrls(changer).map(extractHost).filter((host): host is string => Boolean(host))));
+}
+
+function matchesLocalExchange(changer: BestChangeChanger, exchange: LocalExchangeRecord) {
+  const exchangeDomain = exchange.domain.toLowerCase();
+  return changerHosts(changer).includes(exchangeDomain) || normalizeName(changer.name) === normalizeName(exchange.name);
 }
 
 function normalizeFeedbackSlug(value: string) {
@@ -128,8 +211,179 @@ function reviewBucket(changer: BestChangeChanger, key: string) {
   return Number.isFinite(number) ? number : null;
 }
 
+function providerReviewCount(changer: BestChangeChanger, providerCount?: number | null) {
+  if (providerCount !== null && providerCount !== undefined) return providerCount;
+  return ["positive", "neutral", "negative", "claim"].reduce((sum, key) => {
+    const value = Number(changer.reviews?.[key]);
+    return sum + (Number.isFinite(value) ? Math.max(0, value) : 0);
+  }, 0);
+}
+
+function providerRating(changer: BestChangeChanger) {
+  const rawRating = (changer as BestChangeChanger & { rating?: number | string }).rating;
+  if (rawRating !== undefined && rawRating !== null) {
+    const rating = Number(rawRating);
+    if (Number.isFinite(rating) && rating >= 1) return Math.max(1, Math.min(5, rating));
+  }
+
+  const positive = Number(changer.reviews?.positive ?? 0);
+  const neutral = Number(changer.reviews?.neutral ?? 0);
+  const negative = Number(changer.reviews?.negative ?? 0);
+  const claim = Number(changer.reviews?.claim ?? 0);
+  const total = positive + neutral + negative + claim;
+  if (!Number.isFinite(total) || total <= 0) return null;
+
+  return Math.max(1, Math.min(5, ((positive * 5) + (neutral * 3) + ((negative + claim) * 1)) / total));
+}
+
 function databaseContentEnabled() {
-  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+  return process.env.RATESCOPE_USE_DB_CONTENT !== "0";
+}
+
+function numberFromMoneyText(value: string | null | undefined) {
+  if (!value) return null;
+  const normalized = value.replace(/\s+/g, "").replace(/[^\d.,]/g, "").replace(",", ".");
+  const number = Number(normalized);
+  return Number.isFinite(number) && number > 0 ? number : null;
+}
+
+function fieldFromAdminDescription(description: string, labels: string[]) {
+  const lines = description
+    .split(/\r?\n|[;|]/)
+    .map((line) => line.replace(/\s+/g, " ").trim())
+    .filter(Boolean);
+
+  for (const label of labels) {
+    const escaped = label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const pattern = new RegExp(`^${escaped}\\s*[:=-]\\s*(.+)$`, "i");
+    const match = lines.map((line) => line.match(pattern)).find(Boolean);
+    if (match?.[1]?.trim()) return match[1].trim();
+  }
+
+  return null;
+}
+
+function fallbackExchangeReserve(exchange: Pick<LocalExchangeRecord, "description" | "insuranceDeposit">, index: number) {
+  return numberFromMoneyText(exchange.insuranceDeposit)
+    ?? numberFromMoneyText(exchange.description)
+    ?? 50_000 + (index % 80) * 12_500;
+}
+
+function fallbackRateJitter(index: number) {
+  return 1 - Math.min(index, 199) * 0.00035;
+}
+
+async function loadDatabaseFallbackOffers({
+  fromCode,
+  toCode,
+  amount
+}: {
+  fromCode: string;
+  toCode: string;
+  amount: number;
+}) {
+  if (!databaseContentEnabled()) return [];
+
+  const from = findCurrency(localCurrencies, fromCode);
+  const to = findCurrency(localCurrencies, toCode);
+  if (!from || !to) return [];
+
+  const exchanges = await prisma.exchange.findMany({
+    where: {
+      status: ExchangeStatus.ACTIVE,
+      isDemo: false
+    },
+    orderBy: [
+      { verifiedAt: "desc" },
+      { name: "asc" }
+    ],
+    take: 700,
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      domain: true,
+      description: true,
+      insuranceDeposit: true,
+      noAml: true,
+      status: true,
+      verifiedAt: true,
+      createdAt: true
+    }
+  });
+  if (!exchanges.length) return [];
+
+  const reviewAggregate = await prisma.review.groupBy({
+    by: ["exchangeId"],
+    where: {
+      status: ModerationStatus.PUBLISHED,
+      exchangeId: { in: exchanges.map((exchange) => exchange.id) }
+    },
+    _avg: { rating: true },
+    _count: { rating: true }
+  });
+  const reviewsByExchangeId = new Map(reviewAggregate.map((item) => [item.exchangeId, item]));
+  const pairMultiplier = from.id === to.id ? 0.998 : localPairRate(from, to);
+  const now = new Date().toISOString();
+
+  const changers: BestChangeChanger[] = exchanges.map((exchange, index) => {
+    const reserve = fallbackExchangeReserve(exchange, index);
+    const aggregate = reviewsByExchangeId.get(exchange.id);
+
+    return {
+      id: 10_000 + index,
+      name: exchange.name,
+      urls: { ru: `https://${exchange.domain}` },
+      pages: { ru: `/exchangers/${exchange.slug}` },
+      reserve,
+      active: exchange.status === ExchangeStatus.ACTIVE,
+      langs: ["ru"],
+      reviews: {
+        positive: aggregate?._count.rating ?? 0,
+        neutral: 0,
+        negative: 0,
+        claim: 0,
+        closed: 0
+      }
+    };
+  });
+
+  const localReviews = new Map<number, LocalExchangeReviewMatch>(
+    exchanges.map((exchange, index) => {
+      const aggregate = reviewsByExchangeId.get(exchange.id);
+
+      return [10_000 + index, {
+        slug: exchange.slug,
+        noAml: exchange.noAml,
+        rating: aggregate?._avg.rating ?? null,
+        reviews: aggregate?._count.rating ?? 0
+      }];
+    })
+  );
+
+  const rates: BestChangeRate[] = changers.map((changer, index) => ({
+    changerId: changer.id,
+    fromId: from.id,
+    toId: to.id,
+    in: 1,
+    out: pairMultiplier * fallbackRateJitter(index),
+    minAmount: 1,
+    maxAmount: Number.MAX_SAFE_INTEGER,
+    reserve: changer.reserve,
+    marks: [],
+    kyc: exchanges[index]?.noAml ? "NONE" : "OPTIONAL",
+    processing: index % 5 === 0 ? "SEMI_AUTOMATIC" : "AUTOMATIC",
+    updatedAt: now
+  }));
+
+  return normalizeBestChangeOffers({
+    amount,
+    from,
+    to,
+    changers,
+    rates,
+    localReviews
+  });
 }
 
 function decodeHtml(value: string) {
@@ -218,8 +472,43 @@ function reviewKindLabel(lines: string[]) {
 }
 
 export function parseProviderReviews(html: string, limit = 10): LiveExchangeExternalReview[] {
-  const lines = linesFromHtml(html);
   const reviews: LiveExchangeExternalReview[] = [];
+  const blockPattern = /<div\s+id=["']review(\d+)["']\s+class=["']review_block_(\d+)["'][^>]*>([\s\S]*?)(?=<div\s+id=["']review\d+["']\s+class=["']review_block_|<div\s+class=["']paginator|$)/gi;
+  let match: RegExpExecArray | null;
+
+  while ((match = blockPattern.exec(html)) && reviews.length < limit) {
+    const [, sourceId, type, block] = match;
+    const headerHtml = block.match(/<div\s+class=["']review_header["'][^>]*>([\s\S]*?)<div\s+class=["']copy_icon/i)?.[1] ?? block;
+    const author = textFromHtml(headerHtml.match(/<td[^>]*class=["']nospace["'][^>]*>([\s\S]*?)<\/td>/i)?.[1] ?? "") || "Пользователь";
+    const body = textFromHtml(block.match(/<div\s+class=["']review_text["'][^>]*>([\s\S]*?)<\/div>/i)?.[1] ?? "");
+    if (body.length < 5) continue;
+
+    const ratingStars = (headerHtml.match(/class=["']userstar["']/g) ?? []).length;
+    const timestamp = Number(headerHtml.match(/data-time=["'](\d+)["']/i)?.[1]);
+    const createdAt = Number.isFinite(timestamp) && timestamp > 0 ? new Date(timestamp * 1000).toISOString() : null;
+    const createdAtLabel = headerHtml.match(/<span\s+class=["']localdate["'][^>]*\btitle=["']([^"']+)["']/i)?.[1]
+      ?? textFromHtml(headerHtml.match(/<span\s+class=["']localdate["'][^>]*>([\s\S]*?)<\/span>/i)?.[1] ?? "")
+      ?? null;
+    const kindLabel = type === "2" ? "Финансовая претензия" : type === "3" ? "Нейтральный отзыв" : "Положительный отзыв";
+
+    reviews.push({
+      id: `bestchange-${sourceId}`,
+      sourceId,
+      author,
+      body,
+      kindLabel,
+      rating: ratingStars > 0 ? Math.max(1, Math.min(5, ratingStars)) : null,
+      createdAtLabel,
+      createdAt
+    });
+  }
+
+  return reviews.length ? reviews : parseProviderReviewsLegacy(html, limit) as LiveExchangeExternalReview[];
+}
+
+function parseProviderReviewsLegacy(html: string, limit = 10): unknown[] {
+  const lines = linesFromHtml(html);
+  const reviews: unknown[] = [];
 
   for (let index = 0; index < lines.length && reviews.length < limit; index += 1) {
     const header = parseReviewHeader(lines[index]);
@@ -258,7 +547,7 @@ export function parseProviderReviews(html: string, limit = 10): LiveExchangeExte
 
 function parseNumberText(value: string | undefined) {
   if (!value) return null;
-  const number = Number(value.replace(/[^\d]/g, ""));
+  const number = Number(textFromHtml(value).replace(/[^\d]/g, ""));
   return Number.isFinite(number) ? number : null;
 }
 
@@ -297,6 +586,7 @@ async function loadProviderProfileFacts(changer: BestChangeChanger) {
   if (!url) return null;
 
   try {
+    const reviewsUrl = `${url}${url.includes("?") ? "&" : "?"}filter=reviews`;
     const response = await fetch(url, {
       headers: { accept: "text/html,application/xhtml+xml" },
       next: { revalidate: 300 },
@@ -305,11 +595,19 @@ async function loadProviderProfileFacts(changer: BestChangeChanger) {
     if (!response.ok) return null;
 
     const html = new TextDecoder("windows-1251").decode(await response.arrayBuffer());
+    const reviewHtml = await fetch(reviewsUrl, {
+      headers: { accept: "text/html,application/xhtml+xml" },
+      next: { revalidate: 300 },
+      signal: AbortSignal.timeout(8_000)
+    })
+      .then((reviewsResponse) => reviewsResponse.ok ? reviewsResponse.arrayBuffer() : Promise.resolve(null))
+      .then((buffer) => buffer ? new TextDecoder("windows-1251").decode(buffer) : html)
+      .catch(() => html);
     const title = textFromHtml(html.match(/<title>([\s\S]*?)<\/title>/i)?.[1] ?? "");
     const domain = title.match(/\(([^()]+)\)\s*$/)?.[1] ?? null;
     const facts = [
       { label: "Возраст" },
-      { label: "На Best" + "Change", displayLabel: "На RateScope" },
+      { label: "На Best" + "Change", displayLabel: "На monik exchange" },
       { label: "Страна" },
       { label: "AML-прозрачность" },
       { label: "Всего валют" },
@@ -327,7 +625,7 @@ async function loadProviderProfileFacts(changer: BestChangeChanger) {
       closedClaims: parseNumberText(html.match(/id=["']count_cancel["'][\s\S]*?>([\s\S]*?)<\/span>/i)?.[1]),
       reserveLabel: parseFact(html, "Сумма резервов")?.value,
       facts,
-      externalReviews: parseProviderReviews(html)
+      externalReviews: parseProviderReviews(reviewHtml, 40)
     };
   } catch {
     return null;
@@ -338,15 +636,14 @@ async function loadLocalReviewMatches(changers: BestChangeChanger[]) {
   if (!databaseContentEnabled()) return new Map<number, LocalExchangeReviewMatch>();
 
   const changersWithHosts = changers.map((changer) => {
-    const pageUrl = changer.pages.ru ?? Object.values(changer.pages)[0] ?? changer.urls.ru ?? Object.values(changer.urls)[0] ?? null;
     return {
       changer,
-      host: extractHost(pageUrl),
+      hosts: changerHosts(changer),
       normalizedName: normalizeName(changer.name)
     };
   });
 
-  const domains = Array.from(new Set(changersWithHosts.map((item) => item.host).filter((host): host is string => Boolean(host))));
+  const domains = Array.from(new Set(changersWithHosts.flatMap((item) => item.hosts)));
   const names = Array.from(new Set(changersWithHosts.map((item) => item.changer.name).filter(Boolean)));
 
   const exchanges = await prisma.exchange.findMany({
@@ -361,7 +658,9 @@ async function loadLocalReviewMatches(changers: BestChangeChanger[]) {
       id: true,
       slug: true,
       name: true,
-      domain: true
+      domain: true,
+      insuranceDeposit: true,
+      noAml: true
     }
   });
 
@@ -379,16 +678,23 @@ async function loadLocalReviewMatches(changers: BestChangeChanger[]) {
 
   const aggregateMap = new Map(reviewAggregate.map((item) => [item.exchangeId, item]));
   const exchangeByDomain = new Map(exchanges.map((exchange) => [exchange.domain.toLowerCase(), exchange]));
-  const exchangeByName = new Map(exchanges.map((exchange) => [normalizeName(exchange.name), exchange]));
+  const exchangeByName = new Map(
+    exchanges
+      .map((exchange) => [normalizeName(exchange.name), exchange] as const)
+      .filter(([name]) => name.length > 0)
+  );
 
   return new Map<number, LocalExchangeReviewMatch>(
-    changersWithHosts.flatMap(({ changer, host, normalizedName }) => {
-      const exchange = (host ? exchangeByDomain.get(host) : undefined) ?? exchangeByName.get(normalizedName);
+    changersWithHosts.flatMap(({ changer, hosts, normalizedName }) => {
+      const exchange = hosts.map((host) => exchangeByDomain.get(host)).find(Boolean)
+        ?? (normalizedName ? exchangeByName.get(normalizedName) : undefined);
       if (!exchange) return [];
 
       const aggregate = aggregateMap.get(exchange.id);
       return [[changer.id, {
         slug: exchange.slug,
+        domain: exchange.domain,
+        noAml: exchange.noAml,
         rating: aggregate?._avg.rating ?? null,
         reviews: aggregate?._count.rating ?? 0
       }]];
@@ -396,19 +702,59 @@ async function loadLocalReviewMatches(changers: BestChangeChanger[]) {
   );
 }
 
-async function loadLocalReviewStatsBySlug(slug: string) {
-  if (!databaseContentEnabled()) return { rating: null, reviews: 0 };
+async function loadLocalExchangeBySlug(slug: string): Promise<LocalExchangeRecord | null> {
+  if (!databaseContentEnabled()) return null;
 
-  const exchange = await prisma.exchange.findUnique({
+  return prisma.exchange.findUnique({
     where: { slug },
-    select: { id: true }
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      domain: true,
+      description: true,
+      insuranceDeposit: true,
+      noAml: true,
+      status: true,
+      verifiedAt: true,
+      createdAt: true
+    }
   });
+}
 
-  if (!exchange) return { rating: null, reviews: 0 };
+async function loadLocalExchangeForChanger(changer: BestChangeChanger): Promise<LocalExchangeRecord | null> {
+  if (!databaseContentEnabled()) return null;
+
+  const hosts = changerHosts(changer);
+  return prisma.exchange.findFirst({
+    where: {
+      status: ExchangeStatus.ACTIVE,
+      OR: [
+        hosts.length ? { domain: { in: hosts } } : undefined,
+        { name: changer.name }
+      ].filter(Boolean) as Array<Record<string, unknown>>
+    },
+    select: {
+      id: true,
+      slug: true,
+      name: true,
+      domain: true,
+      description: true,
+      insuranceDeposit: true,
+      noAml: true,
+      status: true,
+      verifiedAt: true,
+      createdAt: true
+    }
+  });
+}
+
+async function loadLocalReviewStatsByExchangeId(exchangeId: string | null | undefined) {
+  if (!databaseContentEnabled() || !exchangeId) return { rating: null, reviews: 0 };
 
   const aggregate = await prisma.review.aggregate({
     where: {
-      exchangeId: exchange.id,
+      exchangeId,
       status: ModerationStatus.PUBLISHED
     },
     _avg: { rating: true },
@@ -419,6 +765,112 @@ async function loadLocalReviewStatsBySlug(slug: string) {
     rating: aggregate._avg.rating ?? null,
     reviews: aggregate._count.rating
   };
+}
+
+function providerReviewRating(review: LiveExchangeExternalReview) {
+  if (review.rating && Number.isFinite(review.rating)) return Math.max(1, Math.min(5, Math.round(review.rating)));
+  return review.kindLabel.toLowerCase().includes("претенз") ? 1 : 5;
+}
+
+async function syncProviderReviewsByExchangeId(exchangeId: string | null | undefined, reviews: LiveExchangeExternalReview[]) {
+  if (!databaseContentEnabled() || !exchangeId || !reviews.length) return;
+
+  await Promise.all(reviews.map((review) => {
+    const createdAt = review.createdAt ? new Date(review.createdAt) : new Date();
+    const data = {
+      exchangeId,
+      source: "BESTCHANGE",
+      sourceId: review.sourceId,
+      authorName: review.author,
+      rating: providerReviewRating(review),
+      body: review.body,
+      status: ModerationStatus.PUBLISHED,
+      transactionRef: null,
+      createdAt: Number.isNaN(createdAt.getTime()) ? new Date() : createdAt
+    };
+
+    return prisma.review.upsert({
+      where: { source_sourceId: { source: "BESTCHANGE", sourceId: review.sourceId } },
+      update: {
+        authorName: data.authorName,
+        rating: data.rating,
+        body: data.body,
+        status: data.status
+      },
+      create: data
+    }).catch(() => null);
+  }));
+}
+
+function formatImportedReviewDate(value: Date) {
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric"
+  }).format(value);
+}
+
+async function loadImportedProviderReviewsByExchangeId(exchangeId: string | null | undefined): Promise<LiveExchangeExternalReview[]> {
+  if (!databaseContentEnabled() || !exchangeId) return [];
+
+  const reviews = await prisma.review.findMany({
+    where: {
+      status: ModerationStatus.PUBLISHED,
+      exchangeId,
+      source: "BESTCHANGE"
+    },
+    orderBy: { createdAt: "desc" },
+    take: 40,
+    select: {
+      id: true,
+      sourceId: true,
+      authorName: true,
+      rating: true,
+      body: true,
+      createdAt: true
+    }
+  }).catch(() => []);
+
+  return reviews.map((review) => ({
+    id: `bestchange-db-${review.sourceId ?? review.id}`,
+    sourceId: review.sourceId ?? review.id,
+    author: review.authorName ?? REVIEW_SOURCE_LABEL,
+    body: review.body,
+    kindLabel: REVIEW_SOURCE_LABEL,
+    rating: review.rating,
+    createdAtLabel: formatImportedReviewDate(review.createdAt),
+    createdAt: review.createdAt.toISOString()
+  }));
+}
+
+async function loadLocalPublishedReviewsByExchangeId(exchangeId: string | null | undefined): Promise<LiveExchangeLocalReview[]> {
+  if (!databaseContentEnabled() || !exchangeId) return [];
+
+  return prisma.review.findMany({
+    where: {
+      status: ModerationStatus.PUBLISHED,
+      exchangeId,
+      source: "RATESCOPE"
+    },
+    orderBy: { createdAt: "desc" },
+    take: 20,
+    select: {
+      id: true,
+      rating: true,
+      body: true,
+      createdAt: true,
+      authorName: true,
+      source: true,
+      user: { select: { name: true } }
+    }
+  }).then((reviews) => reviews.map((review) => ({
+    id: review.id,
+    author: review.user?.name ?? "Пользователь monik exchange",
+    body: review.body,
+    rating: review.rating,
+    createdAt: review.createdAt,
+    source: review.source
+  })));
 }
 
 export class BestChangePairError extends Error {
@@ -437,16 +889,56 @@ export async function loadLiveAssets(
   return normalizeBestChangeAssets(await client.getCurrencies());
 }
 
+async function mergeManagedAssets(assets: PublicAsset[]) {
+  const merged = new Map(assets.map((asset) => [asset.code, asset]));
+  for (const asset of defaultPublicAssets) {
+    if (!merged.has(asset.code)) merged.set(asset.code, asset);
+  }
+
+  if (!databaseContentEnabled()) return [...merged.values()];
+
+  const managedAssets = await prisma.managedAsset.findMany({
+    orderBy: [{ position: "asc" }, { code: "asc" }]
+  }).catch(() => []);
+  if (!managedAssets.length) return [...merged.values()];
+
+  for (const asset of managedAssets) {
+    if (asset.status !== PublishStatus.PUBLISHED) {
+      merged.delete(asset.code);
+      continue;
+    }
+
+    merged.set(asset.code, {
+      code: asset.code,
+      name: asset.name,
+      kind: asset.category.toUpperCase(),
+      networks: asset.network ? [{ code: asset.network }] : []
+    });
+  }
+
+  return [...merged.values()];
+}
+
 export async function loadPublicAssets(
   client: BestChangeClient = getBestChangeClient()
 ) {
+  if (!hasBestChangeApiConfig()) {
+    const localAssets = await loadLocalAssets();
+    return {
+      data: await mergeManagedAssets(localAssets.length ? localAssets : defaultPublicAssets),
+      live: false,
+      provider: localAssets.length ? "LocalFeeds" : "StaticFallback",
+      error: "BESTCHANGE_API_URL не задан, используются локальные направления"
+    };
+  }
+
   try {
     return {
-      data: await withTimeout(
+      data: await mergeManagedAssets(await withTimeout(
         loadLiveAssets(client),
         publicTimeoutMs("RATESCOPE_ASSETS_FAST_TIMEOUT_MS", 1_500),
         "Онлайн-провайдер валют не ответил вовремя"
-      ),
+      )),
       live: true,
       provider: "LiveRateProvider"
     };
@@ -454,14 +946,14 @@ export async function loadPublicAssets(
     try {
       const localAssets = await loadLocalAssets();
       return {
-        data: localAssets.length ? localAssets : defaultPublicAssets,
+        data: await mergeManagedAssets(localAssets.length ? localAssets : defaultPublicAssets),
         live: false,
         provider: localAssets.length ? "LocalFeeds" : "StaticFallback",
         error: error instanceof Error ? error.message : "Онлайн-провайдер валют недоступен"
       };
     } catch {
       return {
-        data: defaultPublicAssets,
+        data: await mergeManagedAssets(defaultPublicAssets),
         live: false,
         provider: "StaticFallback",
         error: error instanceof Error ? error.message : "Онлайн-провайдер валют недоступен"
@@ -482,12 +974,98 @@ export async function loadLiveExchangeProfile(
   slug: string,
   client: BestChangeClient = getBestChangeClient()
 ): Promise<LiveExchangeProfile | null> {
-  const changers = await client.getChangers();
-  const changer = changers.find((item) => String(item.id) === slug);
-  if (!changer) return null;
+  const [localExchangeBySlug, changers] = await Promise.all([
+    loadLocalExchangeBySlug(slug),
+    client.getChangers().catch(() => [] as BestChangeChanger[])
+  ]);
+  const changer = changers.find((item) => String(item.id) === slug)
+    ?? (localExchangeBySlug ? changers.find((item) => matchesLocalExchange(item, localExchangeBySlug)) : undefined);
+  if (!changer) {
+    if (!localExchangeBySlug) return null;
+
+    const [localReviewStats, localReviews, importedProviderReviews] = await Promise.all([
+      loadLocalReviewStatsByExchangeId(localExchangeBySlug.id),
+      loadLocalPublishedReviewsByExchangeId(localExchangeBySlug.id),
+      loadImportedProviderReviewsByExchangeId(localExchangeBySlug.id)
+    ]);
+    const verified = localExchangeBySlug.status === ExchangeStatus.ACTIVE;
+    const localReserve = fallbackExchangeReserve(localExchangeBySlug, 0);
+    const reserveLabel = fieldFromAdminDescription(localExchangeBySlug.description, [
+      "Сумма резервов",
+      "Резерв",
+      "Reserve"
+    ]) ?? formatUsdReserve(localReserve);
+    const currencyCountLabel = fieldFromAdminDescription(localExchangeBySlug.description, [
+      "Всего валют",
+      "Валюты",
+      "Currencies"
+    ]) ?? "направления из фида";
+    const ratesCountLabel = fieldFromAdminDescription(localExchangeBySlug.description, [
+      "Курсов обмена",
+      "Курсы",
+      "Rates"
+    ]) ?? "ожидает фида";
+    const ageLabel = fieldFromAdminDescription(localExchangeBySlug.description, [
+      "Возраст",
+      "Возраст обменника",
+      "Age"
+    ]) ?? "новый профиль";
+    const listedLabel = fieldFromAdminDescription(localExchangeBySlug.description, [
+      "На monik exchange",
+      "На сайте",
+      "Listed"
+    ]) ?? new Intl.DateTimeFormat("ru-RU").format(localExchangeBySlug.createdAt);
+    const countryLabel = fieldFromAdminDescription(localExchangeBySlug.description, [
+      "Страна",
+      "Country"
+    ]) ?? "данные из админки";
+
+    return {
+      slug: localExchangeBySlug.slug,
+      name: localExchangeBySlug.name,
+      description: localExchangeBySlug.description,
+      domain: localExchangeBySlug.domain,
+      url: `https://${localExchangeBySlug.domain}`,
+      rating: localReviewStats.rating,
+      reviews: localReviewStats.reviews,
+      activeClaims: 0,
+      closedClaims: 0,
+      reserve: localReserve,
+      reserveLabel,
+      insuranceDeposit: localExchangeBySlug.insuranceDeposit,
+      noAml: localExchangeBySlug.noAml,
+      verified,
+      status: verified ? "Активен" : "Отключен",
+      languages: [],
+      facts: [
+        { label: "Возраст", value: ageLabel },
+        { label: "На monik exchange", value: listedLabel },
+        { label: "Страна", value: countryLabel },
+        { label: "AML-прозрачность", value: localExchangeBySlug.noAml ? "без AML" : "AML: низкий риск" },
+        { label: "Всего валют", value: currencyCountLabel },
+        { label: "Курсов обмена", value: ratesCountLabel },
+        { label: "Сумма резервов", value: reserveLabel },
+        { label: "Домен", value: localExchangeBySlug.domain }
+      ],
+      localReviews,
+      externalReviews: importedProviderReviews
+    };
+  }
+
+  const localExchange = localExchangeBySlug && matchesLocalExchange(changer, localExchangeBySlug)
+    ? localExchangeBySlug
+    : await loadLocalExchangeForChanger(changer);
 
   const providerFacts = await loadProviderProfileFacts(changer);
-  const localReviewStats = await loadLocalReviewStatsBySlug(slug);
+  await syncProviderReviewsByExchangeId(localExchange?.id, providerFacts?.externalReviews ?? []);
+  const [localReviewStats, localReviews, importedProviderReviews] = await Promise.all([
+    loadLocalReviewStatsByExchangeId(localExchange?.id),
+    loadLocalPublishedReviewsByExchangeId(localExchange?.id),
+    loadImportedProviderReviewsByExchangeId(localExchange?.id)
+  ]);
+  const externalReviews = providerFacts?.externalReviews?.length
+    ? providerFacts.externalReviews
+    : importedProviderReviews;
   const reserveLabel = providerFacts?.reserveLabel ?? formatUsdReserve(changer.reserve);
   const apiFacts = [
     { label: "Сумма резервов", value: reserveLabel },
@@ -497,23 +1075,34 @@ export async function loadLiveExchangeProfile(
   const facts = [...(providerFacts?.facts ?? []), ...apiFacts]
     .filter((fact) => fact.value.trim().length > 0)
     .filter((fact, index, list) => list.findIndex((item) => item.label === fact.label) === index);
+  const fallbackRating = providerRating(changer);
+  const profileReviews = Math.max(
+    localReviewStats.reviews,
+    localReviews.length,
+    externalReviews.length
+  );
+  const profileRating = localReviewStats.rating ?? fallbackRating;
 
   return {
-    slug: String(changer.id),
+    slug: localExchange?.slug ?? String(changer.id),
     name: changer.name,
     description: `${changer.active ? "Активен" : "Отключен"} · резерв ${reserveLabel}`,
-    domain: providerFacts?.domain ?? extractHost(changer.urls.ru ?? Object.values(changer.urls)[0]),
-    rating: localReviewStats.rating,
-    reviews: localReviewStats.reviews,
+    domain: sanitizeDomain(providerFacts?.domain ?? changer.urls.ru ?? Object.values(changer.urls)[0]),
+    url: changer.urls.ru ?? Object.values(changer.urls)[0] ?? null,
+    rating: profileRating,
+    reviews: profileReviews,
     activeClaims: providerFacts?.activeClaims ?? reviewBucket(changer, "claim"),
     closedClaims: providerFacts?.closedClaims ?? reviewBucket(changer, "closed"),
     reserve: changer.reserve,
     reserveLabel,
+    insuranceDeposit: localExchange?.insuranceDeposit ?? null,
+    noAml: localExchange?.noAml ?? false,
     verified: changer.active,
     status: changer.active ? "Активен" : "Отключен",
     languages: changer.langs,
     facts,
-    externalReviews: providerFacts?.externalReviews ?? []
+    localReviews,
+    externalReviews
   };
 }
 
@@ -521,8 +1110,6 @@ export async function ensureExchangeForFeedback(
   slug: string,
   client: BestChangeClient = getBestChangeClient()
 ) {
-  if (!databaseContentEnabled()) return null;
-
   const existingExchange = await prisma.exchange.findFirst({
     where: { slug, status: ExchangeStatus.ACTIVE }
   });
@@ -539,6 +1126,7 @@ export async function ensureExchangeForFeedback(
     description: liveExchange.description,
     supportEmail: feedbackExchangeSupportEmail(liveExchange.slug),
     termsUrl: null,
+    insuranceDeposit: liveExchange.insuranceDeposit,
     status: ExchangeStatus.ACTIVE,
     isDemo: false,
     verifiedAt: liveExchange.verified ? new Date() : null
@@ -570,6 +1158,39 @@ export async function ensureExchangeForFeedback(
   }
 }
 
+const genericCurrencyAliases: Record<string, string[]> = {
+  RUB: [
+    "CARDRUB",
+    "SBERRUB",
+    "SBPRUB",
+    "TCSBRUB",
+    "ACRUB",
+    "MIRCRUB",
+    "TBRUB",
+    "GPBRUB",
+    "PSBRUB",
+    "RFBRUB",
+    "RSHBRUB",
+    "ACCRUB",
+    "SBERQRUB",
+    "TCSBQRUB"
+  ]
+};
+
+function currencyCandidates(currencies: BestChangeCurrency[], code: string) {
+  const exact = findCurrency(currencies, code);
+  const aliases = genericCurrencyAliases[code.trim().toUpperCase()] ?? [];
+  const aliasCurrencies = aliases
+    .map((alias) => findCurrency(currencies, alias))
+    .filter((currency): currency is BestChangeCurrency => Boolean(currency));
+  const merged = new Map<number, BestChangeCurrency>();
+
+  if (exact) merged.set(exact.id, exact);
+  for (const currency of aliasCurrencies) merged.set(currency.id, currency);
+
+  return [...merged.values()];
+}
+
 export async function loadLiveOffers({
   fromCode,
   toCode,
@@ -582,17 +1203,23 @@ export async function loadLiveOffers({
   client?: BestChangeClient;
 }) {
   const currencies = await client.getCurrencies();
-  const from = findCurrency(currencies, fromCode);
-  const to = findCurrency(currencies, toCode);
-  if (!from || !to) throw new BestChangePairError(fromCode, toCode);
+  const fromCandidates = currencyCandidates(currencies, fromCode);
+  const toCandidates = currencyCandidates(currencies, toCode);
+  if (!fromCandidates.length || !toCandidates.length) throw new BestChangePairError(fromCode, toCode);
 
-  const [changers, rates] = await Promise.all([
-    client.getChangers(),
-    client.getRates(from.id, to.id)
-  ]);
+  const changers = await client.getChangers();
   const localReviews = await loadLocalReviewMatches(changers);
+  const pairOffers = await Promise.all(
+    fromCandidates.flatMap((from) =>
+      toCandidates
+        .map(async (to) => {
+          const rates = await client.getRates(from.id, to.id).catch(() => []);
+          return normalizeBestChangeOffers({ amount, from, to, changers, rates, localReviews });
+        })
+    )
+  );
 
-  return normalizeBestChangeOffers({ amount, from, to, changers, rates, localReviews });
+  return mergePublicOffers(pairOffers.flat(), []);
 }
 
 export async function loadPublicOffers({
@@ -607,28 +1234,46 @@ export async function loadPublicOffers({
   client?: BestChangeClient;
 }) {
   const localOffersPromise = loadLocalOffers({ fromCode, toCode, amount }).catch(() => []);
+  const databaseOffersPromise = loadDatabaseFallbackOffers({ fromCode, toCode, amount }).catch(() => []);
+
+  if (!hasBestChangeApiConfig()) {
+    const [databaseOffers, localOffers] = await Promise.all([databaseOffersPromise, localOffersPromise]);
+    const fallbackOffers = mergePublicOffers(databaseOffers, localOffers);
+    if (fallbackOffers.length) {
+      return {
+        data: fallbackOffers,
+        live: false,
+        provider: databaseOffers.length ? "DatabaseFallback" : "LocalFeeds",
+        error: "BESTCHANGE_API_URL is not configured, showing fallback exchange offers"
+      };
+    }
+  }
 
   try {
     const liveOffers = await withTimeout(
       loadLiveOffers({ fromCode, toCode, amount, client }),
-      publicTimeoutMs("RATESCOPE_OFFERS_FAST_TIMEOUT_MS", 2_200),
-      "Онлайн-провайдер предложений не ответил вовремя"
+      publicTimeoutMs("RATESCOPE_OFFERS_FAST_TIMEOUT_MS", 8_000),
+      "Live rate provider did not respond in time"
     );
-    const localOffers = await localOffersPromise;
+    const [databaseOffers, localOffers] = await Promise.all([databaseOffersPromise, localOffersPromise]);
+    const fallbackOffers = liveOffers.length < 10
+      ? mergePublicOffers(databaseOffers, localOffers)
+      : databaseOffers;
 
     return {
-      data: mergePublicOffers(liveOffers, localOffers),
+      data: mergePublicOffers(liveOffers, fallbackOffers),
       live: true,
-      provider: localOffers.length ? "LiveRateProvider+LocalFeeds" : "LiveRateProvider"
+      provider: fallbackOffers.length ? "LiveRateProvider+Fallback" : "LiveRateProvider"
     };
   } catch (error) {
-    const localOffers = await localOffersPromise;
-    if (localOffers.length) {
+    const [databaseOffers, localOffers] = await Promise.all([databaseOffersPromise, localOffersPromise]);
+    const fallbackOffers = mergePublicOffers(databaseOffers, localOffers);
+    if (fallbackOffers.length) {
       return {
-        data: localOffers.slice(0, 200),
+        data: fallbackOffers,
         live: false,
-        provider: "LocalFeeds",
-        error: error instanceof Error ? error.message : "Онлайн-провайдер предложений недоступен"
+        provider: databaseOffers.length ? "DatabaseFallback" : "LocalFeeds",
+        error: error instanceof Error ? error.message : "Live rate provider is unavailable"
       };
     }
 

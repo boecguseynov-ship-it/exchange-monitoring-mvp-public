@@ -12,26 +12,16 @@ export type PublicWikiEntry = {
 };
 
 function databaseContentEnabled() {
-  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+  return process.env.RATESCOPE_USE_DB_CONTENT !== "0";
 }
 
-async function hasWikiAnchorColumn() {
-  const result = await prisma.$queryRaw<{ exists: boolean }[]>`
-    SELECT EXISTS (
-      SELECT 1
-      FROM information_schema.columns
-      WHERE table_schema = 'public'
-        AND table_name = 'WikiEntry'
-        AND column_name = 'anchor'
-    ) AS "exists"
-  `;
-  return Boolean(result[0]?.exists);
+function publicText(value: string) {
+  return value.replace(/RateScope/g, "monik exchange");
 }
 
 export async function loadPublicWikiEntries(where: { groups?: readonly string[]; publishedOnly?: boolean } = {}) {
   if (!databaseContentEnabled()) return [];
 
-  const anchorAvailable = await hasWikiAnchorColumn();
   const groupWhere = where.groups?.length ? { group: { in: [...where.groups] } } : {};
   const statusWhere = where.publishedOnly ? { status: "PUBLISHED" as const } : {};
   const entries = await prisma.wikiEntry.findMany({
@@ -40,7 +30,7 @@ export async function loadPublicWikiEntries(where: { groups?: readonly string[];
       title: true,
       description: true,
       href: true,
-      ...(anchorAvailable ? { anchor: true } : {}),
+      anchor: true,
       group: true,
       icon: true,
       position: true,
@@ -51,6 +41,8 @@ export async function loadPublicWikiEntries(where: { groups?: readonly string[];
 
   return entries.map((entry) => ({
     ...entry,
-    anchor: "anchor" in entry ? entry.anchor : null
-  })) as PublicWikiEntry[];
+    title: publicText(entry.title),
+    description: publicText(entry.description),
+    group: publicText(entry.group)
+  }));
 }

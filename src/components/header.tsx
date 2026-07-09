@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
-import { signOut } from "next-auth/react";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { isNavigationItemActive, publicNavigation } from "@/features/public-content/content";
@@ -45,6 +44,10 @@ export function Header() {
 
   const accountHref = dashboardHref(sessionRole);
   const accountLabel = sessionRole ? "Кабинет" : "Войти";
+  const logout = async () => {
+    await fetch("/api/auth/logout", { method: "POST" });
+    window.location.href = "/";
+  };
 
   return (
     <header className="topbar">
@@ -59,7 +62,7 @@ export function Header() {
       <div className="headerActions">
         <Link className="loginButton" href={accountHref}>{accountLabel}</Link>
         {sessionRole && (
-          <button className="logoutButton" type="button" onClick={() => signOut({ callbackUrl: "/" })}>
+          <button className="logoutButton" type="button" onClick={logout}>
             Выйти
           </button>
         )}
@@ -86,7 +89,7 @@ export function Header() {
             </Link>
           ))}
           <Link href={accountHref} onClick={() => setMenuOpen(false)}>{accountLabel}</Link>
-          {sessionRole && <button type="button" onClick={() => signOut({ callbackUrl: "/" })}>Выйти</button>}
+          {sessionRole && <button type="button" onClick={logout}>Выйти</button>}
           <Link href="/api-docs" onClick={() => setMenuOpen(false)}>API</Link>
         </nav>
       )}

@@ -16,7 +16,7 @@ export async function GET() {
     latestReviews: reviews.latestReviews.map((review) => ({
       ...review,
       createdAt: review.createdAt.toISOString(),
-      user: { name: review.user?.name ?? "Пользователь RateScope" }
+      user: { name: review.user?.name ?? "Пользователь monik exchange" }
     })),
     reviewAverage: reviews.reviewAggregate._avg.rating,
     reviewCount: reviews.reviewAggregate._count.rating,

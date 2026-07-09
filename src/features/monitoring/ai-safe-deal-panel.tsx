@@ -19,6 +19,7 @@ import {
   type SafeDealProfile,
   type SafeDealRiskSeverity
 } from "./ai-safe-deal";
+import { currencyDisplayMeta } from "@/components/currency-icon";
 
 type AssistantMode = SafeDealProfile | "support";
 
@@ -49,10 +50,15 @@ const assistantModes: Array<{
   { mode: "support", label: "Если зависнет", icon: MessageSquareWarning }
 ];
 
+function formatCurrencyCode(code: string) {
+  const { displayCode, network } = currencyDisplayMeta(code);
+  return network ? `${displayCode} ${network}` : displayCode;
+}
+
 function formatDealAmount(value: number, code: string) {
   return `${value.toLocaleString("ru-RU", {
     maximumFractionDigits: value >= 100 ? 2 : 6
-  })} ${code}`;
+  })} ${formatCurrencyCode(code)}`;
 }
 
 function riskTone(score: number) {
@@ -214,7 +220,7 @@ export function AISafeDealPanel({
         });
         const payload = await response.json();
         if (!response.ok || !payload.ok) {
-          throw new Error(payload.error ?? "RateScope AI временно недоступен");
+          throw new Error(payload.error ?? "monik exchange AI временно недоступен");
         }
         const next = {
           key: rateScopeAiKey,
@@ -232,7 +238,7 @@ export function AISafeDealPanel({
           loading: false,
           content: "",
           provider: "",
-          error: error instanceof Error ? error.message : "RateScope AI временно недоступен"
+          error: error instanceof Error ? error.message : "monik exchange AI временно недоступен"
         };
         cache.set(rateScopeAiKey, next);
         setRateScopeAi(next);
@@ -318,7 +324,7 @@ export function AISafeDealPanel({
       {analysis && assistantMode !== "support" && (
         <div className="safeDealBody">
           <div className="safeDealVerdict">
-            <small>{formatDealAmount(amount, from)} → {to}</small>
+            <small>{formatDealAmount(amount, from)} → {formatCurrencyCode(to)}</small>
             <h3>{analysis.headline}</h3>
             <p>{analysis.summary}</p>
           </div>
@@ -354,11 +360,11 @@ export function AISafeDealPanel({
 
             <div className="safeDealDisclosureBody">
               <div className={rateScopeAi.content ? "safeDealAiAnswer ready" : "safeDealAiAnswer"}>
-                <span><Sparkles size={13} /> RateScope AI</span>
-                {rateScopeAi.loading && <p>RateScope готовит живое объяснение...</p>}
+                <span><Sparkles size={13} /> monik exchange AI</span>
+                {rateScopeAi.loading && <p>monik exchange готовит живое объяснение...</p>}
                 {!rateScopeAi.loading && rateScopeAi.content && <p>{rateScopeAi.content}</p>}
                 {!rateScopeAi.loading && !rateScopeAi.content && rateScopeAi.error && (
-                  <p>RateScope AI сейчас не ответил, ниже показан локальный анализ SafeDeal.</p>
+                  <p>monik exchange AI сейчас не ответил, ниже показан локальный анализ SafeDeal.</p>
                 )}
               </div>
 

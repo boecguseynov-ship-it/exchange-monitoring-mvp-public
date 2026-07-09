@@ -78,7 +78,7 @@ export async function SiteFooter() {
         <div className="footerBottom">
           <div className="footerBrand">
             <Logo />
-            <span>Знаем, где обменять. © 2026 RateScope</span>
+            <span>Знаем, где обменять. © 2026 monik exchange</span>
           </div>
           <nav aria-label="Документы">
             <Link href="/privacy">Политика конфиденциальности</Link>

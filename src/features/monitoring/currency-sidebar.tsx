@@ -35,7 +35,7 @@ const popularExactPriority = [
   "XRP"
 ];
 const basePriority = ["BTC", "ETH", "LTC", "XMR", "USDT", "DASH", "TON", "DOGE", "TRX", "BCH", "BNB", "ETC", "SOL", "XRP", "USDC", "ADA", "AAVE"];
-const networkPriority = ["TRC20", "BEP20", "ERC20", "TON", "Solana", "Polygon", "Arbitrum", "Avalanche", "NEAR Protocol", "Optimism", "Omni"];
+const networkPriority = ["TRC-20", "TRC20", "BEP-20", "BEP20", "ERC-20", "ERC20", "TON", "Solana", "Polygon", "Arbitrum", "Avalanche", "NEAR Protocol", "Optimism", "Omni"];
 const fiatPriority = ["RUB", "USD", "EUR", "UAH", "KZT", "TRY", "CNY", "GBP"];
 const collapsedBankPriority = ["сбер", "sber", "т-банк", "тинькофф", "t-bank", "tinkoff", "альфа", "alfa", "втб", "vtb", "райффайзен", "raiffeisen"];
 const collapsedPaymentPriority = ["perfect money", "payeer", "paypal", "payoneer", "paxum", "юмoney", "yoomoney", "qiwi"];
@@ -86,6 +86,10 @@ function cleanAssetName(asset: AssetOption) {
   const meta = currencyDisplayMeta(asset.code, asset.name);
   const unit = displayUnit(asset);
   
+  if (unit === "USDT" && meta.network) {
+    return `${unit} ${meta.network}`;
+  }
+
   if (asset.kind === "CRYPTO") {
     return asset.name.replace(/\((?:[^)]*)\)/g, "").trim();
   }
@@ -113,8 +117,17 @@ function cleanAssetName(asset: AssetOption) {
 
 function displayUnit(asset: AssetOption) {
   const meta = currencyDisplayMeta(asset.code, asset.name);
+  const normalizedCode = asset.code.replace(/[^a-z0-9]/gi, "").toUpperCase();
+  const stablecoinCode = normalizedCode.match(/^(USDT|USDC)/)?.[1];
+  if (stablecoinCode) return stablecoinCode;
+
+  if (asset.kind === "CRYPTO") return meta.displayCode.toUpperCase();
+
   const text = `${asset.code} ${asset.name}`;
-  const matched = text.match(/\b(USD|RUB|EUR|UAH|KZT|TRY|CNY|GBP|USDT|USDC|BTC|ETH)\b/i);
+  const cashCode = asset.code.match(/^CASH([A-Z]{3})$/i)?.[1];
+  if (cashCode) return cashCode.toUpperCase();
+
+  const matched = text.match(/\b(USDT|USDC|AED|AMD|ARS|AUD|AZN|BGN|BRL|BYN|CAD|CHF|CNY|COP|CZK|EGP|EUR|GBP|GEL|IDR|ILS|INR|JPY|KGS|KRW|KZT|MDL|MXN|NGN|PLN|RON|RUB|SAR|SGD|THB|TRY|UAH|USD|VND|BTC|ETH)\b/i);
   return (matched?.[1] ?? meta.displayCode).toUpperCase();
 }
 
@@ -271,6 +284,32 @@ export function sortAssets(assets: AssetOption[]) {
   });
 }
 
+function assetDisplayKey(asset: AssetOption) {
+  return normalizeSearchValue(`${classifyAsset(asset)}:${cleanAssetName(asset)}:${displayUnit(asset)}`);
+}
+
+function uniqueAssetsForDisplay(assets: AssetOption[], selectedCode?: string) {
+  const indexesByKey = new Map<string, number>();
+  const uniqueAssets: AssetOption[] = [];
+
+  for (const asset of assets) {
+    const key = assetDisplayKey(asset);
+    const existingIndex = indexesByKey.get(key);
+
+    if (existingIndex === undefined) {
+      indexesByKey.set(key, uniqueAssets.length);
+      uniqueAssets.push(asset);
+      continue;
+    }
+
+    if (asset.code === selectedCode && uniqueAssets[existingIndex]?.code !== selectedCode) {
+      uniqueAssets[existingIndex] = asset;
+    }
+  }
+
+  return uniqueAssets;
+}
+
 export function groupAssetsForDisplay(
   assets: AssetOption[],
   {
@@ -284,7 +323,8 @@ export function groupAssetsForDisplay(
   } = {}
 ) {
   const hasQuery = normalizeSearchValue(query).length > 0;
-  const filteredAssets = sortAssets(filterAssets(assets, query));
+  const allDisplayAssets = uniqueAssetsForDisplay(sortAssets(assets), selectedCode);
+  const filteredAssets = uniqueAssetsForDisplay(sortAssets(filterAssets(assets, query)), selectedCode);
   const groupsByCategory = new Map<AssetCategoryKey, AssetOption[]>();
 
   for (const asset of filteredAssets) {
@@ -327,7 +367,7 @@ export function groupAssetsForDisplay(
 
   return {
     groups,
-    hiddenCount: hasQuery ? 0 : Math.max(0, sortAssets(assets).length - visibleCodes.size)
+    hiddenCount: hasQuery ? 0 : Math.max(0, allDisplayAssets.length - visibleCodes.size)
   };
 }
 
@@ -352,6 +392,8 @@ function AssetList({
         <section className="assetGroup" key={`${group.key}-${group.label}-${groupIndex}`}>
           <h3>{group.label}</h3>
           {group.assets.map((asset) => {
+            const unit = displayUnit(asset);
+
             return (
               <button
                 aria-pressed={selected === asset.code}
@@ -362,7 +404,7 @@ function AssetList({
                 type="button"
               >
                 <strong>{cleanAssetName(asset)}</strong>
-                <small>{displayUnit(asset)}</small>
+                <small title={unit}>{unit}</small>
               </button>
             );
           })}
@@ -407,13 +449,15 @@ export function CurrencySidebar({
   from,
   to,
   onFrom,
-  onTo
+  onTo,
+  onPair
 }: {
   assets: AssetOption[];
   from: string;
   to: string;
   onFrom: (code: string) => void;
   onTo: (code: string) => void;
+  onPair?: (from: string, to: string) => void;
   onSwap: () => void;
 }) {
   const [activeTab, setActiveTab] = useState<"all" | "favorites">("all");
@@ -478,6 +522,10 @@ export function CurrencySidebar({
                 key={`${pair.from}:${pair.to}`}
                 type="button"
                 onClick={() => {
+                  if (onPair) {
+                    onPair(pair.from, pair.to);
+                    return;
+                  }
                   onFrom(pair.from);
                   onTo(pair.to);
                 }}

@@ -71,9 +71,9 @@ export const blogArticles: BlogArticle[] = [
   },
   {
     id: "ratescope-ranking",
-    title: "Как RateScope ранжирует предложения обменных пунктов",
+    title: "Как monik exchange ранжирует предложения обменных пунктов",
     excerpt: "Показываем, как учитываются курс, фиксированные и процентные комиссии, свежесть данных и доступный резерв.",
-    category: "RateScope",
+    category: "monik exchange",
     date: "10 июня 2026",
     readTime: "5 минут",
     accent: "#a97aff",
@@ -91,7 +91,7 @@ export const blogArticles: BlogArticle[] = [
   }
 ];
 
-export const blogCategories = ["Все темы", "Криптовалюты", "Безопасность", "Рынок", "RateScope"] as const;
+export const blogCategories = ["Все темы", "Криптовалюты", "Безопасность", "Рынок", "monik exchange"] as const;
 
 export function filterBlogArticles(articles: BlogArticle[], query: string, category: string) {
   const normalizedQuery = query.trim().toLocaleLowerCase("ru");
@@ -144,7 +144,8 @@ export const wikiGroups: WikiGroup[] = [
     title: "Справочники",
     icon: "reference",
     items: [
-      { title: "Коды валют", description: "Фиатные и криптовалютные обозначения в RateScope.", href: "/api/v1/assets" },
+      { title: "Коды валют", description: "Фиатные и криптовалютные обозначения в monik exchange.", href: "/api/v1/assets" },
+      { title: "KYC/AML сигналы", description: "Как читать KYC/AML-метки и условия проверки внутри monik exchange.", href: "/wiki#legend", anchor: "legend" },
       { title: "Сети криптовалют", description: "Как различать сети одной и той же валюты.", href: "/api-docs" },
       { title: "Публичное API", description: "Получение активов, курсов и статуса платформы.", href: "/api-docs" }
     ]

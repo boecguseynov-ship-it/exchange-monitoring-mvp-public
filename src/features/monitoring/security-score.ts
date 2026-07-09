@@ -2,6 +2,7 @@ export type KycModeValue = "NONE" | "MAY_REQUIRE" | "REQUIRED" | string;
 
 export type SecurityAssessmentInput = {
   kyc?: KycModeValue | null;
+  aml?: string | null;
   processing?: string | null;
   rating?: number | null;
   reviews?: number | null;
@@ -50,6 +51,7 @@ export function assessOfferSecurity(
   const rating = input.rating ?? null;
   const reserve = input.reserve ?? 0;
   const activeClaims = input.activeClaims ?? 0;
+  const noAml = input.aml === "NONE";
 
   if (input.verified) {
     score += 12;
@@ -121,6 +123,7 @@ export function assessOfferSecurity(
     finalScore >= 56 ? "medium" :
     "elevated";
   const amlTone =
+    noAml ? "good" :
     amlScore >= 78 ? "good" :
     amlScore >= 56 ? "watch" :
     "risk";
@@ -134,6 +137,7 @@ export function assessOfferSecurity(
       "Повышенный риск",
     kycLabel: kycLabel(input.kyc),
     amlLabel:
+      noAml ? "Без AML" :
       amlTone === "good" ? "AML: низкий риск" :
       amlTone === "watch" ? "AML: проверять сумму" :
       "AML: повышенный риск",

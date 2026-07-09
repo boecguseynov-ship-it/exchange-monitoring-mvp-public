@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url      = "file:./ratescope.db"
+  url      = env("DATABASE_URL")
 }
 
 enum ExchangeStatus {
@@ -20,6 +20,32 @@ enum ModerationStatus {
   REJECTED
 }
 
+enum SupportStatus {
+  NEW
+  IN_PROGRESS
+  RESOLVED
+  SPAM
+}
+
+enum ComplaintStatus {
+  OPEN
+  WAITING_EXCHANGE
+  WAITING_USER
+  RESOLVED
+  REJECTED
+}
+
+enum PublishStatus {
+  DRAFT
+  PUBLISHED
+  HIDDEN
+}
+
+enum ApiCredentialStatus {
+  ACTIVE
+  REVOKED
+}
+
 model Exchange {
   id           String         @id @default(cuid())
   slug         String         @unique
@@ -28,18 +54,27 @@ model Exchange {
   description  String
   supportEmail String
   termsUrl     String?
+  insuranceDeposit String?
+  noAml       Boolean        @default(false)
   status       ExchangeStatus @default(ACTIVE)
   isDemo       Boolean        @default(false)
   verifiedAt   DateTime?
   createdAt    DateTime       @default(now())
   updatedAt    DateTime       @updatedAt
   reviews      Review[]
+  complaints   Complaint[]
+  feeds        ExchangeFeed[]
+  apiKeys      ApiCredential[]
+  users        User[]
 }
 
 model Review {
   id             String           @id @default(cuid())
   exchangeId     String
   userId         String?
+  authorName     String?
+  source         String           @default("RATESCOPE")
+  sourceId       String?
   transactionRef String?
   rating         Int
   body           String
@@ -51,15 +86,23 @@ model Review {
 
   @@index([exchangeId])
   @@index([status])
+  @@index([source])
+  @@unique([source, sourceId])
 }
 
 model User {
-  id        String   @id @default(cuid())
-  name      String?
-  email     String?  @unique
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  reviews   Review[]
+  id           String    @id @default(cuid())
+  name         String?
+  email        String?   @unique
+  role         String    @default("USER")
+  passwordHash String?
+  exchangeId   String?
+  exchange     Exchange? @relation(fields: [exchangeId], references: [id], onDelete: SetNull)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  reviews      Review[]
+
+  @@index([exchangeId])
 }
 
 model WikiEntry {
@@ -76,5 +119,161 @@ model WikiEntry {
   updatedAt   DateTime @updatedAt
 
   @@index([group])
+  @@index([status])
+}
+
+model ManagedAsset {
+  id        String        @id @default(cuid())
+  code      String        @unique
+  name      String
+  network   String?
+  category  String        @default("other")
+  status    PublishStatus @default(PUBLISHED)
+  source    String        @default("admin")
+  position  Int           @default(100)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([category])
+  @@index([status])
+}
+
+model BlogPost {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  title       String
+  excerpt     String
+  seoTitle    String?
+  seoDescription String?
+  ogTitle     String?
+  ogDescription String?
+  ogImage     String?
+  body        String
+  category    String
+  readTime    String        @default("5 минут")
+  accent      String        @default("#31d3a5")
+  symbol      String        @default("R")
+  status      PublishStatus @default(PUBLISHED)
+  publishedAt DateTime      @default(now())
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status])
+  @@index([publishedAt])
+}
+
+model LegalDocument {
+  id          String        @id @default(cuid())
+  slug        String        @unique
+  title       String
+  description String
+  body        String
+  status      PublishStatus @default(PUBLISHED)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  @@index([status])
+}
+
+model Banner {
+  id        String        @id @default(cuid())
+  placement String       @unique
+  title     String
+  text      String
+  href      String
+  image     String?
+  alt       String
+  badge     String       @default("Реклама")
+  status    PublishStatus @default(HIDDEN)
+  position  Int          @default(100)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@index([status])
+  @@index([position])
+}
+
+model DirectionSeoText {
+  id        String        @id @default(cuid())
+  slug      String        @unique
+  title     String?
+  body      String
+  status    PublishStatus @default(PUBLISHED)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([status])
+}
+
+model ContactMessage {
+  id        String        @id @default(cuid())
+  name      String?
+  email     String
+  subject   String
+  message   String
+  status    SupportStatus @default(NEW)
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+
+  @@index([status])
+  @@index([createdAt])
+}
+
+model Complaint {
+  id             String          @id @default(cuid())
+  exchangeId     String
+  transactionRef String?
+  type           String          @default("PAYMENT_DELAY")
+  authorEmail    String?
+  message        String
+  moderatorNote  String?
+  status         ComplaintStatus @default(OPEN)
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  exchange       Exchange        @relation(fields: [exchangeId], references: [id], onDelete: Cascade)
+
+  @@index([exchangeId])
+  @@index([status])
+}
+
+model AuditLog {
+  id         String   @id @default(cuid())
+  action     String
+  actor      String   @default("admin@ratescope.local")
+  targetType String
+  targetId   String?
+  details    String?
+  createdAt  DateTime @default(now())
+
+  @@index([createdAt])
+  @@index([targetType])
+}
+
+model ExchangeFeed {
+  id           String   @id @default(cuid())
+  exchangeId   String
+  pullUrl      String?
+  intervalSec  Int      @default(300)
+  enabled      Boolean  @default(true)
+  lastPulledAt DateTime?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  exchange     Exchange @relation(fields: [exchangeId], references: [id], onDelete: Cascade)
+
+  @@unique([exchangeId])
+  @@index([enabled])
+}
+
+model ApiCredential {
+  id         String              @id @default(cuid())
+  exchangeId String
+  label      String
+  tokenHint  String
+  status     ApiCredentialStatus @default(ACTIVE)
+  createdAt  DateTime            @default(now())
+  revokedAt  DateTime?
+  exchange   Exchange            @relation(fields: [exchangeId], references: [id], onDelete: Cascade)
+
+  @@index([exchangeId])
   @@index([status])
 }

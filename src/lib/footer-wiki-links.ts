@@ -7,7 +7,7 @@ function wikiAnchorHref(anchor?: string | null) {
 }
 
 function databaseContentEnabled() {
-  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+  return process.env.RATESCOPE_USE_DB_CONTENT !== "0";
 }
 
 function fallbackFooterWikiLinks() {

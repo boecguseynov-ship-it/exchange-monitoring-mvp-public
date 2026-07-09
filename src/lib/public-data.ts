@@ -18,7 +18,7 @@ export const realPublishedReviewWhere = {
 } satisfies Prisma.ReviewWhereInput;
 
 function databaseContentEnabled() {
-  return process.env.RATESCOPE_USE_DB_CONTENT === "1";
+  return process.env.RATESCOPE_USE_DB_CONTENT !== "0";
 }
 
 export function createHomepageReviewLoader<T>({
@@ -69,6 +69,7 @@ export const loadHomepageReviews = createHomepageReviewLoader({
       rating: true,
       body: true,
       createdAt: true,
+      authorName: true,
       user: { select: { name: true } },
       exchange: { select: { name: true, slug: true } }
     }

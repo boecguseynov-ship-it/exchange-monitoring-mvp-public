@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { ChevronDown } from "lucide-react";
 
 export type SelectOption = {
@@ -52,18 +53,61 @@ export function CustomSelect({
   const current = isControlled ? value : internalValue;
 
   const [open, setOpen] = useState(false);
+  const [dropdownStyle, setDropdownStyle] = useState<React.CSSProperties>({});
+  const [dropdownTheme, setDropdownTheme] = useState<"monitoringGreen" | null>(null);
   const rootRef = useRef<HTMLDivElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const uid = useId();
   const selectId = id ?? uid;
 
+  // Вычислить позицию dropdown под триггером
+  function calcDropdownPos() {
+    if (!rootRef.current) return;
+    const root = rootRef.current;
+    const nextTheme = root.closest(".appMonitoringGreen") ? "monitoringGreen" : null;
+    setDropdownTheme((theme) => (theme === nextTheme ? theme : nextTheme));
+
+    const rect = root.getBoundingClientRect();
+    const spaceBelow = window.innerHeight - rect.bottom;
+    const dropH = Math.min(240, spaceBelow - 8);
+    setDropdownStyle({
+      position: "fixed",
+      top: rect.bottom + 2,
+      left: rect.left,
+      width: rect.width,
+      maxHeight: dropH > 80 ? dropH : Math.min(240, rect.top - 8),
+      zIndex: 9999,
+    });
+  }
+
+  // Открыть / закрыть
+  function toggleOpen() {
+    if (disabled) return;
+    if (!open) calcDropdownPos();
+    setOpen((o) => !o);
+  }
+
+  // Пересчитывать позицию при скролле / ресайзе пока открыт
+  useEffect(() => {
+    if (!open) return;
+    function update() { calcDropdownPos(); }
+    window.addEventListener("scroll", update, true);
+    window.addEventListener("resize", update);
+    return () => {
+      window.removeEventListener("scroll", update, true);
+      window.removeEventListener("resize", update);
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [open]);
+
   // Закрывать при клике вне компонента
   useEffect(() => {
     if (!open) return;
     function handleOutside(e: MouseEvent) {
-      if (rootRef.current && !rootRef.current.contains(e.target as Node)) {
-        setOpen(false);
-      }
+      const target = e.target as Node;
+      const insideRoot = rootRef.current?.contains(target);
+      const insideList = listRef.current?.contains(target);
+      if (!insideRoot && !insideList) setOpen(false);
     }
     document.addEventListener("mousedown", handleOutside);
     return () => document.removeEventListener("mousedown", handleOutside);
@@ -74,7 +118,7 @@ export function CustomSelect({
     if (disabled) return;
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
-      setOpen((o) => !o);
+      toggleOpen();
     }
     if (e.key === "Escape") setOpen(false);
     if ((e.key === "ArrowDown" || e.key === "ArrowUp") && open) {
@@ -103,6 +147,41 @@ export function CustomSelect({
   const activeOption = options.find((o) => o.value === current);
   const displayLabel = activeOption?.label ?? placeholder ?? "Выберите…";
   const isEmpty = !activeOption || activeOption.disabled;
+
+  const dropdownEl = open ? (
+    <ul
+      ref={listRef}
+      id={`${selectId}-list`}
+      role="listbox"
+      className={`csDropdown${dropdownTheme === "monitoringGreen" ? " csDropdown--monitoringGreen" : ""}`}
+      style={dropdownStyle}
+    >
+      {options.map((opt) => (
+        <li
+          key={opt.value}
+          role="option"
+          data-value={opt.value}
+          aria-selected={opt.value === current}
+          aria-disabled={opt.disabled}
+          tabIndex={opt.disabled ? -1 : 0}
+          className={`csOption${opt.value === current ? " csOption--selected" : ""}${opt.disabled ? " csOption--disabled" : ""}`}
+          onMouseDown={(e) => {
+            e.preventDefault();
+            if (!opt.disabled) select(opt.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              if (!opt.disabled) select(opt.value);
+            }
+            if (e.key === "Escape") setOpen(false);
+          }}
+        >
+          {opt.label}
+        </li>
+      ))}
+    </ul>
+  ) : null;
 
   return (
     <div
@@ -140,47 +219,17 @@ export function CustomSelect({
         aria-controls={`${selectId}-list`}
         disabled={disabled}
         className={`csTrigger${isEmpty ? " csTrigger--empty" : ""}`}
-        onClick={() => !disabled && setOpen((o) => !o)}
+        onClick={toggleOpen}
         onKeyDown={handleKeyDown}
       >
         <span className="csTriggerLabel">{displayLabel}</span>
         <ChevronDown size={14} className="csChevron" />
       </button>
 
-      {/* Выпадающий список */}
-      {open && (
-        <ul
-          ref={listRef}
-          id={`${selectId}-list`}
-          role="listbox"
-          className="csDropdown"
-        >
-          {options.map((opt) => (
-            <li
-              key={opt.value}
-              role="option"
-              data-value={opt.value}
-              aria-selected={opt.value === current}
-              aria-disabled={opt.disabled}
-              tabIndex={opt.disabled ? -1 : 0}
-              className={`csOption${opt.value === current ? " csOption--selected" : ""}${opt.disabled ? " csOption--disabled" : ""}`}
-              onMouseDown={(e) => {
-                e.preventDefault();
-                if (!opt.disabled) select(opt.value);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  if (!opt.disabled) select(opt.value);
-                }
-                if (e.key === "Escape") setOpen(false);
-              }}
-            >
-              {opt.label}
-            </li>
-          ))}
-        </ul>
-      )}
+      {/* Выпадающий список рендерится в document.body через Portal */}
+      {typeof document !== "undefined" && dropdownEl
+        ? createPortal(dropdownEl, document.body)
+        : null}
     </div>
   );
 }

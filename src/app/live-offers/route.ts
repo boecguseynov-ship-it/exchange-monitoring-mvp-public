@@ -14,12 +14,12 @@ export async function GET(request: NextRequest) {
   const toCode = searchParams.get("to") ?? "";
   const amount = readAmount(searchParams.get("amount"));
 
-  if (!fromCode || !toCode || amount <= 0 || fromCode === toCode) {
+  if (!fromCode || !toCode || amount <= 0) {
     return NextResponse.json({
       data: [],
       live: false,
       provider: "Validation",
-      message: "Выберите разные валюты и сумму больше нуля"
+      message: "Выберите валюты и сумму больше нуля"
     });
   }
 

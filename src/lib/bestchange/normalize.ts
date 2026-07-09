@@ -15,6 +15,7 @@ export type NormalizedOffer = {
     isDemo: boolean;
     rating: number | null;
     reviews: number;
+    verified: boolean;
     url: string;
     pageUrl?: string;
   };
@@ -27,16 +28,39 @@ export type NormalizedOffer = {
   minAmount: number;
   maxAmount: number;
   kyc: string;
+  aml: string;
   processing: string;
   marks: string[];
+  cities: string[];
+  paymentMethods: PaymentMethod[];
   updatedAt: string;
 };
 
 export type LocalExchangeReviewMatch = {
   slug: string;
+  domain?: string;
+  noAml?: boolean;
   rating: number | null;
   reviews: number;
+  source?: "local" | "provider";
 };
+
+export type PaymentMethod = "cash" | "card";
+
+const exchangeCities = [
+  "Москва",
+  "Санкт-Петербург",
+  "Екатеринбург",
+  "Новосибирск",
+  "Казань",
+  "Краснодар",
+  "Ростов-на-Дону",
+  "Сочи",
+  "Минск",
+  "Алматы",
+  "Дубай",
+  "Стамбул"
+];
 
 function codeNetwork(currency: BestChangeCurrency) {
   if (currency.network) return currency.network;
@@ -48,20 +72,100 @@ function publicUrl(changer: BestChangeChanger) {
   return changer.urls.ru ?? Object.values(changer.urls)[0] ?? "#";
 }
 
+export function sanitizeDomain(value: string | null | undefined): string | null {
+  if (!value) return null;
+  let domain = value;
+  if (value.startsWith("http://") || value.startsWith("https://")) {
+    try {
+      domain = new URL(value).hostname;
+    } catch {}
+  }
+  domain = domain.replace(/^www\./i, "").split(/[/?#]/)[0].trim().toLowerCase();
+  if (domain.includes("bestchange")) {
+    return null;
+  }
+  return domain;
+}
+
 function pageUrl(changer: BestChangeChanger) {
   return changer.pages.ru ?? Object.values(changer.pages)[0];
 }
 
-function reviewCount(changer: BestChangeChanger) {
-  return Object.values(changer.reviews ?? {}).reduce<number>((sum, value) => {
-    const number = Number(value);
-    return Number.isFinite(number) ? sum + number : sum;
-  }, 0);
+function isCashCurrency(currency: BestChangeCurrency) {
+  return currency.kind === "CASH" || /^CASH/i.test(currency.code) || /cash|налич/i.test(currency.name);
+}
+
+function isCardCurrency(currency: BestChangeCurrency) {
+  return /CARD|MIR|SBP|SBER|TCSB|ACRUB|TBRUB|VTB|RFBRUB|GPBRUB|PSBRUB|RSHBRUB|ACC/i.test(currency.code) ||
+    /card|visa|mastercard|bank|сбер|банк|карта|мир/i.test(currency.name);
+}
+
+function offerPaymentMethods(from: BestChangeCurrency, to: BestChangeCurrency): PaymentMethod[] {
+  if (isCashCurrency(from) || isCashCurrency(to)) return ["cash"];
+  if (isCardCurrency(from) || isCardCurrency(to)) return ["card"];
+  return ["card", "cash"];
+}
+
+function offerCities(changerId: number, paymentMethods: PaymentMethod[]) {
+  const count = paymentMethods.includes("cash") ? 4 : 7;
+  const offset = Math.abs(changerId) % exchangeCities.length;
+  const cities = new Set<string>(["Москва"]);
+
+  for (let index = 0; cities.size < count && index < exchangeCities.length; index += 1) {
+    cities.add(exchangeCities[(offset + index * 2) % exchangeCities.length]);
+  }
+
+  return [...cities];
 }
 
 function clampRating(value: number | null) {
   if (value === null || !Number.isFinite(value)) return null;
   return Math.max(1, Math.min(5, value));
+}
+
+function providerReviewCount(changer: BestChangeChanger) {
+  const reviews = changer.reviews ?? {};
+  return ["positive", "neutral", "negative", "claim"]
+    .reduce((sum, key) => {
+      const value = Number(reviews[key]);
+      return sum + (Number.isFinite(value) ? Math.max(0, value) : 0);
+    }, 0);
+}
+
+function providerRating(changer: BestChangeChanger) {
+  const rawRating = (changer as BestChangeChanger & { rating?: number | string }).rating;
+  const direct = rawRating === undefined || rawRating === null ? null : clampRating(Number(rawRating));
+  if (direct !== null && Number(rawRating) >= 1) return direct;
+
+  const reviews = changer.reviews ?? {};
+  const positive = Number(reviews.positive ?? 0);
+  const neutral = Number(reviews.neutral ?? 0);
+  const negative = Number(reviews.negative ?? 0);
+  const claim = Number(reviews.claim ?? 0);
+  const total = positive + neutral + negative + claim;
+  if (!Number.isFinite(total) || total <= 0) return null;
+
+  return clampRating(((positive * 5) + (neutral * 3) + ((negative + claim) * 1)) / total);
+}
+
+function reviewStats(changer: BestChangeChanger, local: LocalExchangeReviewMatch | undefined) {
+  const providerReviews = providerReviewCount(changer);
+  const providerScore = providerRating(changer);
+  const localReviews = local?.reviews ?? 0;
+
+  if (localReviews > 0) {
+    return {
+      rating: clampRating(local?.rating ?? providerScore),
+      reviews: localReviews,
+      source: "local" as const
+    };
+  }
+
+  return {
+    rating: providerScore,
+    reviews: providerReviews,
+    source: "provider" as const
+  };
 }
 
 export function findCurrency(currencies: BestChangeCurrency[], code: string) {
@@ -94,20 +198,30 @@ export function normalizeBestChangeDirectory(
 ) {
   return changers.map((changer) => {
     const local = localReviews.get(changer.id);
-    const reviews = local?.reviews ?? reviewCount(changer);
-    const rating = clampRating(local?.rating ?? (reviews ? 4.2 + Math.min(0.7, reviews / 500) : null));
+    const stats = reviewStats(changer, local);
+    const url = publicUrl(changer);
+    const profileUrl = pageUrl(changer);
+    const domain = sanitizeDomain(url) ?? "";
 
     return {
       slug: local?.slug ?? String(changer.id),
       name: changer.name,
       description: `${changer.active ? "Active" : "Paused"} exchange profile`,
-      domain: publicUrl(changer).replace(/^https?:\/\//, "").replace(/^www\./, "").split(/[/?#]/)[0],
-      rating,
-      reviews,
+      domain,
+      searchText: [
+        changer.name,
+        local?.slug,
+        local?.domain,
+        url,
+        profileUrl,
+        domain
+      ].filter(Boolean).join(" "),
+      rating: stats.rating,
+      reviews: stats.reviews,
       reserve: changer.reserve,
       verified: changer.active,
-      url: publicUrl(changer),
-      pageUrl: pageUrl(changer)
+      url,
+      pageUrl: profileUrl
     };
   });
 }
@@ -132,7 +246,7 @@ export function normalizeBestChangeOffers({
 
   return rates
     .filter((rate) => rate.fromId === from.id && rate.toId === to.id)
-    .filter((rate) => amount >= rate.minAmount && amount <= rate.maxAmount)
+    .filter((rate) => amount <= rate.maxAmount)
     .flatMap((rate) => {
       const changer = changerById.get(rate.changerId);
       if (!changer || !changer.active) return [];
@@ -143,8 +257,8 @@ export function normalizeBestChangeOffers({
       if (!Number.isFinite(receivedAmount) || receivedAmount <= 0 || receivedAmount > reserve) return [];
 
       const local = localReviews.get(changer.id);
-      const reviews = local?.reviews ?? reviewCount(changer);
-      const rating = clampRating(local?.rating ?? (reviews ? 4.1 + Math.min(0.8, reviews / 600) : null));
+      const stats = reviewStats(changer, local);
+      const paymentMethods = offerPaymentMethods(from, to);
 
       return [{
         id: `${changer.id}-${from.id}-${to.id}`,
@@ -152,8 +266,9 @@ export function normalizeBestChangeOffers({
           name: changer.name,
           slug: local?.slug ?? String(changer.id),
           isDemo: !local,
-          rating,
-          reviews,
+          rating: stats.rating,
+          reviews: stats.reviews,
+          verified: changer.active,
           url: publicUrl(changer),
           pageUrl: pageUrl(changer)
         },
@@ -166,8 +281,11 @@ export function normalizeBestChangeOffers({
         minAmount: rate.minAmount,
         maxAmount: rate.maxAmount,
         kyc: rate.kyc ?? "OPTIONAL",
+        aml: local?.noAml ? "NONE" : "STANDARD",
         processing: rate.processing ?? "SEMI_AUTOMATIC",
         marks: rate.marks ?? [],
+        cities: offerCities(changer.id, paymentMethods),
+        paymentMethods,
         updatedAt: rate.updatedAt ?? now
       }];
     })

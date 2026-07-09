@@ -18,7 +18,8 @@
     "db:migrate": "prisma migrate dev",
     "db:deploy": "prisma migrate deploy",
     "db:push": "prisma db push",
-    "db:seed": "tsx prisma/seed.ts"
+    "db:seed": "tsx prisma/seed.ts",
+    "sync:bestchange-reviews": "tsx scripts/sync-bestchange-reviews.ts"
   },
   "dependencies": {
     "@prisma/client": "6.19.3",
@@ -26,6 +27,7 @@
     "lucide-react": "^0.468.0",
     "next": "16.2.9",
     "next-auth": "4.24.13",
+    "nodemailer": "^7.0.13",
     "react": "19.2.7",
     "react-dom": "19.2.7",
     "redis": "^5.12.1",
@@ -36,6 +38,7 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.1.0",
     "@types/node": "^22.10.2",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^19.0.3",
     "@types/react-dom": "^19.0.2",
     "eslint": "^9.17.0",

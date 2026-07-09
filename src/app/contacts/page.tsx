@@ -1,11 +1,13 @@
 import Link from "next/link";
 import { Mail, MessageCircle, Send, ShieldCheck } from "lucide-react";
 import { AppShell } from "@/components/app-shell";
+import { ContactForm } from "@/components/contact-form";
 import { getContactSocialLinks } from "@/lib/site-links";
 
 export const dynamic = "force-dynamic";
+
 export const metadata = {
-  title: "Контакты — RateScope"
+  title: "Контакты — monik exchange",
 };
 
 export default async function ContactsPage() {
@@ -15,7 +17,7 @@ export default async function ContactsPage() {
     <AppShell footer>
       <section className="contactsPage publicPage">
         <header className="contactsHeader">
-          <span className="headerBadge"><ShieldCheck size={14} />Поддержка RateScope</span>
+          <span className="headerBadge"><ShieldCheck size={14} />Поддержка monik exchange</span>
           <h1>Контакты и обратная связь</h1>
           <p className="lead">
             Напишите по вопросам профиля обменника, отзывов, жалоб, партнерства
@@ -48,26 +50,20 @@ export default async function ContactsPage() {
             <span className="eyebrow">Feedback</span>
             <h2>Форма обращения</h2>
             <p className="publicLead">
-              Сейчас форма работает как публичный шаблон. Для срочного вопроса используйте email или Telegram.
+              Заполните форму ниже. Сообщение будет отправлено в службу поддержки.
             </p>
-            <form className="contactFormNew">
-              <label>
-                Email
-                <input placeholder="you@example.com" disabled />
-              </label>
-              <label>
-                Тема
-                <input placeholder="Профиль обменника / отзыв / интеграция" disabled />
-              </label>
-              <label>
-                Сообщение
-                <textarea placeholder="Опишите ситуацию" disabled />
-              </label>
-              <button type="button" disabled>Отправить</button>
-            </form>
-            <p className="publicLead">
-              <Mail size={14} /> support@ratescope.local · <Send size={14} /> Telegram · <MessageCircle size={14} /> Блог
-            </p>
+            <ContactForm />
+            <div className="contactsSocialLinks">
+              <a href="mailto:support@monik.exchange" className="contactsSocialLink">
+                <Mail size={14} /> support@monik.exchange
+              </a>
+              <a href="https://t.me/" target="_blank" rel="noreferrer" className="contactsSocialLink">
+                <Send size={14} /> Telegram
+              </a>
+              <Link href="/blog" className="contactsSocialLink">
+                <MessageCircle size={14} /> Блог
+              </Link>
+            </div>
           </section>
         </div>
       </section>

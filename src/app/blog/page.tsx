@@ -1,12 +1,16 @@
 import Link from "next/link";
 import { AppShell } from "@/components/app-shell";
-import { blogArticles } from "@/features/public-content/content";
+import { loadBlogArticles } from "@/lib/blog-content";
 
 export const metadata = {
-  title: "Блог — RateScope"
+  title: "Блог — monik exchange"
 };
 
-export default function BlogPage() {
+export const dynamic = "force-dynamic";
+
+export default async function BlogPage() {
+  const articles = await loadBlogArticles();
+
   return (
     <AppShell footer>
       <section className="publicPage blogPage">
@@ -16,7 +20,7 @@ export default function BlogPage() {
           Короткие материалы о курсах, резервах, сетях, KYC и выборе обменного пункта.
         </p>
         <div className="articleList">
-          {blogArticles.map((article) => (
+          {articles.map((article) => (
             <Link className="articleRow" href={`/blog/${article.id}`} key={article.id}>
               <span className="articleCopy">
                 <span>{article.category}</span>

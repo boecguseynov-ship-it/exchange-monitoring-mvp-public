@@ -11,6 +11,10 @@ pnpm-debug.log*
 .env
 .env.*
 !.env.example
+.deploy-standalone/
+.deploy-source/
+standalone-build.tar.gz
+ratescope-source.tar.gz
 prisma/*.db
 prisma/*.db-journal
 *.tsbuildinfo

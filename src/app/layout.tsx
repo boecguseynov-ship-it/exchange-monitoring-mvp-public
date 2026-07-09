@@ -12,8 +12,12 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://monik.exchange"),
   title: "monik exchange — мониторинг обменников",
-  description: "Сравнение курсов, резервов и репутации обменных пунктов"
+  description: "Сравнение курсов, резервов и репутации обменных пунктов",
+  alternates: {
+    canonical: "/"
+  }
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,0 +1,7 @@
+# monik exchange
+
+This file mirrors /llms.txt for crawlers that request /lms.txt.
+
+Sitemap: https://monik.exchange/sitemap.xml
+Main page: https://monik.exchange/
+Exchange catalog: https://monik.exchange/exchangers

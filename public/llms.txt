@@ -1,0 +1,13 @@
+# monik exchange
+
+monik exchange is a Russian-language exchange monitoring site for comparing exchange rates, reserves, reviews, KYC/AML signals, and exchanger profiles.
+
+Primary pages:
+- https://monik.exchange/
+- https://monik.exchange/exchangers
+- https://monik.exchange/blog
+- https://monik.exchange/wiki
+- https://monik.exchange/contacts
+
+Sitemap: https://monik.exchange/sitemap.xml
+Robots: https://monik.exchange/robots.txt

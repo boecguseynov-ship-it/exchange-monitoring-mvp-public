@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RateScope Green Preview</title>
+  <style>
+    :root {
+      --bg-left: #07333c;
+      --bg-mid: #185440;
+      --bg-right: #6b7830;
+      --surface: rgba(225, 244, 229, .14);
+      --surface-strong: rgba(229, 246, 231, .22);
+      --line: rgba(255, 255, 255, .20);
+      --line-soft: rgba(255, 255, 255, .11);
+      --ink: #f7fff7;
+      --muted: rgba(238, 250, 238, .72);
+      --green: #48c968;
+      --green-strong: #2fad52;
+      --teal: #0d4850;
+      --dark: #08262c;
+      --shadow: 0 26px 80px rgba(4, 25, 28, .34);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 40% 42%, rgba(113, 191, 123, .20), transparent 30%),
+        linear-gradient(110deg, var(--bg-left) 0%, #124944 38%, var(--bg-mid) 58%, var(--bg-right) 100%);
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      letter-spacing: 0;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, .08), transparent 18%),
+        radial-gradient(circle at 15% 10%, rgba(255, 255, 255, .10), transparent 24%);
+      opacity: .7;
+    }
+
+    .topbar {
+      height: 58px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 0 22px;
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      background: rgba(4, 30, 34, .40);
+      backdrop-filter: blur(18px) saturate(130%);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 950;
+      font-size: 16px;
+      color: #fff;
+    }
+
+    .logo i {
+      display: grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #5be075, #23894b);
+      font-style: normal;
+      box-shadow: 0 12px 28px rgba(71, 201, 104, .30);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      margin-left: 14px;
+      color: rgba(247, 255, 247, .70);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .nav span.active {
+      color: #fff;
+    }
+
+    .login {
+      margin-left: auto;
+      min-height: 34px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, .94);
+      color: #123b36;
+      font-weight: 900;
+      font-size: 12px;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .18);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 330px minmax(0, 1fr);
+      gap: 16px;
+      padding: 16px 22px 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sidebar,
+    .panel,
+    .offerTable,
+    .heroCard {
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, .16), rgba(255, 255, 255, .08));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px) saturate(130%);
+    }
+
+    .sidebar {
+      overflow: hidden;
+      align-self: start;
+    }
+
+    .sideTitle {
+      display: grid;
+      place-items: center;
+      min-height: 58px;
+      margin: 0;
+      border-bottom: 1px solid var(--line-soft);
+      background: rgba(255, 255, 255, .08);
+      color: #fff;
+      font-size: 18px;
+      font-weight: 950;
+    }
+
+    .columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .column + .column {
+      border-left: 1px solid var(--line-soft);
+    }
+
+    .search {
+      margin: 10px;
+      height: 34px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 9px;
+      background: rgba(2, 23, 28, .24);
+      color: rgba(255, 255, 255, .72);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .group {
+      margin: 0;
+      padding: 7px 10px;
+      border-top: 1px solid var(--line-soft);
+      background: rgba(255, 255, 255, .06);
+      color: rgba(247, 255, 247, .60);
+      font-size: 10px;
+      font-weight: 950;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .asset {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 5px;
+      min-height: 33px;
+      padding: 0 11px;
+      align-items: center;
+      border-bottom: 1px solid var(--line-soft);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .asset small {
+      color: rgba(247, 255, 247, .62);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    .asset.active {
+      background: rgba(72, 201, 104, .18);
+      box-shadow: inset 3px 0 0 var(--green);
+    }
+
+    .main {
+      min-width: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero {
+      min-height: 292px;
+      display: grid;
+      place-items: center;
+      padding: 34px 20px 28px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 13px;
+      background:
+        radial-gradient(circle at 50% 55%, rgba(255, 255, 255, .11), transparent 28%),
+        linear-gradient(118deg, rgba(6, 47, 58, .82), rgba(28, 91, 61, .72) 58%, rgba(111, 126, 47, .70));
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.06;
+      text-shadow: 0 4px 18px rgba(0, 0, 0, .26);
+      letter-spacing: 0;
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin: 14px auto 0;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 750;
+    }
+
+    .heroCard {
+      width: min(460px, 100%);
+      margin: 22px auto 0;
+      padding: 18px;
+      background: rgba(255, 255, 255, .14);
+    }
+
+    .heroCard small {
+      display: block;
+      color: rgba(255, 255, 255, .76);
+      font-weight: 950;
+    }
+
+    .heroCard strong {
+      display: block;
+      margin: 7px 0 3px;
+      color: #fff;
+      font-size: 30px;
+      line-height: 1;
+      font-weight: 950;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 9px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 39px;
+      padding: 9px 16px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, #5ce378, #31aa56);
+      color: #fff;
+      font-weight: 950;
+      font-size: 13px;
+      box-shadow: 0 18px 38px rgba(44, 170, 86, .32);
+    }
+
+    .btn.secondary {
+      background: rgba(255, 255, 255, .94);
+      color: #143b36;
+      box-shadow: 0 14px 34px rgba(0, 0, 0, .18);
+    }
+
+    .panel {
+      padding: 12px;
+    }
+
+    .panelHead {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .panelHead h2 {
+      margin: 0;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .live {
+      color: rgba(247, 255, 247, .70);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .widget {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
+      gap: 8px;
+      align-items: end;
+      padding: 10px;
+      border: 1px solid var(--line-soft);
+      border-radius: 11px;
+      background: rgba(2, 23, 28, .20);
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 5px;
+      color: rgba(247, 255, 247, .70);
+      font-size: 11px;
+      font-weight: 850;
+    }
+
+    .amount {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      height: 42px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, .12);
+    }
+
+    .amount span {
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    .amount b {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 12px;
+      border-left: 1px solid rgba(255, 255, 255, .16);
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .swap {
+      display: grid;
+      place-items: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .92);
+      color: #18473f;
+      font-weight: 950;
+    }
+
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 9px;
+    }
+
+    .chip {
+      min-height: 30px;
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 9px;
+      background: rgba(255, 255, 255, .11);
+      color: rgba(255, 255, 255, .84);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .chip.active {
+      background: rgba(72, 201, 104, .22);
+      border-color: rgba(96, 232, 124, .38);
+      color: #fff;
+    }
+
+    .offerTable {
+      overflow: hidden;
+    }
+
+    .row,
+    .head {
+      display: grid;
+      grid-template-columns: 1.4fr .6fr .8fr .8fr .8fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 11px 14px;
+    }
+
+    .head {
+      background: rgba(255, 255, 255, .12);
+      color: rgba(247, 255, 247, .72);
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    .row {
+      border-top: 1px solid var(--line-soft);
+      background: rgba(255, 255, 255, .06);
+      color: #fff;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .row strong,
+    .row b {
+      display: block;
+      color: #fff;
+      font-size: 13px;
+    }
+
+    .row small {
+      display: block;
+      margin-top: 3px;
+      color: rgba(247, 255, 247, .62);
+      font-size: 10px;
+    }
+
+    .go {
+      padding: 8px 11px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .92);
+      color: #143b36;
+      font-size: 11px;
+      font-weight: 950;
+    }
+
+    @media (max-width: 900px) {
+      .layout { grid-template-columns: 1fr; padding: 12px; }
+      .sidebar { order: 2; }
+      .main { order: 1; }
+      .nav { display: none; }
+      .widget { grid-template-columns: 1fr; }
+      .swap { justify-self: center; }
+      .row, .head { min-width: 720px; }
+      .offerTable { overflow-x: auto; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="logo"><i>R</i> RateScope</div>
+    <nav class="nav">
+      <span class="active">Мониторинг</span>
+      <span>Обменники</span>
+      <span>Блог</span>
+      <span>FAQ</span>
+      <span>Контакты</span>
+    </nav>
+    <button class="login">Кабинет</button>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <p class="sideTitle">Направления обмена</p>
+      <div class="columns">
+        <section class="column">
+          <div class="search">Отдаёте</div>
+          <p class="group">Криптовалюта</p>
+          <div class="asset active"><span>Bitcoin</span><small>BTC</small></div>
+          <div class="asset"><span>Tether TRC20</span><small>USDT</small></div>
+          <div class="asset"><span>Ethereum</span><small>ETH</small></div>
+          <div class="asset"><span>Litecoin</span><small>LTC</small></div>
+          <p class="group">Банки</p>
+          <div class="asset"><span>Сбербанк</span><small>RUB</small></div>
+          <div class="asset"><span>Т-Банк</span><small>RUB</small></div>
+          <div class="asset"><span>Альфа-Банк</span><small>RUB</small></div>
+        </section>
+        <section class="column">
+          <div class="search">Получаете</div>
+          <p class="group">Популярное</p>
+          <div class="asset active"><span>Сбербанк</span><small>RUB</small></div>
+          <div class="asset"><span>Tether TRC20</span><small>USDT</small></div>
+          <div class="asset"><span>USD Coin</span><small>USDC</small></div>
+          <div class="asset"><span>Наличные</span><small>RUB</small></div>
+          <p class="group">Фиат</p>
+          <div class="asset"><span>Доллар США</span><small>USD</small></div>
+          <div class="asset"><span>Евро</span><small>EUR</small></div>
+          <div class="asset"><span>Казахстан</span><small>KZT</small></div>
+        </section>
+      </div>
+    </aside>
+
+    <section class="main">
+      <div class="hero">
+        <div>
+          <h1>Мониторинг обменников в зелёной гамме</h1>
+          <p>
+            Глубокий бирюзовый фон, мягкий оливковый градиент, стеклянные панели и яркая зелёная кнопка.
+            Такой стиль выглядит спокойнее и ближе к крипто/финтех-сервису.
+          </p>
+          <div class="heroCard">
+            <small>Безопасный обмен</small>
+            <strong>667 обменников</strong>
+            <small>курсы, резервы, отзывы и страховой депозит</small>
+          </div>
+          <div class="actions">
+            <span class="btn">Сравнить курс</span>
+            <span class="btn secondary">Войти</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="panelHead">
+          <h2>BTC → Сбербанк</h2>
+          <span class="live">● данные онлайн</span>
+        </div>
+        <div class="widget">
+          <div class="field">
+            <label>Отдаю</label>
+            <div class="amount"><span>1</span><b>BTC ▾</b></div>
+          </div>
+          <div class="swap">↕</div>
+          <div class="field">
+            <label>Получаю</label>
+            <div class="amount"><span>8 742 100</span><b>RUB ▾</b></div>
+          </div>
+        </div>
+        <div class="filters">
+          <span class="chip active">Все способы</span>
+          <span class="chip">Карта</span>
+          <span class="chip">Наличные</span>
+          <span class="chip">Без KYC</span>
+          <span class="chip">Автоматические</span>
+        </div>
+      </section>
+
+      <section class="offerTable">
+        <div class="head">
+          <span>Обменник</span>
+          <span>Рейтинг</span>
+          <span>Проверка</span>
+          <span>Отдаёте</span>
+          <span>Получаете</span>
+          <span></span>
+        </div>
+        <div class="row">
+          <span><strong>001K</strong><small>проверен · депозит $51 578 626</small></span>
+          <span><b>4.9</b><small>180 отзывов</small></span>
+          <span><b>96/100</b><small>AML low</small></span>
+          <span><b>1 BTC</b><small>мин. 0.01</small></span>
+          <span><b>8 742 100 RUB</b><small>лучший курс</small></span>
+          <span class="go">Перейти</span>
+        </div>
+        <div class="row">
+          <span><strong>Transfer24</strong><small>страховой депозит $12 000</small></span>
+          <span><b>4.8</b><small>97 отзывов</small></span>
+          <span><b>91/100</b><small>без KYC</small></span>
+          <span><b>1 BTC</b><small>мин. 0.02</small></span>
+          <span><b>8 719 430 RUB</b><small>автообмен</small></span>
+          <span class="go">Перейти</span>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

@@ -6225,6 +6225,34 @@ body .appMonitoringGreen .exchangeProfilePage .exchangeFeedbackDetails[open] sum
   text-shadow: 0 1px 2px rgba(0, 0, 0, .42) !important;
 }
 
+/* --- 37.5 Feedback form dark mode --- */
+body .appMonitoringGreen .exchangeReviewBoard .feedbackPanel {
+  background: var(--card-bg, #1e1e24);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+body .appMonitoringGreen .exchangeReviewBoard .feedbackPanel label {
+  color: #e4e4e7 !important;
+  -webkit-text-fill-color: #e4e4e7 !important;
+}
+body .appMonitoringGreen .exchangeReviewBoard .feedbackPanel form {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+body .appMonitoringGreen .exchangeReviewBoard .feedbackPanel input,
+body .appMonitoringGreen .exchangeReviewBoard .feedbackPanel textarea,
+body .appMonitoringGreen .exchangeReviewBoard .feedbackPanel select,
+body .appMonitoringGreen .exchangeReviewBoard .feedbackPanel .csTrigger {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #ffffff !important;
+  -webkit-text-fill-color: #ffffff !important;
+}
+body .appMonitoringGreen .feedbackPanelNotice {
+  background: rgba(49, 211, 165, 0.1);
+  border-color: rgba(49, 211, 165, 0.2);
+  color: #31d3a5 !important;
+  -webkit-text-fill-color: #31d3a5 !important;
+}
 /* --- 38. Contacts anti-glare dark form --- */
 body .appMonitoringGreen .contactsPage,
 body .appMonitoringGreen .contactsHeader,

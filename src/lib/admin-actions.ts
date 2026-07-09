@@ -688,3 +688,21 @@ export async function deleteExchangeRateAction(formData: FormData) {
   }
 }
 
+export async function saveSiteSettingAction(formData: FormData) {
+  await requireAdminAction();
+  const key = text(formData, "key");
+  const value = text(formData, "value");
+  if (!key) return;
+
+  try {
+    await prisma.siteSetting.upsert({
+      where: { key },
+      create: { key, value },
+      update: { value }
+    });
+    await audit("SETTING_SAVED", "SITE", key);
+  } catch (e: any) {
+    redirect(`/admin?section=content&error=${encodeURIComponent(e.message || "Ошибка сохранения настройки")}`);
+  }
+  refreshAdmin();
+}

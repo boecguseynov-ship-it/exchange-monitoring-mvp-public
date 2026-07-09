@@ -13,7 +13,8 @@ import {
   type LegalDocument,
   type ManagedAsset,
   type Prisma,
-  type WikiEntry
+  type WikiEntry,
+  type SiteSetting
 } from "@prisma/client";
 import { blogArticles, wikiGroups } from "@/features/public-content/content";
 import { loadLiveExchangeDirectory } from "@/lib/bestchange/service";
@@ -391,6 +392,7 @@ export async function loadAdminConsole(section: AdminSection = "moderation", opt
   let complaints: ComplaintWithExchange[] = [];
   let auditLogs: AuditLog[] = [];
   let dbUsers: any[] = [];
+  let siteSettings: SiteSetting[] = [];
 
   const exchangeQuery = normalizeExchangeQuery(options.exchangeQuery);
   let exchangePage = normalizeExchangePage(options.exchangePage);
@@ -440,14 +442,15 @@ export async function loadAdminConsole(section: AdminSection = "moderation", opt
   }
 
   if (section === "content") {
-    [blogPosts, directionSeoTexts, legalDocuments, wikiEntries] = await Promise.all([
+    [blogPosts, directionSeoTexts, legalDocuments, wikiEntries, siteSettings] = await Promise.all([
       prisma.blogPost.findMany({ orderBy: [{ publishedAt: "desc" }, { title: "asc" }] }),
       prisma.directionSeoText.findMany({ orderBy: [{ updatedAt: "desc" }, { slug: "asc" }] }),
       prisma.legalDocument.findMany({ orderBy: { slug: "asc" } }),
       prisma.wikiEntry.findMany({
         where: { group: { not: contactSocialLinkGroup } },
         orderBy: [{ group: "asc" }, { position: "asc" }, { title: "asc" }]
-      })
+      }),
+      prisma.siteSetting.findMany({ orderBy: { key: "asc" } })
     ]);
   }
 
@@ -521,6 +524,7 @@ export async function loadAdminConsole(section: AdminSection = "moderation", opt
     complaints,
     auditLogs,
     dbUsers,
+    siteSettings,
     enums: {
       exchangeStatuses: Object.values(ExchangeStatus),
       moderationStatuses: Object.values(ModerationStatus),

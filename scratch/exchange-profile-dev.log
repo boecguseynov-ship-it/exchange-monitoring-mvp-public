@@ -1,0 +1,1785 @@
+
+> exchange-monitoring-mvp@0.1.0 dev
+> next dev --port 3100
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3100
+- Network:       http://172.19.0.1:3100
+- Environments: .env
+✓ Ready in 2.5s
+
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 6.0s (next.js: 4.1s, application-code: 1931ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 483ms (next.js: 16ms, application-code: 468ms)
+ GET /api/auth/session 200 in 446ms (next.js: 406ms, application-code: 40ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/rubycash 404 in 213ms (next.js: 11ms, application-code: 202ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 322ms (next.js: 15ms, application-code: 307ms)
+ GET /api/auth/session 200 in 54ms (next.js: 46ms, application-code: 8ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 469ms (next.js: 12ms, application-code: 456ms)
+ GET /api/auth/session 200 in 25ms (next.js: 4ms, application-code: 20ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 353ms (next.js: 12ms, application-code: 341ms)
+ GET /api/auth/session 200 in 50ms (next.js: 27ms, application-code: 22ms)
+✓ Compiled in 88ms
+✓ Compiled in 101ms
+✓ Compiled in 122ms
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 1534ms (next.js: 150ms, application-code: 1384ms)
+ GET /api/auth/session 200 in 56ms (next.js: 36ms, application-code: 20ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 507ms (next.js: 14ms, application-code: 493ms)
+ GET /api/auth/session 200 in 36ms (next.js: 15ms, application-code: 21ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 353ms (next.js: 13ms, application-code: 340ms)
+ GET /api/auth/session 200 in 73ms (next.js: 64ms, application-code: 9ms)
+✓ Compiled in 133ms
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 879ms (next.js: 141ms, application-code: 737ms)
+ GET /api/auth/session 200 in 49ms (next.js: 33ms, application-code: 16ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 770ms (next.js: 22ms, application-code: 748ms)
+ GET /api/auth/session 200 in 56ms (next.js: 38ms, application-code: 17ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 401ms (next.js: 19ms, application-code: 381ms)
+ GET /api/auth/session 200 in 52ms (next.js: 31ms, application-code: 21ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 381ms (next.js: 27ms, application-code: 354ms)
+ GET /api/auth/session 200 in 99ms (next.js: 85ms, application-code: 13ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 381ms (next.js: 10ms, application-code: 371ms)
+ GET /api/auth/session 200 in 40ms (next.js: 18ms, application-code: 21ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 456ms (next.js: 12ms, application-code: 445ms)
+ GET /api/auth/session 200 in 63ms (next.js: 38ms, application-code: 25ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 398ms (next.js: 13ms, application-code: 385ms)
+ GET /api/auth/session 200 in 28ms (next.js: 15ms, application-code: 13ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 371ms (next.js: 48ms, application-code: 323ms)
+ GET /api/auth/session 200 in 53ms (next.js: 41ms, application-code: 12ms)
+ GET / 200 in 2.3s (next.js: 64ms, application-code: 2.2s)
+ GET /api/auth/session 200 in 108ms (next.js: 13ms, application-code: 95ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=RUB&to=USDTTRC20&amount=111 200 in 531ms (next.js: 91ms, application-code: 439ms)
+ POST /api/v1/safe-deal-ai 200 in 151ms (next.js: 128ms, application-code: 23ms)
+ GET /bitcoin-to-sberbank 200 in 2.7s (next.js: 1650ms, application-code: 1087ms)
+ GET /api/auth/session 200 in 97ms (next.js: 78ms, application-code: 19ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 558ms (next.js: 81ms, application-code: 478ms)
+ POST /api/v1/safe-deal-ai 200 in 9ms (next.js: 3ms, application-code: 6ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers 200 in 3.1s (next.js: 2.5s, application-code: 544ms)
+ GET /api/auth/session 200 in 50ms (next.js: 10ms, application-code: 40ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 497ms (next.js: 17ms, application-code: 480ms)
+ GET /api/auth/session 200 in 10ms (next.js: 4ms, application-code: 7ms)
+ GET /wiki 200 in 656ms (next.js: 55ms, application-code: 601ms)
+ GET /api/auth/session 200 in 28ms (next.js: 15ms, application-code: 13ms)
+ GET /contacts 200 in 6.6s (next.js: 4.8s, application-code: 1721ms)
+ GET /api/auth/session 200 in 25ms (next.js: 12ms, application-code: 13ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 599ms (next.js: 14ms, application-code: 585ms)
+ GET /api/auth/session 200 in 169ms (next.js: 147ms, application-code: 22ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 406ms (next.js: 19ms, application-code: 387ms)
+ GET /api/auth/session 200 in 14ms (next.js: 8ms, application-code: 6ms)
+ GET / 200 in 1115ms (next.js: 19ms, application-code: 1096ms)
+ GET /api/auth/session 200 in 133ms (next.js: 96ms, application-code: 37ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=RUB&to=USDTTRC20&amount=111 200 in 160ms (next.js: 79ms, application-code: 80ms)
+ GET /bitcoin-to-sberbank 200 in 1336ms (next.js: 35ms, application-code: 1301ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 55ms (next.js: 45ms, application-code: 9ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 71ms (next.js: 25ms, application-code: 47ms)
+ GET /exchangers 200 in 454ms (next.js: 41ms, application-code: 413ms)
+ GET /api/auth/session 200 in 45ms (next.js: 31ms, application-code: 14ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET / 200 in 716ms (next.js: 9ms, application-code: 706ms)
+ GET /api/auth/session 200 in 73ms (next.js: 62ms, application-code: 10ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=RUB&to=USDTTRC20&amount=111 200 in 105ms (next.js: 52ms, application-code: 53ms)
+ GET /bitcoin-to-sberbank 200 in 840ms (next.js: 12ms, application-code: 828ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 11ms (next.js: 6ms, application-code: 5ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 313ms (next.js: 8ms, application-code: 305ms)
+ GET /exchangers 200 in 256ms (next.js: 9ms, application-code: 247ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 12ms (next.js: 4ms, application-code: 8ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 471ms (next.js: 11ms, application-code: 459ms)
+ GET /api/auth/session 200 in 11ms (next.js: 3ms, application-code: 9ms)
+ GET /wiki 200 in 246ms (next.js: 5ms, application-code: 241ms)
+ GET /api/auth/session 200 in 19ms (next.js: 13ms, application-code: 5ms)
+ GET /contacts 200 in 240ms (next.js: 5ms, application-code: 236ms)
+ GET /api/auth/session 200 in 11ms (next.js: 4ms, application-code: 8ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 380ms (next.js: 10ms, application-code: 370ms)
+ GET /api/auth/session 200 in 15ms (next.js: 9ms, application-code: 6ms)
+✓ Compiled in 192ms
+ GET /bitcoin-to-sberbank 200 in 2.0s (next.js: 158ms, application-code: 1883ms)
+ GET /bitcoin-to-sberbank 200 in 939ms (next.js: 11ms, application-code: 929ms)
+ GET /api/auth/session 200 in 176ms (next.js: 164ms, application-code: 12ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 676ms (next.js: 68ms, application-code: 608ms)
+ POST /api/v1/safe-deal-ai 200 in 43ms (next.js: 34ms, application-code: 9ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 81ms (next.js: 40ms, application-code: 41ms)
+ GET /bitcoin-to-sberbank 200 in 1082ms (next.js: 12ms, application-code: 1070ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__1q28p11._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 158ms (next.js: 144ms, application-code: 14ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers 200 in 1068ms (next.js: 137ms, application-code: 932ms)
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 206ms (next.js: 129ms, application-code: 77ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ GET /contacts 200 in 822ms (next.js: 127ms, application-code: 695ms)
+ GET /api/auth/session 200 in 9ms (next.js: 3ms, application-code: 6ms)
+ GET /login 200 in 1626ms (next.js: 1387ms, application-code: 239ms)
+ GET /api/auth/session 200 in 23ms (next.js: 4ms, application-code: 19ms)
+ GET /wiki 200 in 828ms (next.js: 113ms, application-code: 715ms)
+ GET /api/auth/session 200 in 17ms (next.js: 3ms, application-code: 14ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__1q28p11._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers 200 in 182ms (next.js: 4ms, application-code: 178ms)
+ GET /api/auth/session 200 in 99ms (next.js: 90ms, application-code: 9ms)
+✓ Compiled in 141ms
+ GET /bitcoin-to-sberbank 200 in 834ms (next.js: 12ms, application-code: 821ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__1q28p11._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 55ms (next.js: 38ms, application-code: 18ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 89ms (next.js: 18ms, application-code: 71ms)
+ GET /exchangers 200 in 320ms (next.js: 4ms, application-code: 316ms)
+ GET /api/auth/session 200 in 8ms (next.js: 3ms, application-code: 6ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /contacts 200 in 165ms (next.js: 7ms, application-code: 159ms)
+ GET /api/auth/session 200 in 18ms (next.js: 3ms, application-code: 14ms)
+ GET /login 200 in 154ms (next.js: 4ms, application-code: 150ms)
+ GET /api/auth/session 200 in 16ms (next.js: 3ms, application-code: 13ms)
+ GET /wiki 200 in 237ms (next.js: 4ms, application-code: 233ms)
+ GET /api/auth/session 200 in 15ms (next.js: 3ms, application-code: 12ms)
+ GET /bitcoin-to-sberbank 200 in 1272ms (next.js: 13ms, application-code: 1259ms)
+ GET /api/auth/session 200 in 18ms (next.js: 6ms, application-code: 13ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 689ms (next.js: 4ms, application-code: 685ms)
+ POST /api/v1/safe-deal-ai 200 in 13ms (next.js: 3ms, application-code: 10ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 439ms (next.js: 3ms, application-code: 436ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/v1/insights 200 in 328ms (next.js: 66ms, application-code: 262ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 615ms (next.js: 3ms, application-code: 612ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 476ms (next.js: 2ms, application-code: 474ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/v1/insights 200 in 29ms (next.js: 11ms, application-code: 18ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 483ms (next.js: 3ms, application-code: 479ms)
+ GET /bitcoin-to-sberbank 200 in 885ms (next.js: 16ms, application-code: 869ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 66ms (next.js: 36ms, application-code: 30ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 645ms (next.js: 25ms, application-code: 621ms)
+ POST /api/v1/safe-deal-ai 200 in 10ms (next.js: 3ms, application-code: 7ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 483ms (next.js: 3ms, application-code: 480ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/v1/insights 200 in 400ms (next.js: 7ms, application-code: 393ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 486ms (next.js: 17ms, application-code: 469ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 450ms (next.js: 2ms, application-code: 447ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/v1/insights 200 in 33ms (next.js: 11ms, application-code: 21ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 499ms (next.js: 3ms, application-code: 496ms)
+✓ Compiled in 184ms
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 653ms (next.js: 5ms, application-code: 648ms)
+ GET /bitcoin-to-sberbank 200 in 909ms (next.js: 12ms, application-code: 898ms)
+ GET /api/auth/session 200 in 16ms (next.js: 7ms, application-code: 9ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 460ms (next.js: 5ms, application-code: 455ms)
+ POST /api/v1/safe-deal-ai 200 in 17ms (next.js: 10ms, application-code: 8ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 439ms (next.js: 3ms, application-code: 436ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/v1/insights 200 in 265ms (next.js: 11ms, application-code: 254ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 465ms (next.js: 3ms, application-code: 462ms)
+ GET /bitcoin-to-sberbank 200 in 964ms (next.js: 12ms, application-code: 952ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 47ms (next.js: 39ms, application-code: 9ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 789ms (next.js: 19ms, application-code: 770ms)
+ POST /api/v1/safe-deal-ai 200 in 27ms (next.js: 20ms, application-code: 7ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__1q28p11._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers 200 in 246ms (next.js: 7ms, application-code: 239ms)
+ GET /api/auth/session 200 in 39ms (next.js: 17ms, application-code: 21ms)
+ GET /contacts 200 in 353ms (next.js: 8ms, application-code: 345ms)
+ GET /api/auth/session 200 in 19ms (next.js: 12ms, application-code: 7ms)
+ GET /login 200 in 210ms (next.js: 16ms, application-code: 194ms)
+ GET /api/auth/session 200 in 11ms (next.js: 3ms, application-code: 8ms)
+ GET /wiki 200 in 324ms (next.js: 4ms, application-code: 320ms)
+ GET /api/auth/session 200 in 43ms (next.js: 21ms, application-code: 23ms)
+ GET /blog 200 in 387ms (next.js: 69ms, application-code: 318ms)
+ GET /api/auth/session 200 in 43ms (next.js: 36ms, application-code: 6ms)
+ GET /privacy 200 in 1658ms (next.js: 1273ms, application-code: 384ms)
+ GET /api/auth/session 200 in 27ms (next.js: 8ms, application-code: 19ms)
+✓ Compiled in 169ms
+ GET /bitcoin-to-sberbank 200 in 1087ms (next.js: 13ms, application-code: 1074ms)
+ GET /api/auth/session 200 in 10ms (next.js: 4ms, application-code: 6ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 378ms (next.js: 3ms, application-code: 375ms)
+ POST /api/v1/safe-deal-ai 200 in 9ms (next.js: 2ms, application-code: 7ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__1q28p11._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers 200 in 243ms (next.js: 12ms, application-code: 231ms)
+ GET /api/auth/session 200 in 10ms (next.js: 3ms, application-code: 6ms)
+ GET /bitcoin-to-sberbank 200 in 1157ms (next.js: 13ms, application-code: 1144ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 30ms (next.js: 23ms, application-code: 7ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 439ms (next.js: 6ms, application-code: 433ms)
+ POST /api/v1/safe-deal-ai 200 in 11ms (next.js: 3ms, application-code: 7ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__1q28p11._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers 200 in 399ms (next.js: 4ms, application-code: 395ms)
+ GET /api/auth/session 200 in 38ms (next.js: 25ms, application-code: 12ms)
+ GET /contacts 200 in 336ms (next.js: 17ms, application-code: 319ms)
+ GET /api/auth/session 200 in 15ms (next.js: 8ms, application-code: 7ms)
+ GET /login 200 in 188ms (next.js: 5ms, application-code: 184ms)
+ GET /api/auth/session 200 in 19ms (next.js: 3ms, application-code: 16ms)
+ GET /wiki 200 in 263ms (next.js: 8ms, application-code: 255ms)
+ GET /api/auth/session 200 in 26ms (next.js: 4ms, application-code: 23ms)
+ GET /blog 200 in 267ms (next.js: 10ms, application-code: 257ms)
+ GET /api/auth/session 200 in 64ms (next.js: 43ms, application-code: 21ms)
+ GET /privacy 200 in 223ms (next.js: 4ms, application-code: 218ms)
+ GET /api/auth/session 200 in 10ms (next.js: 4ms, application-code: 6ms)
+ GET /terms 200 in 1149ms (next.js: 887ms, application-code: 262ms)
+ GET /api/auth/session 200 in 24ms (next.js: 14ms, application-code: 9ms)
+ GET /terms 200 in 1269ms (next.js: 183ms, application-code: 1086ms)
+ GET /terms 200 in 790ms (next.js: 111ms, application-code: 680ms)
+ GET /terms 200 in 608ms (next.js: 17ms, application-code: 591ms)
+ GET /terms 200 in 661ms (next.js: 132ms, application-code: 528ms)
+ GET /terms 200 in 690ms (next.js: 76ms, application-code: 614ms)
+ GET /terms 200 in 701ms (next.js: 4ms, application-code: 697ms)
+ GET /terms 200 in 687ms (next.js: 21ms, application-code: 666ms)
+ GET /terms 200 in 681ms (next.js: 38ms, application-code: 643ms)
+ GET /terms 200 in 529ms (next.js: 13ms, application-code: 516ms)
+ GET /terms 200 in 542ms (next.js: 45ms, application-code: 498ms)
+ GET /terms 200 in 566ms (next.js: 84ms, application-code: 481ms)
+✓ Compiled in 2.7s
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/01bit 404 in 528ms (next.js: 173ms, application-code: 355ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__1q28p11._.js:2277:171
+
+  2274 });
+  2275 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  2276 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 2277 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers 200 in 553ms (next.js: 128ms, application-code: 426ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 307ms (next.js: 11ms, application-code: 296ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/102 200 in 236ms (next.js: 3ms, application-code: 233ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/103 200 in 249ms (next.js: 10ms, application-code: 239ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 350ms (next.js: 18ms, application-code: 332ms)
+ GET /api/auth/session 200 in 117ms (next.js: 92ms, application-code: 25ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 549ms (next.js: 13ms, application-code: 536ms)
+ GET /api/auth/session 200 in 34ms (next.js: 19ms, application-code: 14ms)
+✓ Compiled in 178ms
+✓ Compiled in 185ms
+✓ Compiled in 146ms
+✓ Compiled in 388ms
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 910ms (next.js: 151ms, application-code: 759ms)
+ GET /api/auth/session 200 in 109ms (next.js: 60ms, application-code: 49ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/101 200 in 323ms (next.js: 11ms, application-code: 312ms)
+ GET /api/auth/session 200 in 33ms (next.js: 24ms, application-code: 8ms)
+✓ Compiled in 286ms
+ GET /contacts 200 in 575ms (next.js: 158ms, application-code: 416ms)
+ GET /api/auth/session 200 in 100ms (next.js: 85ms, application-code: 15ms)
+✓ Compiled in 126ms
+✓ Compiled in 38ms
+ GET /bitcoin-to-sberbank 200 in 1593ms (next.js: 188ms, application-code: 1405ms)
+ GET /bitcoin-to-sberbank 200 in 758ms (next.js: 12ms, application-code: 745ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 214ms (next.js: 195ms, application-code: 18ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 708ms (next.js: 81ms, application-code: 627ms)
+ POST /api/v1/safe-deal-ai 200 in 57ms (next.js: 41ms, application-code: 15ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 617ms (next.js: 6ms, application-code: 611ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/v1/insights 200 in 298ms (next.js: 41ms, application-code: 257ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 509ms (next.js: 3ms, application-code: 506ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:926:173
+
+  923 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  924 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  925 if (!from || !to || from.id === to.id) return [];
+→ 926 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1245:173
+
+  1242 });
+  1243 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1244 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1245 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=SBERRUB&amount=111 200 in 571ms (next.js: 14ms, application-code: 557ms)
+✓ Compiled in 92ms
+✓ Compiled in 311ms
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/comcash-cc 404 in 570ms (next.js: 141ms, application-code: 429ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/comcash 404 in 259ms (next.js: 5ms, application-code: 254ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/01bit 404 in 177ms (next.js: 11ms, application-code: 165ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/exfpro 404 in 214ms (next.js: 13ms, application-code: 201ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/fsmoscow 404 in 242ms (next.js: 41ms, application-code: 201ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\ssr\[root-of-the-server]__0e-578_._.js:2352:154
+
+  2349 }
+  2350 async function loadLocalExchangeBySlug(slug) {
+  2351     if (!databaseContentEnabled()) return null;
+→ 2352     return __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["prisma"].exchange.findUnique(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /exchangers/yaobmen 404 in 228ms (next.js: 21ms, application-code: 206ms)
+✓ Compiled in 380ms
+✓ Compiled in 223ms
+✓ Compiled in 316ms
+✓ Compiled in 225ms
+✓ Compiled in 1369ms
+ GET /bitcoin-to-bitcoin 200 in 1507ms (next.js: 168ms, application-code: 1340ms)
+ GET /api/auth/session 200 in 195ms (next.js: 68ms, application-code: 126ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 507ms (next.js: 160ms, application-code: 347ms)
+ POST /api/v1/safe-deal-ai 200 in 21ms (next.js: 16ms, application-code: 5ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 418ms (next.js: 3ms, application-code: 416ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/v1/insights 200 in 287ms (next.js: 19ms, application-code: 268ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 470ms (next.js: 30ms, application-code: 440ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 463ms (next.js: 9ms, application-code: 454ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/v1/insights 200 in 37ms (next.js: 7ms, application-code: 30ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 464ms (next.js: 16ms, application-code: 449ms)
+ GET /bitcoin-to-bitcoin 200 in 1477ms (next.js: 196ms, application-code: 1281ms)
+ GET /api/auth/session 200 in 69ms (next.js: 52ms, application-code: 17ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 368ms (next.js: 50ms, application-code: 318ms)
+ GET /ethereum-to-bitcoin 200 in 130ms (next.js: 35ms, application-code: 95ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=ETH&to=BTC&amount=111 200 in 1006ms (next.js: 46ms, application-code: 960ms)
+ GET /api/auth/session 200 in 22ms (next.js: 10ms, application-code: 12ms)
+ GET /api/auth/session 200 in 23ms (next.js: 16ms, application-code: 7ms)
+ GET /bitcoin-to-bitcoin 200 in 920ms (next.js: 13ms, application-code: 907ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /api/auth/session 200 in 65ms (next.js: 51ms, application-code: 14ms)
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 301ms (next.js: 20ms, application-code: 281ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /bitcoin-to-bitcoin 200 in 870ms (next.js: 12ms, application-code: 858ms)
+ GET /api/auth/session 200 in 22ms (next.js: 12ms, application-code: 10ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 237ms (next.js: 5ms, application-code: 232ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /bitcoin-to-bitcoin 200 in 1551ms (next.js: 211ms, application-code: 1340ms)
+ GET /api/auth/session 200 in 230ms (next.js: 135ms, application-code: 95ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 276ms (next.js: 26ms, application-code: 250ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+✓ Compiled in 292ms
+ GET /bitcoin-to-bitcoin 200 in 1664ms (next.js: 184ms, application-code: 1480ms)
+ GET /api/auth/session 200 in 107ms (next.js: 67ms, application-code: 40ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:937:173
+
+  934 const from = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], fromCode);
+  935 const to = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$normalize$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["findCurrency"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$bestchange$2f$local$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["localCurrencies"], toCode);
+  936 if (!from || !to) return [];
+→ 937 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /contacts 200 in 584ms (next.js: 139ms, application-code: 445ms)
+prisma:error 
+Invalid `__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany()` invocation in
+C:\Users\user\Desktop\exchange-monitoring-mvp-public\.next\dev\server\chunks\[root-of-the-server]__0bnurjr._.js:1257:173
+
+  1254 });
+  1255 const domains = Array.from(new Set(changersWithHosts.flatMap((item)=>item.hosts)));
+  1256 const names = Array.from(new Set(changersWithHosts.map((item)=>item.changer.name).filter(Boolean)));
+→ 1257 const exchanges = await __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$db$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].exchange.findMany(
+The column `main.Exchange.noAml` does not exist in the current database.
+ GET /live-offers?from=BTC&to=BTC&amount=111 200 in 854ms (next.js: 20ms, application-code: 834ms)
+ GET /api/auth/session 200 in 21ms (next.js: 4ms, application-code: 17ms)
+ POST /api/v1/safe-deal-ai 200 in 28ms (next.js: 21ms, application-code: 7ms)
+ GET /bitcoin-to-bitcoin 200 in 1070ms (next.js: 9ms, application-code: 1061ms)
+✓ Compiled in 170ms
+✓ Compiled in 231ms
+✓ Compiled in 117ms
+✓ Compiled in 225ms
+✓ Compiled in 195ms
+✓ Compiled in 80ms
+✓ Compiled in 186ms
+✓ Compiled in 104ms
+✓ Compiled in 48ms

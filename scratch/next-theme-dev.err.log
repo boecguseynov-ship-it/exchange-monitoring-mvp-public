@@ -1,0 +1,8 @@
+⨯ Another next dev server is already running.
+
+- Local:        http://localhost:3100
+- PID:          8800
+- Dir:          C:\Users\user\Desktop\exchange-monitoring-mvp-public
+- Log:          .next\dev\logs\next-development.log
+
+Run taskkill /PID 8800 /F to stop it.

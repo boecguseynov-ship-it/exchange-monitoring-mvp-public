@@ -24,7 +24,8 @@ import {
   saveUserAction,
   deleteUserAction,
   saveExchangeRateAction,
-  deleteExchangeRateAction
+  deleteExchangeRateAction,
+  saveSiteSettingAction
 } from "@/lib/admin-actions";
 import { DeleteButton } from "@/components/delete-button";
 import {
@@ -448,6 +449,26 @@ function ContentSection({ data }: { data: Awaited<ReturnType<typeof loadAdminCon
               </form>
             </details>
           ))}
+        </div>
+      </section>
+      <section className="adminPanel">
+        <div className="panelHeader"><div><span className="eyebrow">Settings</span><h2>Настройки сайта (robots.txt, sitemap.xml)</h2></div></div>
+        <div className="adminCardGrid compact">
+          {["robots.txt", "sitemap.xml"].map((key) => {
+            const setting = data.siteSettings.find((s) => s.key === key);
+            return (
+              <details className="adminDetails" key={key}>
+                <summary>/{key}</summary>
+                <form action={saveSiteSettingAction} className="adminFormGrid">
+                  <input name="key" type="hidden" value={key} />
+                  <textarea name="value" defaultValue={setting?.value || ""} placeholder={`Содержимое ${key}`} rows={10} style={{ fontFamily: "monospace" }} />
+                  <div style={{ display: "flex", gap: "8px", marginTop: "8px" }}>
+                    <button type="submit">Сохранить</button>
+                  </div>
+                </form>
+              </details>
+            );
+          })}
         </div>
       </section>
       <section className="adminPanel">

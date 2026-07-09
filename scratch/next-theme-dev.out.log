@@ -1,0 +1,10 @@
+
+> exchange-monitoring-mvp@0.1.0 dev
+> next dev --port 3001
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://172.19.0.1:3001
+- Environments: .env
+✓ Ready in 994ms
+[?25h

@@ -1,0 +1,28 @@
+
+> exchange-monitoring-mvp@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3000
+
+▲ Next.js 16.2.9 (Turbopack)
+- Local:         http://127.0.0.1:3000
+- Network:       http://127.0.0.1:3000
+- Environments: .env
+✓ Ready in 992ms
+
+ GET /wiki 200 in 1484ms (next.js: 338ms, application-code: 1145ms)
+ GET /api/auth/session 200 in 135ms (next.js: 100ms, application-code: 35ms)
+ GET /exchangers/1395 200 in 4.5s (next.js: 1003ms, application-code: 3.5s)
+ GET /api/auth/session 200 in 58ms (next.js: 49ms, application-code: 10ms)
+ GET / 200 in 1690ms (next.js: 165ms, application-code: 1525ms)
+ GET /api/auth/session 200 in 12ms (next.js: 5ms, application-code: 7ms)
+ GET /live-offers?from=RUB&to=USDTTRC20&amount=111 200 in 1079ms (next.js: 53ms, application-code: 1026ms)
+ POST /api/v1/safe-deal-ai 200 in 64ms (next.js: 53ms, application-code: 11ms)
+ GET /exchangers/1395 200 in 2.5s (next.js: 14ms, application-code: 2.5s)
+✓ Compiled in 147ms
+ GET /exchangers/1395 200 in 4.1s (next.js: 107ms, application-code: 3.9s)
+ GET /api/auth/session 200 in 288ms (next.js: 32ms, application-code: 256ms)
+ GET /wiki 200 in 874ms (next.js: 240ms, application-code: 633ms)
+ GET /api/auth/session 200 in 102ms (next.js: 82ms, application-code: 20ms)
+ GET / 200 in 1675ms (next.js: 67ms, application-code: 1608ms)
+ GET /api/auth/session 200 in 52ms (next.js: 37ms, application-code: 15ms)
+ GET /live-offers?from=RUB&to=USDTTRC20&amount=111 200 in 1114ms (next.js: 21ms, application-code: 1093ms)
+ POST /api/v1/safe-deal-ai 200 in 39ms (next.js: 30ms, application-code: 9ms)

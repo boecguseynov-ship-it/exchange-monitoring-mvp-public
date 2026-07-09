@@ -1,0 +1,121 @@
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <RedirectBoundary>
+      <RedirectErrorBoundary router={{...}}>
+        <InnerLayoutRouter url="/exchanger..." tree={[...]} params={{slug:"101"}} cacheNode={{rsc:{...}, ...}} ...>
+          <SegmentViewNode type="page" pagePath="exchangers...">
+            <SegmentTrieNode>
+            <ExchangeProfilePage>
+              <AppShell>
+                <div className="app appMon...">
+                  <Header>
+                  <LinkComponent>
+                  <main className="mainStanda...">
+                    <div className="docsPage e...">
+                      <section>
+                      <section className="exchangeRe..." id="exchange-f...">
+                        <div>
+                        <div className="exchangeRe...">
+                          <a>
+                          <FeedbackPanel exchangeSlug="101">
+                            <section className="panel feed...">
+                              <div>
+                              <form onSubmit={function submit}>
+                                <label>
+                                  <input
+                                    minLength={3}
+                                    name="reference"
+                                    onChange={function onChange}
+                                    required={true}
+                                    value=""
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                <label>
+                                <label className="feedbackText">
+                                  <textarea
+                                    minLength={20}
+                                    name="body"
+                                    onChange={function onChange}
+                                    required={true}
+                                    rows={5}
+                                    value=""
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                ...
+                      ...
+                  ...
+          ...
+        ...
+ 
+[browser] A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <InnerLayoutRouter url="/exchanger..." tree={[...]} params={{slug:"101"}} cacheNode={{rsc:{...}, ...}} ...>
+      <SegmentViewNode type="page" pagePath="exchangers...">
+        <SegmentTrieNode>
+        <ExchangeProfilePage>
+          <AppShell>
+            <div className="app appMon...">
+              <Header>
+              <LinkComponent>
+              <main className="mainStanda...">
+                <div className="docsPage e...">
+                  <section>
+                  <div className="exchangePr...">
+                    <section className="exchangeRe..." id="exchange-f...">
+                      <div>
+                      <div>
+                      <div className="exchangeRe...">
+                        <div>
+                        <details className="exchangeFe..." id="exchange-f...">
+                          <summary>
+                          <FeedbackPanel exchangeSlug="101">
+                            <section className="panel feed...">
+                              <div>
+                              <form onSubmit={function submit}>
+                                <label>
+                                  <input
+                                    minLength={3}
+                                    name="reference"
+                                    onChange={function onChange}
+                                    required={true}
+                                    value=""
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                <label>
+                                <label className="feedbackText">
+                                  <textarea
+                                    minLength={20}
+                                    name="body"
+                                    onChange={function onChange}
+                                    required={true}
+                                    rows={5}
+                                    value=""
+-                                   style={{caret-color:"transparent"}}
+                                  >
+                                ...
+                    ...
+              ...
+      ...
+ 

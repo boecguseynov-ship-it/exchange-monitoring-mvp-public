@@ -40,6 +40,7 @@ export type LocalExchangeReviewMatch = {
   slug: string;
   domain?: string;
   noAml?: boolean;
+  partnerUrl?: string | null;
   rating: number | null;
   reviews: number;
   source?: "local" | "provider";
@@ -269,7 +270,7 @@ export function normalizeBestChangeOffers({
           rating: stats.rating,
           reviews: stats.reviews,
           verified: changer.active,
-          url: publicUrl(changer),
+          url: local?.partnerUrl || publicUrl(changer),
           pageUrl: pageUrl(changer)
         },
         from: from.code,

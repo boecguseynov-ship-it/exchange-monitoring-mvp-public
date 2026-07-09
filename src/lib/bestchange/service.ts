@@ -126,6 +126,7 @@ type LocalExchangeRecord = {
   slug: string;
   name: string;
   domain: string;
+  partnerUrl: string | null;
   description: string;
   insuranceDeposit: string | null;
   noAml: boolean;
@@ -306,6 +307,7 @@ async function loadDatabaseFallbackOffers({
       description: true,
       insuranceDeposit: true,
       noAml: true,
+      partnerUrl: true,
       status: true,
       verifiedAt: true,
       createdAt: true
@@ -355,6 +357,7 @@ async function loadDatabaseFallbackOffers({
       return [10_000 + index, {
         slug: exchange.slug,
         noAml: exchange.noAml,
+        partnerUrl: exchange.partnerUrl,
         rating: aggregate?._avg.rating ?? null,
         reviews: aggregate?._count.rating ?? 0
       }];
@@ -648,17 +651,14 @@ async function loadLocalReviewMatches(changers: BestChangeChanger[]) {
 
   const exchanges = await prisma.exchange.findMany({
     where: {
-      status: "ACTIVE",
-      OR: [
-        domains.length ? { domain: { in: domains } } : undefined,
-        names.length ? { name: { in: names } } : undefined
-      ].filter(Boolean) as Array<Record<string, unknown>>
+      status: "ACTIVE"
     },
     select: {
       id: true,
       slug: true,
       name: true,
       domain: true,
+      partnerUrl: true,
       insuranceDeposit: true,
       noAml: true
     }
@@ -695,6 +695,7 @@ async function loadLocalReviewMatches(changers: BestChangeChanger[]) {
         slug: exchange.slug,
         domain: exchange.domain,
         noAml: exchange.noAml,
+        partnerUrl: exchange.partnerUrl,
         rating: aggregate?._avg.rating ?? null,
         reviews: aggregate?._count.rating ?? 0
       }]];
@@ -712,6 +713,7 @@ async function loadLocalExchangeBySlug(slug: string): Promise<LocalExchangeRecor
       slug: true,
       name: true,
       domain: true,
+      partnerUrl: true,
       description: true,
       insuranceDeposit: true,
       noAml: true,
@@ -739,6 +741,7 @@ async function loadLocalExchangeForChanger(changer: BestChangeChanger): Promise<
       slug: true,
       name: true,
       domain: true,
+      partnerUrl: true,
       description: true,
       insuranceDeposit: true,
       noAml: true,
@@ -1025,7 +1028,7 @@ export async function loadLiveExchangeProfile(
       name: localExchangeBySlug.name,
       description: localExchangeBySlug.description,
       domain: localExchangeBySlug.domain,
-      url: `https://${localExchangeBySlug.domain}`,
+      url: localExchangeBySlug.partnerUrl ?? `https://${localExchangeBySlug.domain}`,
       rating: localReviewStats.rating,
       reviews: localReviewStats.reviews,
       activeClaims: 0,
@@ -1088,7 +1091,7 @@ export async function loadLiveExchangeProfile(
     name: changer.name,
     description: `${changer.active ? "Активен" : "Отключен"} · резерв ${reserveLabel}`,
     domain: sanitizeDomain(providerFacts?.domain ?? changer.urls.ru ?? Object.values(changer.urls)[0]),
-    url: changer.urls.ru ?? Object.values(changer.urls)[0] ?? null,
+    url: localExchange?.partnerUrl ?? changer.urls.ru ?? Object.values(changer.urls)[0] ?? null,
     rating: profileRating,
     reviews: profileReviews,
     activeClaims: providerFacts?.activeClaims ?? reviewBucket(changer, "claim"),

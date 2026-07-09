@@ -89,6 +89,7 @@ export async function saveExchangeAction(formData: FormData) {
     domain,
     supportEmail: text(formData, "supportEmail", `support+${slug}@ratescope.local`),
     termsUrl: text(formData, "termsUrl") || null,
+    partnerUrl: text(formData, "partnerUrl") || null,
     insuranceDeposit: text(formData, "insuranceDeposit") || null,
     noAml: checked(formData, "noAml"),
     description: text(formData, "description", "Профиль обменника управляется из админки."),

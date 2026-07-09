@@ -193,6 +193,7 @@ function ExchangesSection({ data }: { data: Awaited<ReturnType<typeof loadAdminC
           <input name="domain" placeholder="domain.com" />
           <input name="supportEmail" placeholder="support@domain.com" />
           <input name="termsUrl" placeholder="URL правил" />
+          <input name="partnerUrl" placeholder="Реферальная ссылка (https://obmennik.com?ref=123)" />
           <input name="insuranceDeposit" placeholder="Страховой депозит, например $10 000" />
           <SelectField name="status" value="ACTIVE" values={data.enums.exchangeStatuses} />
           <label><input name="noAml" type="checkbox" /> Работает без AML</label>
@@ -219,6 +220,7 @@ function ExchangesSection({ data }: { data: Awaited<ReturnType<typeof loadAdminC
                 <input name="domain" defaultValue={exchange.domain} />
                 <input name="supportEmail" defaultValue={exchange.supportEmail} />
                 <input name="termsUrl" defaultValue={exchange.termsUrl ?? ""} />
+                <input name="partnerUrl" defaultValue={exchange.partnerUrl ?? ""} placeholder="Реферальная ссылка (https://obmennik.com?ref=123)" />
                 <input name="insuranceDeposit" defaultValue={exchange.insuranceDeposit ?? ""} placeholder="Страховой депозит" />
                 <SelectField name="status" value={exchange.status} values={data.enums.exchangeStatuses} />
                 <label><input name="noAml" type="checkbox" defaultChecked={exchange.noAml} /> Работает без AML</label>

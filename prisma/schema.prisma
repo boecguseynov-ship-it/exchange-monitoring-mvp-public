@@ -54,6 +54,7 @@ model Exchange {
   description  String
   supportEmail String
   termsUrl     String?
+  partnerUrl   String?
   insuranceDeposit String?
   noAml       Boolean        @default(false)
   status       ExchangeStatus @default(ACTIVE)

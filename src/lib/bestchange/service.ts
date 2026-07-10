@@ -1063,7 +1063,8 @@ export async function loadLiveExchangeProfile(
         { label: "Всего валют", value: currencyCountLabel },
         { label: "Курсов обмена", value: ratesCountLabel },
         { label: "Сумма резервов", value: reserveLabel },
-        { label: "Домен", value: localExchangeBySlug.domain }
+        { label: "Домен", value: localExchangeBySlug.domain },
+        ...(localReviewStats.reviews > 0 ? [{ label: "Отзывов", value: String(localReviewStats.reviews) }] : [])
       ],
       localReviews,
       externalReviews: importedProviderReviews
@@ -1090,7 +1091,7 @@ export async function loadLiveExchangeProfile(
     { label: "Языки", value: changer.langs.join(", ") },
     { label: "Статус", value: changer.active ? "Активен" : "Отключен" }
   ];
-  const facts = [...(providerFacts?.facts ?? []), ...apiFacts]
+  const baseFacts = [...(providerFacts?.facts ?? []), ...apiFacts]
     .filter((fact) => fact.value.trim().length > 0)
     .filter((fact, index, list) => list.findIndex((item) => item.label === fact.label) === index);
   const fallbackRating = providerRating(changer);
@@ -1099,6 +1100,10 @@ export async function loadLiveExchangeProfile(
     localReviews.length,
     externalReviews.length
   );
+  const totalReviews = Math.max(profileReviews, providerFacts?.reviews ?? 0);
+  const reviewsFact = totalReviews > 0 ? [{ label: "Отзывов", value: String(totalReviews) }] : [];
+  const facts = [...baseFacts, ...reviewsFact]
+    .filter((fact, index, list) => list.findIndex((item) => item.label === fact.label) === index);
   const profileRating = localReviewStats.rating ?? fallbackRating;
 
   return {
@@ -1114,7 +1119,7 @@ export async function loadLiveExchangeProfile(
       localExchange?.partnerUrl
     ) ?? [changer.urls.ru, ...Object.values(changer.urls)].find((u) => u && !isBestchangeUrl(u)) ?? null,
     rating: profileRating,
-    reviews: profileReviews,
+    reviews: totalReviews,
     activeClaims: providerFacts?.activeClaims ?? reviewBucket(changer, "claim"),
     closedClaims: providerFacts?.closedClaims ?? reviewBucket(changer, "closed"),
     reserve: changer.reserve,

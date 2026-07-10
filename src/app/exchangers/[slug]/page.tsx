@@ -277,7 +277,7 @@ export default async function ExchangeProfilePage({ params }: ExchangePageProps)
 
           <div className="exchangeReviewToolbar">
             <div>
-              <h3>{"\u041e\u0442\u0437\u044b\u0432\u044b"} ({visibleReviewCount})</h3>
+              <h3>{"Отзывы"} ({reviewCount})</h3>
               <a className="exchangeAddReview" href="#exchange-feedback-form">{"\u0414\u043e\u0431\u0430\u0432\u0438\u0442\u044c \u043e\u0442\u0437\u044b\u0432"}</a>
             </div>
             <div className="exchangeReviewFilters" aria-label="Фильтры отзывов">

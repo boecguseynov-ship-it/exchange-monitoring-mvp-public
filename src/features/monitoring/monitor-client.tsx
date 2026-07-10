@@ -981,10 +981,18 @@ export function MonitorClient({
               <div className="offerRow" key={offer.id}>
                 <span className="exchangeName">
                   <i>{offer.exchange.name.slice(0, 1).toUpperCase()}</i>
-                  <span>
-                    <a href={offer.exchange.url}>
+                <span>
+                    {offer.exchange.pageUrl ? (
+                      <a href={offer.exchange.pageUrl}>
+                        <strong>{offer.exchange.name}</strong>
+                      </a>
+                    ) : offer.exchange.url && offer.exchange.url !== "#" ? (
+                      <a href={offer.exchange.url} rel="noopener noreferrer" target="_blank">
+                        <strong>{offer.exchange.name}</strong>
+                      </a>
+                    ) : (
                       <strong>{offer.exchange.name}</strong>
-                    </a>
+                    )}
                     <small><BadgeCheck size={12} /> Проверен</small>
                     <small className="offerLocationLine">
                       <MapPin size={12} />
@@ -995,17 +1003,17 @@ export function MonitorClient({
                   </span>
                 </span>
                 <span
-                  className="rating ratingReviewLink"
-                  role="link"
-                  tabIndex={0}
-                  onClick={() => { window.location.href = `/exchangers/${offer.exchange.slug}#exchange-feedback`; }}
-                  onKeyDown={(event) => {
+                  className={`rating${offer.exchange.pageUrl ? " ratingReviewLink" : ""}`}
+                  role={offer.exchange.pageUrl ? "link" : undefined}
+                  tabIndex={offer.exchange.pageUrl ? 0 : undefined}
+                  onClick={offer.exchange.pageUrl ? () => { window.location.href = `${offer.exchange.pageUrl}#exchange-feedback`; } : undefined}
+                  onKeyDown={offer.exchange.pageUrl ? (event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
-                      window.location.href = `/exchangers/${offer.exchange.slug}#exchange-feedback`;
+                      window.location.href = `${offer.exchange.pageUrl}#exchange-feedback`;
                     }
-                  }}
-                  title="Открыть отзывы обменника"
+                  } : undefined}
+                  title={offer.exchange.pageUrl ? "Открыть отзывы обменника" : undefined}
                 >
                   {offer.exchange.rating === null ? (
                     <strong className="ratingMissing">нет оценки</strong>
@@ -1029,7 +1037,7 @@ export function MonitorClient({
                 <span><strong>{offer.reserve.toLocaleString("ru-RU")}</strong><small>{offer.network ?? to}</small></span>
                 <span className="processingCell"><i /><strong>{processingLabel(offer.processing)}</strong></span>
                 <span className="offerActions">
-                  <a href={offer.exchange.url}>
+                  <a href={offer.exchange.url} rel="noopener noreferrer" target="_blank">
                     Перейти <ExternalLink size={12} />
                   </a>
                   <button type="button" aria-label={`Добавить ${offer.exchange.name} в закладки`}>

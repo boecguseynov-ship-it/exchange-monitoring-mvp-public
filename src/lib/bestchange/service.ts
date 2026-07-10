@@ -3,7 +3,9 @@ import { prisma } from "@/lib/db/prisma";
 import { getBestChangeClient, hasBestChangeApiConfig } from "./client";
 import { loadLocalAssets, loadLocalOffers, localCurrencies, localPairRate } from "./local";
 import {
+  buildAffiliateUrl,
   findCurrency,
+  isBestchangeUrl,
   normalizeBestChangeAssets,
   normalizeBestChangeDirectory,
   normalizeBestChangeOffers,
@@ -1032,7 +1034,7 @@ export async function loadLiveExchangeProfile(
       name: localExchangeBySlug.name,
       description: localExchangeBySlug.description,
       domain: localExchangeBySlug.domain,
-      url: localExchangeBySlug.partnerUrl ?? `https://${localExchangeBySlug.domain}`,
+      url: buildAffiliateUrl(`https://${localExchangeBySlug.domain}`, localExchangeBySlug.partnerUrl) ?? `https://${localExchangeBySlug.domain}`,
       rating: localReviewStats.rating,
       reviews: localReviewStats.reviews,
       activeClaims: 0,
@@ -1094,8 +1096,14 @@ export async function loadLiveExchangeProfile(
     slug: localExchange?.slug ?? String(changer.id),
     name: changer.name,
     description: `${changer.active ? "Активен" : "Отключен"} · резерв ${reserveLabel}`,
-    domain: sanitizeDomain(providerFacts?.domain ?? changer.urls.ru ?? Object.values(changer.urls)[0]),
-    url: localExchange?.partnerUrl ?? changer.urls.ru ?? Object.values(changer.urls)[0] ?? null,
+    domain: sanitizeDomain(
+      providerFacts?.domain ??
+      [changer.urls.ru, ...Object.values(changer.urls)].find((u) => u && !isBestchangeUrl(u))
+    ),
+    url: buildAffiliateUrl(
+      [changer.urls.ru, ...Object.values(changer.urls)].find((u) => u && !isBestchangeUrl(u)) ?? null,
+      localExchange?.partnerUrl
+    ) ?? [changer.urls.ru, ...Object.values(changer.urls)].find((u) => u && !isBestchangeUrl(u)) ?? null,
     rating: profileRating,
     reviews: profileReviews,
     activeClaims: providerFacts?.activeClaims ?? reviewBucket(changer, "claim"),
@@ -1287,7 +1295,7 @@ export async function loadManualExchangeRates({
         rating,
         reviews,
         verified: exchange.status === ExchangeStatus.ACTIVE,
-        url: exchange.partnerUrl ?? `https://${exchange.domain}`
+        url: buildAffiliateUrl(`https://${exchange.domain}`, exchange.partnerUrl) ?? `https://${exchange.domain}`
       },
       from: fromCode,
       to: toCode,

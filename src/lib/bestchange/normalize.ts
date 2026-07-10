@@ -69,8 +69,67 @@ function codeNetwork(currency: BestChangeCurrency) {
   return match?.[1]?.toUpperCase() ?? null;
 }
 
-function publicUrl(changer: BestChangeChanger) {
-  return changer.urls.ru ?? Object.values(changer.urls)[0] ?? "#";
+const BESTCHANGE_DOMAINS = ["bestchange.ru", "bestchange.pro", "bestchange.app", "bestchange.com"];
+
+export function isBestchangeUrl(url: string | null | undefined): boolean {
+  if (!url) return false;
+  try {
+    const host = new URL(url).hostname.replace(/^www\./i, "");
+    return BESTCHANGE_DOMAINS.some((d) => host === d || host.endsWith(`.${d}`));
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Returns the real website URL of the exchanger, skipping any BestChange URLs.
+ * BestChange sometimes puts its own monitoring page URLs in changer.urls.
+ */
+function publicUrl(changer: BestChangeChanger): string {
+  const candidates = [
+    changer.urls.ru,
+    ...Object.values(changer.urls)
+  ].filter((u): u is string => Boolean(u) && !isBestchangeUrl(u));
+  return candidates[0] ?? "#";
+}
+
+/**
+ * Builds the affiliate (partner) URL for a given exchange link.
+ *
+ * Two modes depending on what is stored in `partnerUrl`:
+ *  - Full URL (starts with "http")  → used as-is, ignores baseUrl.
+ *  - Ref param (e.g. "ref=123")     → appended to baseUrl query string.
+ *
+ * This lets admins enter just the ref token once (e.g. `ref=123`) and the
+ * site automatically appends it to every exchange link, including direction
+ * links from BestChange.
+ */
+export function buildAffiliateUrl(
+  baseUrl: string | null | undefined,
+  partnerUrl: string | null | undefined
+): string | null {
+  if (!partnerUrl) return baseUrl ?? null;
+
+  // Full partner URL – use directly (backward-compatible)
+  if (/^https?:\/\//i.test(partnerUrl)) return partnerUrl;
+
+  // Ref-param mode: append to baseUrl
+  const base = baseUrl ?? null;
+  if (!base) return null;
+
+  try {
+    const url = new URL(base.startsWith("http") ? base : `https://${base}`);
+    const param = partnerUrl.replace(/^[?&]+/, "");
+    const parts = param.split("=");
+    if (parts.length >= 2) {
+      url.searchParams.set(parts[0], parts.slice(1).join("="));
+    } else if (param) {
+      url.searchParams.set(param, "");
+    }
+    return url.toString();
+  } catch {
+    return base;
+  }
 }
 
 export function sanitizeDomain(value: string | null | undefined): string | null {
@@ -88,8 +147,17 @@ export function sanitizeDomain(value: string | null | undefined): string | null 
   return domain;
 }
 
-function pageUrl(changer: BestChangeChanger) {
-  return changer.pages.ru ?? Object.values(changer.pages)[0];
+/**
+ * Returns the internal profile page path for an exchanger if it has a local slug,
+ * or null for BestChange-only entries that have no internal page.
+ * Never returns a BestChange URL.
+ */
+function internalPageUrl(changer: BestChangeChanger, localSlug?: string): string | undefined {
+  if (localSlug) return `/exchangers/${localSlug}`;
+  // Fall back to internal path derived from changer pages, but only if it's not a bestchange domain
+  const page = changer.pages.ru ?? Object.values(changer.pages)[0] ?? null;
+  if (page && !isBestchangeUrl(page)) return page;
+  return undefined;
 }
 
 export function isCashCurrency(currency: BestChangeCurrency) {
@@ -201,7 +269,7 @@ export function normalizeBestChangeDirectory(
     const local = localReviews.get(changer.id);
     const stats = reviewStats(changer, local);
     const url = publicUrl(changer);
-    const profileUrl = pageUrl(changer);
+    const profileUrl = internalPageUrl(changer, local?.slug);
     const domain = sanitizeDomain(url) ?? "";
 
     return {
@@ -222,7 +290,7 @@ export function normalizeBestChangeDirectory(
       reserve: changer.reserve,
       verified: changer.active,
       url,
-      pageUrl: profileUrl
+      pageUrl: internalPageUrl(changer, local?.slug)
     };
   });
 }
@@ -270,8 +338,8 @@ export function normalizeBestChangeOffers({
           rating: stats.rating,
           reviews: stats.reviews,
           verified: changer.active,
-          url: local?.partnerUrl || publicUrl(changer),
-          pageUrl: pageUrl(changer)
+          url: buildAffiliateUrl(publicUrl(changer), local?.partnerUrl) ?? publicUrl(changer),
+          pageUrl: internalPageUrl(changer, local?.slug)
         },
         from: from.code,
         to: to.code,

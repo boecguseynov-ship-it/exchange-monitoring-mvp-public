@@ -146,6 +146,7 @@ export type LiveExchangeProfile = {
   url?: string | null;
   rating: number | null;
   reviews: number;
+  providerReviews?: number;
   activeClaims: number | null;
   closedClaims: number | null;
   reserve: number;
@@ -1100,7 +1101,9 @@ export async function loadLiveExchangeProfile(
     localReviews.length,
     externalReviews.length
   );
-  const totalReviews = Math.max(profileReviews, providerFacts?.reviews ?? 0);
+  // providerReviewCount uses changer API data (always available, no HTTP needed)
+  const changerReviewCount = providerReviewCount(changer, providerFacts?.reviews);
+  const totalReviews = Math.max(profileReviews, changerReviewCount);
   const reviewsFact = totalReviews > 0 ? [{ label: "Отзывов", value: String(totalReviews) }] : [];
   const facts = [...baseFacts, ...reviewsFact]
     .filter((fact, index, list) => list.findIndex((item) => item.label === fact.label) === index);
@@ -1131,7 +1134,8 @@ export async function loadLiveExchangeProfile(
     languages: changer.langs,
     facts,
     localReviews,
-    externalReviews
+    externalReviews,
+    providerReviews: changerReviewCount
   };
 }
 

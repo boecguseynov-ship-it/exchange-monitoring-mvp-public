@@ -311,6 +311,11 @@ export default async function ExchangeProfilePage({ params }: ExchangePageProps)
                   </article>
                 ))}
               </div>
+            ) : profile.reviews > 0 ? (
+              <div className="exchangeEmptyReviews">
+                <strong>{"\u041e\u0442\u0437\u044b\u0432\u044b \u0432\u0440\u0435\u043c\u0435\u043d\u043d\u043e \u043d\u0435 \u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d\u044b"}</strong>
+                <span>{"\u0423 \u044d\u0442\u043e\u0433\u043e \u043e\u0431\u043c\u0435\u043d\u043d\u0438\u043a\u0430 "}<strong>{profile.reviews}</strong>{" \u043e\u0442\u0437\u044b\u0432\u043e\u0432. \u0414\u0430\u043d\u043d\u044b\u0435 \u043f\u043e\u044f\u0432\u044f\u0442\u0441\u044f \u043f\u0440\u0438 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0435\u043c \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0438 \u043a\u0435\u0448\u0430."}</span>
+              </div>
             ) : (
               <div className="exchangeEmptyReviews">
                 <strong>{"\u041e\u0442\u0437\u044b\u0432\u043e\u0432 \u043f\u043e\u043a\u0430 \u043d\u0435\u0442"}</strong>

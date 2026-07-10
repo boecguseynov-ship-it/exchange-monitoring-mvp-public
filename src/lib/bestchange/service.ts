@@ -175,15 +175,24 @@ function normalizeName(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9а-яё]+/gi, "").trim();
 }
 
+/**
+ * Returns only the real exchanger website URLs (from changer.urls).
+ * Deliberately excludes changer.pages which contains BestChange monitoring URLs
+ * (e.g. https://www.bestchange.pro/365exchanger.html) — including those in domain
+ * matching would cause ALL changers to falsely match whichever local DB exchange
+ * has a BestChange domain set as its domain field.
+ */
 function changerUrls(changer: BestChangeChanger) {
-  return [
-    ...Object.values(changer.pages),
-    ...Object.values(changer.urls)
-  ].filter((value): value is string => Boolean(value));
+  return Object.values(changer.urls)
+    .filter((value): value is string => Boolean(value) && !isBestchangeUrl(value));
 }
 
 function changerHosts(changer: BestChangeChanger) {
-  return Array.from(new Set(changerUrls(changer).map(extractHost).filter((host): host is string => Boolean(host))));
+  return Array.from(new Set(
+    changerUrls(changer)
+      .map(extractHost)
+      .filter((host): host is string => Boolean(host))
+  ));
 }
 
 function matchesLocalExchange(changer: BestChangeChanger, exchange: LocalExchangeRecord) {

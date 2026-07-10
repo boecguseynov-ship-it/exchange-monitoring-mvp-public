@@ -179,7 +179,6 @@ export default async function ExchangeProfilePage({ params }: ExchangePageProps)
           <div className="exchangePassportHead">
             <div className="exchangeProfilePreview" aria-hidden="true">
               <div className="previewTop"><span /></div>
-              <div className="previewBrand">{initials}</div>
               <div className="previewGrid"><span /><span /><span /><span /><span /><span /></div>
               <div className="previewCard"><i /><i /><i /></div>
             </div>

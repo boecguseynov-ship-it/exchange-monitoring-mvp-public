@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ShieldCheck, Star } from "lucide-react";
+import { unstable_cache } from "next/cache";
 import { AppShell } from "@/components/app-shell";
 import { loadLiveExchangeProfile } from "@/lib/bestchange/service";
 import { localChangers } from "@/lib/bestchange/local";
@@ -14,7 +15,7 @@ type ExchangePageProps = {
   params: Promise<{ slug: string }>;
 };
 
-async function loadProfile(slug: string) {
+async function fetchProfile(slug: string) {
   const live = await loadLiveExchangeProfile(slug).catch(() => null);
   if (live) return live;
 
@@ -47,6 +48,14 @@ async function loadProfile(slug: string) {
     externalReviews: [],
     rates: []
   };
+}
+
+function loadProfile(slug: string) {
+  return unstable_cache(
+    () => fetchProfile(slug),
+    [`exchange-profile-${slug}`],
+    { revalidate: 300, tags: [`exchange-profile`, `exchange-${slug}`] }
+  )();
 }
 
 function formatReviewDate(value: Date) {

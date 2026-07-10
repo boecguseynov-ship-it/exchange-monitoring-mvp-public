@@ -982,8 +982,8 @@ export function MonitorClient({
                 <span className="exchangeName">
                   <i>{offer.exchange.name.slice(0, 1).toUpperCase()}</i>
                 <span>
-                    {offer.exchange.pageUrl ? (
-                      <a href={offer.exchange.pageUrl}>
+                    {!offer.exchange.isDemo ? (
+                      <a href={`/exchangers/${offer.exchange.slug}`}>
                         <strong>{offer.exchange.name}</strong>
                       </a>
                     ) : offer.exchange.url && offer.exchange.url !== "#" ? (
@@ -1003,17 +1003,17 @@ export function MonitorClient({
                   </span>
                 </span>
                 <span
-                  className={`rating${offer.exchange.pageUrl ? " ratingReviewLink" : ""}`}
-                  role={offer.exchange.pageUrl ? "link" : undefined}
-                  tabIndex={offer.exchange.pageUrl ? 0 : undefined}
-                  onClick={offer.exchange.pageUrl ? () => { window.location.href = `${offer.exchange.pageUrl}#exchange-feedback`; } : undefined}
-                  onKeyDown={offer.exchange.pageUrl ? (event) => {
+                  className={`rating${!offer.exchange.isDemo ? " ratingReviewLink" : ""}`}
+                  role={!offer.exchange.isDemo ? "link" : undefined}
+                  tabIndex={!offer.exchange.isDemo ? 0 : undefined}
+                  onClick={!offer.exchange.isDemo ? () => { window.location.href = `/exchangers/${offer.exchange.slug}#exchange-feedback`; } : undefined}
+                  onKeyDown={!offer.exchange.isDemo ? (event) => {
                     if (event.key === "Enter" || event.key === " ") {
                       event.preventDefault();
-                      window.location.href = `${offer.exchange.pageUrl}#exchange-feedback`;
+                      window.location.href = `/exchangers/${offer.exchange.slug}#exchange-feedback`;
                     }
                   } : undefined}
-                  title={offer.exchange.pageUrl ? "Открыть отзывы обменника" : undefined}
+                  title={!offer.exchange.isDemo ? "Открыть отзывы обменника" : undefined}
                 >
                   {offer.exchange.rating === null ? (
                     <strong className="ratingMissing">нет оценки</strong>
